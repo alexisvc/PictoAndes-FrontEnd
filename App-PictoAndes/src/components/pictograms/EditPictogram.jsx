@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import pictogramService from "../../services/pictograms";
+import pictogramServices from "../../services/pictograms";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router';
@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router';
 function EditPictogram({ pictogram, updatePictogram }) {
   const [newName, setNewName] = useState(pictogram.name);
   const [newCategory, setNewCategory] = useState(pictogram.category);
-  const [newUrl, setNewUrl] = useState(pictogram.url);
+  const [newImage, setNewImage] = useState(null); // Para almacenar la nueva imagen
   const navigate = useNavigate();
 
   const handleUpdate = async (e) => {
@@ -16,11 +16,15 @@ function EditPictogram({ pictogram, updatePictogram }) {
     const updatedPictogram = {
       name: newName,
       category: newCategory,
-      url: newUrl,
     };
+
+    if (newImage) {
+      updatedPictogram.image = newImage; // Agrega la nueva imagen si se seleccionó una
+    }
 
     try {
       await updatePictogram(pictogram.id, updatedPictogram);
+
       // Notificación de éxito
       toast.success('Pictogram updated successfully', {
         position: 'top-right',
@@ -28,19 +32,19 @@ function EditPictogram({ pictogram, updatePictogram }) {
       });
       setNewName('');
       setNewCategory('');
-      setNewUrl('');
+      setNewImage(null);
       navigate('/');
       
     } catch (error) {
       // Notificación de error
-      console.error('Error creating pictogram:', error);
-      toast.error('There was an error creating the pictogram. Please try again.', {
+      console.error('Error updating pictogram:', error);
+      toast.error('There was an error updating the pictogram. Please try again.', {
         position: 'top-right',
         autoClose: 3000,
       });
       setNewName('');
       setNewCategory('');
-      setNewUrl('');
+      setNewImage(null);
     }
   };
 
@@ -56,14 +60,13 @@ function EditPictogram({ pictogram, updatePictogram }) {
         <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
       </div>
       <div>
-        <span>Url:</span>
-        <input type="text" value={newUrl} onChange={(e) => setNewUrl(e.target.value)} />
+        <span>Image:</span>
+        <input type="file" onChange={(e) => setNewImage(e.target.files[0])} />
       </div>
       <div>
         <button onClick={handleUpdate}>Update Pictogram</button>
         <button onClick={() => {navigate("/")}}>Cancel</button>
       </div>
-      
     </div>
   );
 }

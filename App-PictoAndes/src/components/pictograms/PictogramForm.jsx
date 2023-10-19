@@ -7,20 +7,20 @@ import { useNavigate } from 'react-router';
 export default function PictogramForm({ createPictogram }) {
   const [nameValue, setNameValue] = useState('');
   const [categoryValue, setCategoryValue] = useState('');
-  const [urlValue, setUrlValue] = useState('');
+  const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const pictogramObject = {
-      name: nameValue,
-      category: categoryValue,
-      url: urlValue,
-    };
+    const formData = new FormData();
+    formData.append('name', nameValue);
+    formData.append('category', categoryValue);
+    formData.append('image', image);
 
     try {
-      await createPictogram(pictogramObject);
+      await createPictogram(formData);
+
       // Notificación de éxito
       toast.success('Pictogram created successfully', {
         position: 'top-right',
@@ -28,7 +28,7 @@ export default function PictogramForm({ createPictogram }) {
       });
       setNameValue('');
       setCategoryValue('');
-      setUrlValue('');
+      setImage(null);
 
       navigate('/');
 
@@ -41,7 +41,7 @@ export default function PictogramForm({ createPictogram }) {
       });
       setNameValue('');
       setCategoryValue('');
-      setUrlValue('');
+      setImage(null);
     }
   };
 
@@ -51,31 +51,30 @@ export default function PictogramForm({ createPictogram }) {
         <h3>Create a new pictogram</h3>
         <form onSubmit={handleSubmit}>
           <div>
-          <input
-            type="text"
-            placeholder="Name"
-            value={nameValue}
-            onChange={(e) => setNameValue(e.target.value)}
-            required
-          />
+            <input
+              type="text"
+              placeholder="Name"
+              value={nameValue}
+              onChange={(e) => setNameValue(e.target.value)}
+              required
+            />
           </div>
           <div>
-          <input
-            type="text"
-            placeholder="Category"
-            value={categoryValue}
-            onChange={(e) => setCategoryValue(e.target.value)}
-            required
-          />
+            <input
+              type="text"
+              placeholder="Category"
+              value={categoryValue}
+              onChange={(e) => setCategoryValue(e.target.value)}
+              required
+            />
           </div>
           <div>
-          <input
-            type="text"
-            placeholder="URL"
-            value={urlValue}
-            onChange={(e) => setUrlValue(e.target.value)}
-            required
-          />
+            <input
+              type="file"
+              accept="image/*"
+              onChange={(e) => setImage(e.target.files[0])}
+              required
+            />
           </div>
           <button>Create</button>
           <button onClick={() => navigate("/")}>Cancel</button>
