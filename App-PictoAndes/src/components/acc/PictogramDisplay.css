@@ -94,7 +94,7 @@
 /* Grid para mostrar categorías y pictogramas */
 .grid-acc {
   display: flex;
-  background-color: #69b5db;
+  background-color: #fff;
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

@@ -16,17 +16,17 @@ export function PictogramDisplay({ images }) {
       const synth = window.speechSynthesis;
       if (synth) {
         const utterance = new SpeechSynthesisUtterance(altText);
+        utterance.rate = 0.35;
         synth.speak(utterance);
       } else {
-        console.error(
-          "La síntesis de voz no está soportada en este navegador."
-        );
+        console.error("La síntesis de voz no está soportada en este navegador.");
       }
-
+  
       const image = { alt: altText, url: imageUrl };
       setSelectedImages([...selectedImages, image]);
     }
   };
+  
 
   const handleDeleteLastImage = () => {
     if (!speaking && selectedImages.length > 0) {
@@ -45,27 +45,27 @@ export function PictogramDisplay({ images }) {
   const handleReadSelectedImages = () => {
     if (!speaking && selectedImages.length > 0) {
       setSpeaking(true);
-
+  
       const synth = window.speechSynthesis;
       if (synth) {
         synth.cancel();
-
+  
         selectedImages.forEach((image, index) => {
           const utterance = new SpeechSynthesisUtterance(image.alt);
+          utterance.rate = 0.35;
           utterance.onend = () => {
             if (index === selectedImages.length - 1) {
               setSpeaking(false);
             }
           };
-          setTimeout(() => synth.speak(utterance), index * 1000);
+          setTimeout(() => synth.speak(utterance), index * 500);
         });
       } else {
-        console.error(
-          "La síntesis de voz no está soportada en este navegador."
-        );
+        console.error("La síntesis de voz no está soportada en este navegador.");
       }
     }
   };
+  
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
