@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import pictogramServices from "../../services/pictograms";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router';
@@ -19,7 +18,7 @@ function EditPictogram({ pictogram, updatePictogram }) {
     };
 
     if (newImage) {
-      updatedPictogram.image = newImage; // Agrega la nueva imagen si se seleccionó una
+      updatedPictogram.image = newImage;
     }
 
     try {

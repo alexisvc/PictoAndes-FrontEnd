@@ -17,9 +17,9 @@ import PictogramList from "./components/pictograms/PictogramList";
 
 import { useUser } from "./hooks/useUser";
 import { usePictograms } from "./hooks/usePictograms";
-
-import "./App.css";
 import Home from "./components/Home";
+import { FaHome, FaUser } from "react-icons/fa";
+import "./App.css"; // Importa el archivo CSS
 
 function App() {
   const { user, logout, login } = useUser();
@@ -35,7 +35,7 @@ function App() {
           <div className="nav-links">
             {!isLoggedIn && (
               <>
-                <button><Link to="/">Home</Link></button>
+                <button><Link to="/"><FaHome/><span>Home</span></Link></button>
                 <button><Link to="/login">Login</Link></button>
                 <button><Link to="/register">Register</Link></button>
               </>
@@ -43,12 +43,13 @@ function App() {
 
             {isLoggedIn && (
               <>
-                <button><Link to="/">Home</Link></button>
+                <button><Link to="/"><FaHome/><span>Home</span></Link></button>
                 <button><Link to="/create">Create a new Pictogram</Link></button>
                 <button><Link to="/saac">SAAC</Link></button>
                 <button><Link to="/game">Game</Link></button>
                 <button><Link to="/pictograms">Pictograms</Link></button>
                 <button onClick={logout}><Link to="/">Logout</Link></button>
+                <FaUser/><span>{user.username}</span>
               </>
             )}
           </div>
@@ -62,7 +63,7 @@ function App() {
             <Route path="/saac" element={isLoggedIn ? <PictogramDisplay images={pictograms} /> : <Home />} />
             <Route path="/game" element={ isLoggedIn ? <MenuGame pictograms={pictograms} /> : <Home />} />
             <Route path="/pictograms" element={isLoggedIn ? <PictogramList pictograms={pictograms} updatePictogram={updatePictogram} deletePictogram={deletePictogram}/> : <Home />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home user={user}/>} />
           </Routes>
         </div>
       </Router>
