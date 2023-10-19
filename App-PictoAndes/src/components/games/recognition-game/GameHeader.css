@@ -1,0 +1,23 @@
+.game-info {
+    margin:20px;
+  }
+  
+  .game-stats {
+    display: block;
+    text-align: left;
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-label {
+    font-weight: bold;
+    color: black;
+  }
+  
+  .stat-value {
+    margin-top: 5px;
+    font-size: 18px;
+    color: #ff0026;
+  }

@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('/src/assets/backgrounds/ciudad-silencio.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;  
+  }
+  
+  .App {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    color: #333;
+  }
+  
+  h2 {
+    font-size: 24px;
+    color: #444;
+  }
+  
+  label {
+    font-size: 18px;
+    color: #666;
+    margin-right: 10px;
+  }
+  
+  select {
+    font-size: 16px;
+    padding: 5px;
+  }
+  
+  .word {
+    font-size: 32px;
+    margin-bottom: 20px;
+    background-size: cover;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .images {
+    display: flex;
+    justify-items: center;
+  }
+  
+  img {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  img:hover {
+    transform: scale(1.1);
+  }
+  
+  button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-bottom: 10px;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .game-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .game-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .game-stats {
+    display: flex;
+    justify-content: space-around;
+    width: 300px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .stat {
+    text-align: center;
+  }
+  
+  .stat-label {
+    font-weight: bold;
+  }
+  
+  .stat-value {
+    font-size: 24px;
+    color: #007bff;
+  }
+  
+  .images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .images img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .images img:hover {
+    transform: scale(1.1);
+  }
+  

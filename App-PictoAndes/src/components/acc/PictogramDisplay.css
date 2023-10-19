@@ -1,0 +1,150 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #bbb;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Div superior para pictogramas seleccionados y botones */
+  .selected-images-and-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: #3f3d3d;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+  }
+  
+  .selected-images {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 70%; /* Aumenta el ancho del div de los seleccionados */
+    height: calc(fit-content + 20 px);
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario */
+  }
+  
+  .selected-images .card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 70px;
+    height: 90px;
+  }
+  
+  .selected-images .card img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .button-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .button-container button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+  .button-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .button-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Grid para mostrar categorías y pictogramas */
+  .grid-container {
+    display: flex;
+    background-color: #3f3d3d;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: calc(100% - 60px); /* El alto se ajusta para ocupar el espacio restante */
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario */
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  /* Columna de categorías */
+  .categories {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+  }
+  
+  .categories button {
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  /* Columna de pictogramas */
+  .image-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+  }
+  
+  .image-grid-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow-x: auto; /* Agrega scroll horizontal si es necesario */
+  }
+  
+  .image-grid .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: calc(fit-content + 20px);
+    height: calc(fit-content + 20px);
+  }
+  
+  .image-grid .card .card-image {
+    margin-bottom: 10px;
+  }
+  
+  .image-grid .card img {
+    width: 50px;
+    height: 50px;
+  }
+  
