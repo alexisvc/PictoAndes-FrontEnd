@@ -28,28 +28,28 @@ const createPictogram = (formData) => {
 };
 
 const updatePictogram = (id, updatedPictogram) => {
-    const formData = new FormData();
-  
-    // Agrega los campos de texto al FormData
-    formData.append('name', updatedPictogram.name);
-    formData.append('category', updatedPictogram.category);
-  
-    if (updatedPictogram.image) {
-      // Agrega la nueva imagen al FormData
-      formData.append('image', updatedPictogram.image);
-    }
-  
-    const config = {
-      headers: {
-        Authorization: token,
-        'Content-Type': 'multipart/form-data',
-      },
-    };
-  
-    return axios
-      .put(`${baseUrl}/${id}`, formData, config)
-      .then((response) => response.data);
+  const formData = new FormData();
+
+  // Agrega los campos de texto al FormData
+  formData.append('name', updatedPictogram.name);
+  formData.append('category', updatedPictogram.category);
+
+  if (updatedPictogram.image) {
+    // Agrega la nueva imagen al FormData
+    formData.append('image', updatedPictogram.image);
+  }
+
+  const config = {
+    headers: {
+      Authorization: token,
+      'Content-Type': 'multipart/form-data',
+    },
   };
+
+  return axios
+    .put(`${baseUrl}/${id}`, formData, config)
+    .then((response) => response.data);
+};
 
 const deletePictogram = (id) => {
   const config = {

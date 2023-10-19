@@ -81,6 +81,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                 <tr>
                   <th>Name</th>
                   <th>Category</th>
+                  <th>Pictogram</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -89,6 +90,13 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                   <tr key={pictogram.id}>
                     <td>{pictogram.name}</td>
                     <td>{pictogram.category}</td>
+                    <td>
+                      <img
+                        src={pictogram.url}
+                        alt={pictogram.name}
+                        width="100"
+                      />
+                    </td>
                     <td>
                       <button onClick={() => handleEditClick(pictogram)}>
                         <FaEdit /> Edit
