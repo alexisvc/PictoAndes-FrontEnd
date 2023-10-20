@@ -1,4 +1,4 @@
-.acc-container {
+ .acc-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -12,6 +12,7 @@
 .acc-head{
   display: flex;
   margin: auto;
+  padding: 15px;
 }
 .acc-head button {
   margin: 5px 0;
@@ -94,6 +95,7 @@
 /* Grid para mostrar categorías y pictogramas */
 .grid-acc {
   display: flex;
+  flex-direction: row;
   background-color: #fff;
   border-radius: 5px;
   padding: 20px;
@@ -106,7 +108,7 @@
 .categories {
   display: flex;
   flex-direction: column;
-  width: 20%;
+  width: 15%;
 }
 
 .categories button {
@@ -123,7 +125,6 @@
 /* Columna de pictogramas */
 .image-grid {
   display: flex;
-  flex-direction: column;
   align-items: center;
   width: 80%;
 }

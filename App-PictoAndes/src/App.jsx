@@ -19,7 +19,7 @@ import { useUser } from "./hooks/useUser";
 import { usePictograms } from "./hooks/usePictograms";
 import Home from "./components/Home";
 import { FaHome, FaUser } from "react-icons/fa";
-import "./App.css"; // Importa el archivo CSS
+import "./App.css";
 
 function App() {
   const { user, logout, login } = useUser();

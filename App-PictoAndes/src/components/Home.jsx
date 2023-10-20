@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Home.css"
+import "./Home.css"
+import Popup from "./Popup";
 
 function Home({ user }) {
   const isLoggedIn = !!user;
   return (
+    <Popup text="Bienvenido a PictoAndes, espero disfrutes de esta experiencia">
     <div className="welcome">
       <h1>Aventura de los PictoAndes</h1>
       <h2>La búsqueda de la comunicación</h2>
@@ -42,6 +44,7 @@ function Home({ user }) {
         </div>
       )}
     </div>
+    </Popup>
   );
 }
 

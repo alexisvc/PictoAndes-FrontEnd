@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
+import Togglable from "../Togglable";
 
 export function PictogramDisplay({ images }) {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -83,6 +84,7 @@ export function PictogramDisplay({ images }) {
   };
 
   return (
+    <Togglable buttonLabel="Pictogram display">
     <div className="acc-container">
       <div className="acc-head">
         <button onClick={handleResetGame} disabled={speaking}>
@@ -123,7 +125,6 @@ export function PictogramDisplay({ images }) {
             </button>
           ))}
         </div>
-
         {/* Columna de pictogramas */}
         <div className="image-grid">
           <div className="image-grid-inner">
@@ -143,5 +144,6 @@ export function PictogramDisplay({ images }) {
         </div>
       </div>
     </div>
+    </Togglable>
   );
 }
