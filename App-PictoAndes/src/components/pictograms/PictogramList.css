@@ -1,39 +1,56 @@
-/* Estilos para la tabla */
+.pictogram-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("src/assets/backgrounds/list.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  font-family: 'Satisfy', cursive;
+}
+
+.filter {
+  margin: 20px 0;
+}
+
+.pictogram-table-container {
+  width: 100%;
+  height: 100%; 
+  overflow-y: auto;
+}
+
 .pictogram-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  .pictogram-table th, .pictogram-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .pictogram-table th {
-    background-color: #f2f2f2;
-  }
-  
-  /* Estilos para la paginación */
-  .pagination {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .pagination button {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 5px;
-  }
-  
-  .pagination button:hover {
-    background-color: #0056b3;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  text-align: center; /* Añade alineación al centro para los elementos de la tabla */
+}
+
+.pictogram-table th,
+.pictogram-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center; /* Añade alineación al centro para el contenido de las celdas */
+}
+
+.pictogram-table th {
+  background-color: #FF637D;
+  font-size: 25px;
+  -webkit-text-stroke: 0.5px black;
+}
+
+.img-edit {
+  border: none;
+}
+
+.img-edit:hover {
+  transform: none;
+  cursor: default;
+}
+
+.buttons-edit button{
+  margin: 0 5px;
+}

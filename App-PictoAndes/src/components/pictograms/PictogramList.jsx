@@ -8,11 +8,7 @@ import EditPictogram from "./EditPictogram";
 function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedPictogram, setSelectedPictogram] = useState(null);
-
   const [selectedCategory, setSelectedCategory] = useState("todos");
-  const [currentPage, setCurrentPage] = useState(1);
-  const pictogramsPerPage = 5;
-
   const uniqueCategories = [
     ...new Set(pictograms.map((pictogram) => pictogram.category)),
   ];
@@ -24,25 +20,15 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           (pictogram) => pictogram.category === selectedCategory
         );
 
-  const indexOfLastPictogram = currentPage * pictogramsPerPage;
-  const indexOfFirstPictogram = indexOfLastPictogram - pictogramsPerPage;
-  const currentPictograms = filteredPictograms.slice(
-    indexOfFirstPictogram,
-    indexOfLastPictogram
-  );
-
-  const pageNumbers = [];
-  for (
-    let i = 1;
-    i <= Math.ceil(filteredPictograms.length / pictogramsPerPage);
-    i++
-  ) {
-    pageNumbers.push(i);
-  }
 
   const handleEditClick = (pictogram) => {
     setShowEditForm(true);
     setSelectedPictogram(pictogram);
+    // Notificación de éxito
+    toast.success('Pictogram deleted successfully', { //Cambiar el mensaje
+      position: 'top-right',
+      autoClose: 3000,
+    });
   };
 
   const handleDeleteClick = (pictogram) => {
@@ -55,10 +41,9 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   };
 
   return (
-    <Togglable buttonLabel="Pictogram List">
-      <>
+      <div className="pictogram-list-container">
         {!showEditForm && (
-          <div>
+          <div className="filter">
             <span>Filter: </span>
             <select
               value={selectedCategory}
@@ -75,7 +60,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
         )}
 
         {!showEditForm && (
-          <>
+          <div className="pictogram-table-container">
             <table className="pictogram-table">
               <thead>
                 <tr>
@@ -86,18 +71,18 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                 </tr>
               </thead>
               <tbody>
-                {currentPictograms.map((pictogram) => (
+                {filteredPictograms.map((pictogram) => (
                   <tr key={pictogram.id}>
                     <td>{pictogram.name}</td>
                     <td>{pictogram.category}</td>
                     <td>
-                      <img
+                      <img className="img-edit"
                         src={pictogram.url}
                         alt={pictogram.name}
                         width="100"
                       />
                     </td>
-                    <td>
+                    <td className="buttons-edit">
                       <button onClick={() => handleEditClick(pictogram)}>
                         <FaEdit /> Edit
                       </button>
@@ -109,15 +94,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                 ))}
               </tbody>
             </table>
-
-            <div className="pagination">
-              {pageNumbers.map((number) => (
-                <button key={number} onClick={() => setCurrentPage(number)}>
-                  {number}
-                </button>
-              ))}
-            </div>
-          </>
+          </div>
         )}
 
         {showEditForm && selectedPictogram && (
@@ -126,8 +103,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
             updatePictogram={updatePictogram}
           />
         )}
-      </>
-    </Togglable>
+      </div>
   );
 }
 

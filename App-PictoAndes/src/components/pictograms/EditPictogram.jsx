@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router';
+import "./EditPictogram.css";
 
 function EditPictogram({ pictogram, updatePictogram }) {
   const [newName, setNewName] = useState(pictogram.name);
@@ -48,23 +49,50 @@ function EditPictogram({ pictogram, updatePictogram }) {
   };
 
   return (
-    <div>
-      <h2>Edit Pictogram</h2>
-      <div>
-        <span>Name:</span>
-        <input type="text" value={newName} onChange={(e) => setNewName(e.target.value)} />
+    <div className="edit-pictogram-form">
+      <div className="form-section">
+        <h2 className="form-heading">Edit Pictogram</h2>
+        <form onSubmit={handleUpdate}>
+          <div>
+            <input
+              type="text"
+              placeholder="Name"
+              value={newName}
+              onChange={(e) => setNewName(e.target.value)}
+              required
+              className="input-field"
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Category"
+              value={newCategory}
+              onChange={(e) => setNewCategory(e.target.value)}
+              required
+              className="input-field"
+            />
+          </div>
+          <div>
+            <input
+              type="file"
+              onChange={(e) => setNewImage(e.target.files[0])}
+              className="input-field"
+            />
+          </div>
+          <div className="button-container">
+            <button type="submit" className="create-button">Update Pictogram</button>
+            <button type="button" className="cancel-button" onClick={() => navigate("/")}>
+              Cancel
+            </button>
+          </div>
+        </form>
       </div>
-      <div>
-        <span>Category:</span>
-        <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
-      </div>
-      <div>
-        <span>Image:</span>
-        <input type="file" onChange={(e) => setNewImage(e.target.files[0])} />
-      </div>
-      <div>
-        <button onClick={handleUpdate}>Update Pictogram</button>
-        <button onClick={() => {navigate("/")}}>Cancel</button>
+      <div className="img-form">
+        <img
+          src="src\assets\characters\condor.png"
+          alt="Image of the adventure"
+        />
       </div>
     </div>
   );

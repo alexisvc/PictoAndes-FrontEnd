@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import RecognitionGame from "./RecognitionGame";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Togglable from "../../Togglable";
 
 
 function MenuGame({ pictograms }) {
@@ -23,7 +22,6 @@ function MenuGame({ pictograms }) {
   };
 
   return (
-    <Togglable buttonLabel="Pictogram display">
     <div className="menu-game">
       {!isSelected ? (
         uniqueCategories.map((category) => (
@@ -35,7 +33,6 @@ function MenuGame({ pictograms }) {
         <RecognitionGame pictograms={selectedPictograms} />
       )}
     </div>
-    </Togglable>
   );
 }
 

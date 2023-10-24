@@ -10,7 +10,7 @@ export function useSpeechSynthesis() {
       const synth = window.speechSynthesis;
       if (synth) {
         const newUtterance = new SpeechSynthesisUtterance(text);
-        newUtterance.rate = 1;
+        newUtterance.rate = 0.55; // 0.1 - 10
 
         // Obtener la voz por defecto "Microsoft Sabina - Spanish (Mexico)"
         const voices = window.speechSynthesis.getVoices();
@@ -61,5 +61,11 @@ export function useSpeechSynthesis() {
     }
   }, [utterance]);
 
-  return { speak, speaking, stopSpeaking, currentText };
+  return { 
+    speak, 
+    speaking, 
+    setSpeaking,
+    stopSpeaking, 
+    currentText 
+  };
 }

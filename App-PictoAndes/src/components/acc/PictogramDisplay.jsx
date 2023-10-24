@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
-import Togglable from "../Togglable";
-
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis"; // Importa el hook
+import { FaHome } from "react-icons/fa";
 export function PictogramDisplay({ images }) {
   const [selectedImages, setSelectedImages] = useState([]);
-  const [speaking, setSpeaking] = useState(false);
+  const { speak, speaking, setSpeaking } = useSpeechSynthesis(); // Usa el hook
   const [selectedCategory, setSelectedCategory] = useState("");
 
   const navigate = useNavigate();
@@ -14,20 +14,12 @@ export function PictogramDisplay({ images }) {
 
   const handleImageClick = (altText, imageUrl) => {
     if (!speaking) {
-      const synth = window.speechSynthesis;
-      if (synth) {
-        const utterance = new SpeechSynthesisUtterance(altText);
-        utterance.rate = 0.35;
-        synth.speak(utterance);
-      } else {
-        console.error("La síntesis de voz no está soportada en este navegador.");
-      }
-  
+      // Utiliza el hook para hablar
+      speak(altText);
       const image = { alt: altText, url: imageUrl };
       setSelectedImages([...selectedImages, image]);
     }
   };
-  
 
   const handleDeleteLastImage = () => {
     if (!speaking && selectedImages.length > 0) {
@@ -46,27 +38,23 @@ export function PictogramDisplay({ images }) {
   const handleReadSelectedImages = () => {
     if (!speaking && selectedImages.length > 0) {
       setSpeaking(true);
-  
+
       const synth = window.speechSynthesis;
       if (synth) {
         synth.cancel();
-  
+
         selectedImages.forEach((image, index) => {
-          const utterance = new SpeechSynthesisUtterance(image.alt);
-          utterance.rate = 0.35;
-          utterance.onend = () => {
-            if (index === selectedImages.length - 1) {
-              setSpeaking(false);
-            }
-          };
-          setTimeout(() => synth.speak(utterance), index * 500);
+          // Utiliza el hook para hablar
+          speak(image.alt);
+          setTimeout(() => {}, (index + 1) * 1500);
         });
       } else {
-        console.error("La síntesis de voz no está soportada en este navegador.");
+        console.error(
+          "La síntesis de voz no está soportada en este navegador."
+        );
       }
     }
   };
-  
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
@@ -84,66 +72,69 @@ export function PictogramDisplay({ images }) {
   };
 
   return (
-    <Togglable buttonLabel="Pictogram display">
-    <div className="acc-container">
-      <div className="acc-head">
-        <button onClick={handleResetGame} disabled={speaking}>
-        Reiniciar y Regresar al Inicio
-        </button>
-      </div>
-      <div className="selected-images-and-buttons">
-        <div className="selected-images">
-          {selectedImages.map((image, index) => (
-            <div key={index} className="card">
-              <img src={image.url} alt={image.alt} />
-              <p>{image.alt}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="button-acc">
-          <button onClick={handleDeleteLastImage} disabled={speaking}>
-            Eliminar
-          </button>
-          <button onClick={handleDeleteAllImages} disabled={speaking}>
-            Eliminar todos
-          </button>
-          <button onClick={handleReadSelectedImages} disabled={speaking}>
-            Play
+    <>
+      <div className="acc-container">
+        <div className="acc-head">
+          <button onClick={handleResetGame} disabled={speaking}>
+            <FaHome />
           </button>
         </div>
-      </div>
-
-      {/* Grid para mostrar categorías y pictogramas */}
-      <div className="grid-acc">
-        {/* Columna de categorías */}
-        <div className="categories">
-          <button onClick={() => handleCategoryFilter("")}>Todas</button>
-          {categories.map((category, index) => (
-            <button key={index} onClick={() => handleCategoryFilter(category)}>
-              {category}
-            </button>
-          ))}
-        </div>
-        {/* Columna de pictogramas */}
-        <div className="image-grid">
-          <div className="image-grid-inner">
-            {filteredImages.map((image, index) => (
-              <div
-                key={index}
-                className="card"
-                onClick={() => handleImageClick(image.name, image.url)}
-              >
-                <div className="card-image">
-                  <img src={image.url} alt={image.name} />
-                </div>
-                <p>{image.name}</p>
+        <div className="selected-images-and-buttons">
+          <div className="selected-images">
+            {selectedImages.map((image, index) => (
+              <div key={index} className="card">
+                <img src={image.url} alt={image.alt} />
+                <p>{image.alt}</p>
               </div>
             ))}
           </div>
+
+          <div className="button-acc">
+            <button onClick={handleDeleteLastImage} disabled={speaking}>
+              Eliminar
+            </button>
+            <button onClick={handleDeleteAllImages} disabled={speaking}>
+              Eliminar todos
+            </button>
+            <button onClick={handleReadSelectedImages} disabled={speaking}>
+              Play
+            </button>
+          </div>
+        </div>
+
+        {/* Grid para mostrar categorías y pictogramas */}
+        <div className="grid-acc">
+          {/* Columna de categorías */}
+          <div className="categories">
+            <button onClick={() => handleCategoryFilter("")}>Todas</button>
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => handleCategoryFilter(category)}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+          {/* Columna de pictogramas */}
+          <div className="image-grid">
+            <div className="image-grid-inner">
+              {filteredImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="card"
+                  onClick={() => handleImageClick(image.name, image.url)}
+                >
+                  <div className="card-image">
+                    <img src={image.url} alt={image.name} />
+                  </div>
+                  <p>{image.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    </Togglable>
+    </>
   );
 }
