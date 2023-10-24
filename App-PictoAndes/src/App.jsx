@@ -12,9 +12,7 @@ import { LoginForm } from "./components/user/LoginForm";
 import PictogramForm from "./components/pictograms/PictogramForm";
 import RegistrationForm from "./components/user/RegistrationForm";
 import { PictogramDisplay } from "./components/acc/PictogramDisplay";
-import MenuGame from "./components/games/recognition-game/MenuGame";
 import PictogramList from "./components/pictograms/PictogramList";
-
 import { useUser } from "./hooks/useUser";
 import { usePictograms } from "./hooks/usePictograms";
 import Home from "./components/Home";
@@ -34,32 +32,36 @@ function App() {
       <Router>
         <ToastContainer />
         <div className="navbar">
-          <div className="nav-links">
-            {!isLoggedIn && (
-              <>
+          {!isLoggedIn && (
+            <>
+              <div className="nav-left">
                 <button>
                   <Link to="/">
                     <FaHome />
-                    <span>Home</span>
                   </Link>
                 </button>
+              </div>
+              <div className="nav-right">
                 <button>
                   <Link to="/login">Login</Link>
                 </button>
                 <button>
                   <Link to="/register">Register</Link>
                 </button>
-              </>
-            )}
+              </div>
+            </>
+          )}
 
-            {isLoggedIn && (
-              <>
+          {isLoggedIn && (
+            <>
+              <div className="nav-left">
                 <button>
                   <Link to="/">
                     <FaHome />
-                    <span>Home</span>
                   </Link>
                 </button>
+              </div>
+              <div className="nav-right">
                 <button>
                   <Link to="/create">Create a new Pictogram</Link>
                 </button>
@@ -75,11 +77,13 @@ function App() {
                 <button onClick={logout}>
                   <Link to="/">Logout</Link>
                 </button>
-                <FaUser />
-                <span>{user.username}</span>
-              </>
-            )}
-          </div>
+                {/*<button>
+                  <FaUser/>
+                  <span>{user.username}</span>
+            </button>*/}
+              </div>
+            </>
+          )}
         </div>
 
         <div className="content">
@@ -114,7 +118,11 @@ function App() {
             <Route
               path="/game"
               element={
-                isLoggedIn ? <RecognitionGame pictograms={pictograms} /> : <Home />
+                isLoggedIn ? (
+                  <RecognitionGame pictograms={pictograms} />
+                ) : (
+                  <Home />
+                )
               }
             />
             <Route

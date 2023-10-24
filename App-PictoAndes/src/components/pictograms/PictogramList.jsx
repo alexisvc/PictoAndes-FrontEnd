@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
 import Togglable from "../Togglable";
 import EditPictogram from "./EditPictogram";
@@ -20,30 +20,25 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           (pictogram) => pictogram.category === selectedCategory
         );
 
-
   const handleEditClick = (pictogram) => {
     setShowEditForm(true);
     setSelectedPictogram(pictogram);
-    // Notificación de éxito
-    toast.success('Pictogram deleted successfully', { //Cambiar el mensaje
-      position: 'top-right',
-      autoClose: 3000,
-    });
   };
 
   const handleDeleteClick = (pictogram) => {
     deletePictogram(pictogram.id);
     // Notificación de éxito
-    toast.success('Pictogram deleted successfully', {
-      position: 'top-right',
+    toast.success("Pictogram deleted successfully", {
+      position: "top-right",
       autoClose: 3000,
     });
   };
 
   return (
-      <div className="pictogram-list-container">
-        <h2 className="heading">Pictogram List</h2>
-        {!showEditForm && (
+    <div className="pictogram-list-container">
+      {!showEditForm && (
+        <>
+          <h2 className="heading">Pictogram List</h2>
           <div className="filter">
             <span>Filter: </span>
             <select
@@ -58,53 +53,61 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               ))}
             </select>
           </div>
-        )}
+        </>
+      )}
 
-        {!showEditForm && (
-          <div className="pictogram-table-container">
-            <table className="pictogram-table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Pictogram</th>
-                  <th>Actions</th>
+      {!showEditForm && (
+        <div className="pictogram-table-container">
+          <table className="pictogram-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Pictogram</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredPictograms.map((pictogram) => (
+                <tr key={pictogram.id}>
+                  <td>{pictogram.name}</td>
+                  <td>{pictogram.category}</td>
+                  <td>
+                    <img
+                      className="img-edit"
+                      src={pictogram.url}
+                      alt={pictogram.name}
+                      width="100"
+                    />
+                  </td>
+                  <td className="buttons-edit">
+                    <button
+                      className="edit-button"
+                      onClick={() => handleEditClick(pictogram)}
+                    >
+                      <FaEdit /> Edit
+                    </button>
+                    <button
+                      className="edit-button"
+                      onClick={() => handleDeleteClick(pictogram)}
+                    >
+                      <FaTrash /> Delete
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                {filteredPictograms.map((pictogram) => (
-                  <tr key={pictogram.id}>
-                    <td>{pictogram.name}</td>
-                    <td>{pictogram.category}</td>
-                    <td>
-                      <img className="img-edit"
-                        src={pictogram.url}
-                        alt={pictogram.name}
-                        width="100"
-                      />
-                    </td>
-                    <td className="buttons-edit">
-                      <button className="edit-button" onClick={() => handleEditClick(pictogram)}>
-                        <FaEdit /> Edit
-                      </button>
-                      <button className="edit-button" onClick={() => handleDeleteClick(pictogram)}>
-                        <FaTrash /> Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-        {showEditForm && selectedPictogram && (
-          <EditPictogram
-            pictogram={selectedPictogram}
-            updatePictogram={updatePictogram}
-          />
-        )}
-      </div>
+      {showEditForm && selectedPictogram && (
+        <EditPictogram
+          pictogram={selectedPictogram}
+          updatePictogram={updatePictogram}
+        />
+      )}
+    </div>
   );
 }
 

@@ -1,0 +1,37 @@
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.images img {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    border: 1px solid #ddd;
+    border: 2px solid #66D7D1;
+    border-radius: 5px;
+}
+
+.options-btn button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #FF637D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+ 
+  .options-btn button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+  }
+

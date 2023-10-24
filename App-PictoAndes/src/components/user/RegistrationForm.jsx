@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { useRegistration } from "../../hooks/useRegistration";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +11,8 @@ const RegistrationForm = () => {
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false); // Agregar estado para el checkbox
   const navigate = useNavigate();
+
+  const { registerUser, isRegistered } = useRegistration();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,7 +26,7 @@ const RegistrationForm = () => {
     }
 
     try {
-      // Tu lógica de registro aquí
+      await registerUser({ username, name, password });
       toast.success("Registro exitoso", {
         position: "top-right",
         autoClose: 3000,
@@ -31,6 +34,8 @@ const RegistrationForm = () => {
       setUsername("");
       setName("");
       setPassword("");
+      setTermsAccepted(false);
+      navigate("/login");
     } catch (error) {
       console.error("Error al hacer registro:", error);
       toast.error("El usuario ya existe. Por favor, inténtalo de nuevo.", {
@@ -40,6 +45,7 @@ const RegistrationForm = () => {
       setUsername("");
       setName("");
       setPassword("");
+      setTermsAccepted(false);
     }
   };
 
@@ -92,7 +98,7 @@ const RegistrationForm = () => {
             />
           </div>
           <div>
-            <label>
+            <label className="terms">
               <input
                 type="checkbox"
                 checked={termsAccepted}
@@ -110,7 +116,7 @@ const RegistrationForm = () => {
         <div className="footer-register">
           <p>
             Already have an account?
-            <Link to="/" className="register-link"> Login now</Link>
+            <Link to="/login" className="register-link"> Login now</Link>
           </p>
         </div>
       </div>

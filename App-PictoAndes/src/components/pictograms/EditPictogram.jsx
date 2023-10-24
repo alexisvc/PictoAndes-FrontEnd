@@ -50,8 +50,8 @@ function EditPictogram({ pictogram, updatePictogram }) {
 
   return (
     <div className="edit-pictogram-form">
-      <div className="form-section">
-        <h2 className="form-heading">Edit Pictogram</h2>
+      <div className="form-section-edit">
+        <h3>Edit Pictogram</h3>
         <form onSubmit={handleUpdate}>
           <div>
             <input
@@ -90,8 +90,8 @@ function EditPictogram({ pictogram, updatePictogram }) {
       </div>
       <div className="img-form">
         <img
-          src="src\assets\characters\condor.png"
-          alt="Image of the adventure"
+          src={pictogram.url}
+          alt={pictogram.name}
         />
       </div>
     </div>

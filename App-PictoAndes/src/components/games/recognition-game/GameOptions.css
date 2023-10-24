@@ -1,0 +1,39 @@
+.difficulty-selector {
+    font-size: 24px;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.recognition-game label {
+    font-size: 18px;
+    color: #666;
+    margin-right: 10px;
+}
+
+.recognition-game select {
+    font-size: 16px;
+    padding: 5px;
+}
+
+
+.difficulty-play button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #66D7D1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin: auto;
+}
+
+.difficulty-play button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.difficulty-play button:hover {
+    background-color: #0056b3;
+}

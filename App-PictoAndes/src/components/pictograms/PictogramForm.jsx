@@ -50,7 +50,7 @@ export default function PictogramForm({ createPictogram }) {
   return (
     <div className="pictogram-form-container">
       <div className="form-section">
-        <h3 className="form-heading">Create a new pictogram</h3>
+        <h3>Create a new pictogram</h3>
         <form onSubmit={handleSubmit}>
           <div>
             <input

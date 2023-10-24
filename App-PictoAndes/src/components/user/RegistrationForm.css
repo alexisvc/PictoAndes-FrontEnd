@@ -25,21 +25,18 @@
 }
 
 .registration-heading {
-    font-size: 50px;
+    font-size: 6vh;
     color: #66D7D1;
     -webkit-text-stroke: 1px black;
 }
 
-.input-field {
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 25px;
+.terms{
+    font-size: 2.25vh;
+    color: #333;
 }
 
 .register-button {
+    font-size: 2.25vh;
     width: 80%;
     margin: 10px;
     padding: 10px;
@@ -48,7 +45,6 @@
     color: #EAF2E3;
     border: none;
     border-radius: 5px;
-    font-size: 27px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -58,7 +54,7 @@
 }
 
 .footer-register{
-    font-size: 20px;
+    font-size: 2.25vh;
     color: #333;
 }
 
@@ -70,15 +66,4 @@
 
 .register-link:hover {
     color: #FF637D;
-}
-
-.img-form img {
-    width: 60%;
-    height: 60%;
-    object-fit: cover;
-    border: none;
-}
-
-.img-form img:hover {
-    transform: none;
 }

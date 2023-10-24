@@ -53,8 +53,29 @@ export function useRecognitionGame( pictograms ) {
   const handleMouseOver = (textToSpeak) => {
     if (synthesis) {
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.rate = 0.25;
+      utterance.rate = 0.50; // 0.1 - 10
+
+      // Obtener la voz por defecto "Microsoft Sabina - Spanish (Mexico)"
+      const voices = window.speechSynthesis.getVoices();
+      const defaultVoice = voices.find(voice => (
+        //voice.name === "Microsoft Sabina - Spanish (Mexico)"
+        //voice.name === "Microsoft Raul - Spanish (Mexico)"
+        //voice.name === "Microsoft Helena - Spanish (Spain)"
+        //voice.name === "Microsoft Laura - Spanish (Spain)"
+        //voice.name === "Microsoft Pablo - Spanish (Spain)"
+        //voice.name === "Google español"
+        voice.name === "Google español de Estados Unidos"
+      ));
+
+      if (defaultVoice) {
+        utterance.voice = defaultVoice;
+      } else {
+        console.error('La voz por defecto no está disponible.');
+      }
+
       synthesis.speak(utterance);
+    } else {
+      console.error('La síntesis de voz no está soportada en este navegador.');
     }
   };
 

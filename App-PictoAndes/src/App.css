@@ -11,37 +11,44 @@
     display: flex;
     justify-content: right;
     padding: 10px 20px;
-    height: 6%;
+    height: 5%;
 }
 
-.nav-links {
+.nav-left{
     display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: flex-start;
+    width: 20%;
 }
 
-.nav-links button {
+.nav-right{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 80%;
+}
+
+.navbar button {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 16px;
     color: #EAF2E3;
-    margin-right: 30px;
     display: flex;
-    align-items: center;
+    margin: 0 10px;
 }
 
-.nav-links button:last-child {
-    margin-right: 0;
-}
-
-.nav-links button a {
+.navbar button a {
     text-decoration: none;
     color: white;
     font-family: 'Satisfy', cursive;
-    font-size: 25px;
+    font-size: 2vh;
+    width: 100%;
+    height: 100%;
 }
 
-.nav-links svg {
+.navbar svg {
     margin-right: 5px;
     margin-top: 5px;
     font-size: 25px;

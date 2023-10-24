@@ -1,17 +1,17 @@
 import React from "react";
-import { FaEdit, FaTrash } from 'react-icons/fa';
 import { FiVolume2 } from "react-icons/fi";
+import "./PictogramOptions.css";
+
 function PictogramOptions({ currentPictograms, handleMouseOver, checkAnswer }) {
   return (
     <div className="images">
       {currentPictograms.map((pictogram) => (
         <div key={pictogram.name}>
           <img src={pictogram.url} alt={pictogram.name} onClick={() => checkAnswer(pictogram.name)}/>
-          <div>
+          <div className="options-btn">
             <button onClick={() => handleMouseOver(pictogram.name)}>
-              <FiVolume2 size={20}/>
+              <FiVolume2 size={25}/>
             </button>  
-            {/*<button onClick={() => checkAnswer(pictogram.name)}>✔️</button>*/}
           </div>
         </div>
       ))}

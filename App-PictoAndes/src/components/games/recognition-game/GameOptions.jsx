@@ -1,8 +1,10 @@
 import React from "react";
+import "./GameOptions.css";
 
 function GameOptions({ difficulty, setDifficulty, onStartGame }) {
   return (
     <div className="difficulty-selector">
+      <div className="difficulty-select">
       <label htmlFor="difficulty">Dificultad:</label>
       <select
         id="difficulty"
@@ -15,7 +17,9 @@ function GameOptions({ difficulty, setDifficulty, onStartGame }) {
         <option value="Normal">Normal</option>
         <option value="Difícil">Difícil</option>
       </select>
-      <div>
+      </div>
+      
+      <div className="difficulty-play">
         <button onClick={onStartGame}>Jugar</button>
       </div>
     </div>

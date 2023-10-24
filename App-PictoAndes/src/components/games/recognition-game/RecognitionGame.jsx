@@ -29,33 +29,33 @@ function RecognitionGame({ pictograms }) {
   };
 
   return (
-    <>
-      <div className="recognition-game">
-        <h1 className="game-title">Juego de Reconocimiento</h1>
-        {!isConfigurated && !isPlaying && (
+    <div className="recognition-game">
+      <h1>Juego de Reconocimiento</h1>
+      <div className="game-canva">
+      {!isConfigurated && !isPlaying && (
           <GameOptions
             difficulty={difficulty}
             setDifficulty={setDifficulty}
             onStartGame={handleStartGame}
           />
-        )}
-        {isConfigurated && (
-          <>
-            <GameHeader lives={lives} points={points} badges={badges} />
-            <PictogramQuestion
-              currentPictogram={currentPictogram}
-              handleMouseOver={handleMouseOver}
-              checkAnswer={checkAnswer}
-            />
-            <PictogramOptions
-              currentPictograms={currentPictograms}
-              handleMouseOver={handleMouseOver}
-              checkAnswer={checkAnswer}
-            />
-          </>
-        )}
+      )}
+      {isConfigurated && (
+        <div className="game">
+          <GameHeader lives={lives} points={points} badges={badges} />
+          <PictogramQuestion
+            currentPictogram={currentPictogram}
+            handleMouseOver={handleMouseOver}
+            checkAnswer={checkAnswer}
+          />
+          <PictogramOptions
+            currentPictograms={currentPictograms}
+            handleMouseOver={handleMouseOver}
+            checkAnswer={checkAnswer}
+          />
+        </div>
+      )}
       </div>
-    </>
+    </div>
   );
 }
 
