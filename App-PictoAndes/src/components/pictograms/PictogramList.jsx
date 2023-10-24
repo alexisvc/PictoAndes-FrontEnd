@@ -42,6 +42,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
 
   return (
       <div className="pictogram-list-container">
+        <h2 className="heading">Pictogram List</h2>
         {!showEditForm && (
           <div className="filter">
             <span>Filter: </span>
@@ -83,10 +84,10 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                       />
                     </td>
                     <td className="buttons-edit">
-                      <button onClick={() => handleEditClick(pictogram)}>
+                      <button className="edit-button" onClick={() => handleEditClick(pictogram)}>
                         <FaEdit /> Edit
                       </button>
-                      <button onClick={() => handleDeleteClick(pictogram)}>
+                      <button className="edit-button" onClick={() => handleDeleteClick(pictogram)}>
                         <FaTrash /> Delete
                       </button>
                     </td>

@@ -64,77 +64,59 @@ export function PictogramDisplay({ images }) {
     ? images.filter((image) => image.category === selectedCategory)
     : images;
 
-  const handleResetGame = () => {
-    setSelectedImages([]);
-    setSpeaking(false);
-    setSelectedCategory("");
-    navigate("/");
-  };
-
   return (
-    <>
-      <div className="acc-container">
-        <div className="acc-head">
-          <button onClick={handleResetGame} disabled={speaking}>
-            <FaHome />
+    <div className="acc-container">
+      <div className="selected-images-and-buttons">
+        <div className="selected-images">
+          {selectedImages.map((image, index) => (
+            <div key={index} className="card">
+              <img src={image.url} alt={image.alt} />
+              <p>{image.alt}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="button-acc">
+          <button onClick={handleDeleteLastImage} disabled={speaking}>
+            Eliminar
+          </button>
+          <button onClick={handleDeleteAllImages} disabled={speaking}>
+            Eliminar todos
+          </button>
+          <button onClick={handleReadSelectedImages} disabled={speaking}>
+            Play
           </button>
         </div>
-        <div className="selected-images-and-buttons">
-          <div className="selected-images">
-            {selectedImages.map((image, index) => (
-              <div key={index} className="card">
-                <img src={image.url} alt={image.alt} />
-                <p>{image.alt}</p>
+      </div>
+
+      {/* Grid para mostrar categorías y pictogramas */}
+      <div className="grid-acc">
+        {/* Columna de categorías */}
+        <div className="categories">
+          <button onClick={() => handleCategoryFilter("")}>Todas</button>
+          {categories.map((category, index) => (
+            <button key={index} onClick={() => handleCategoryFilter(category)}>
+              {category}
+            </button>
+          ))}
+        </div>
+        {/* Columna de pictogramas */}
+          <div className="image-grid">
+            {filteredImages.map((image, index) => (
+              <div
+                key={index}
+                className="card"
+                onClick={() => handleImageClick(image.name, image.url)}
+              >
+                <div className="card-image">
+                  <img src={image.url} alt={image.name} />
+                </div>
+                <p>{image.name}</p>
               </div>
             ))}
           </div>
-
-          <div className="button-acc">
-            <button onClick={handleDeleteLastImage} disabled={speaking}>
-              Eliminar
-            </button>
-            <button onClick={handleDeleteAllImages} disabled={speaking}>
-              Eliminar todos
-            </button>
-            <button onClick={handleReadSelectedImages} disabled={speaking}>
-              Play
-            </button>
-          </div>
-        </div>
-
-        {/* Grid para mostrar categorías y pictogramas */}
-        <div className="grid-acc">
-          {/* Columna de categorías */}
-          <div className="categories">
-            <button onClick={() => handleCategoryFilter("")}>Todas</button>
-            {categories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => handleCategoryFilter(category)}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-          {/* Columna de pictogramas */}
-          <div className="image-grid">
-            <div className="image-grid-inner">
-              {filteredImages.map((image, index) => (
-                <div
-                  key={index}
-                  className="card"
-                  onClick={() => handleImageClick(image.name, image.url)}
-                >
-                  <div className="card-image">
-                    <img src={image.url} alt={image.name} />
-                  </div>
-                  <p>{image.name}</p>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
-    </>
+
   );
 }
