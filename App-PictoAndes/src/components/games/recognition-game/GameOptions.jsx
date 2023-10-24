@@ -15,7 +15,9 @@ function GameOptions({ difficulty, setDifficulty, onStartGame }) {
         <option value="Normal">Normal</option>
         <option value="Difícil">Difícil</option>
       </select>
-      <button onClick={onStartGame}>Jugar</button>
+      <div>
+        <button onClick={onStartGame}>Jugar</button>
+      </div>
     </div>
   );
 }

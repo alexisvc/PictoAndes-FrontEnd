@@ -1,31 +1,36 @@
   .recognition-game {
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    background-image: url('/src/assets/backgrounds/ciudad-silencio.png');
+    background-image: url("src/assets/backgrounds/ciudad-silencio.png");
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     background-position: center;
-    height: fit-content;
+    height: 100%;
+    font-family: 'Satisfy', cursive;
   }
 
-  h1 {
-    font-size: 28px;
-    color: #333;
+  .recognition-game h1 {
+    font-size: 35px;
+    color: #FF637D;
+    -webkit-text-stroke: 1px white;
   }
 
-  h2 {
+  .recognition-game h2 {
     font-size: 24px;
-    color: #444;
+    color: #fff;
+    -webkit-text-stroke: 1px black;
   }
 
-  label {
+  .recognition-game label {
     font-size: 18px;
     color: #666;
     margin-right: 10px;
   }
 
-  select {
+  .recognition-game select {
     font-size: 16px;
     padding: 5px;
   }
@@ -60,7 +65,7 @@
   button {
     font-size: 16px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #66D7D1;
     color: #fff;
     border: none;
     border-radius: 5px;

@@ -19,14 +19,9 @@ function RecognitionGame({ pictograms }) {
     badges,
     handleMouseOver,
     checkAnswer,
-    handleResetGame,
   } = useRecognitionGame(pictograms);
 
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const handleCategorySelect = (selectedDifficulty) => {
-    setDifficulty(selectedDifficulty);
-  };
 
   const handleStartGame = () => {
     setIsConfigurated(true);
@@ -37,9 +32,6 @@ function RecognitionGame({ pictograms }) {
     <>
       <div className="recognition-game">
         <h1 className="game-title">Juego de Reconocimiento</h1>
-        <button onClick={handleResetGame}>
-          Reiniciar Juego y Regresar al Inicio
-        </button>
         {!isConfigurated && !isPlaying && (
           <GameOptions
             difficulty={difficulty}
