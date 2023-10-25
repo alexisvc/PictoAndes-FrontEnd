@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
-import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis"; // Importa el hook
-import { FaHome } from "react-icons/fa";
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+
 export function PictogramDisplay({ images }) {
   const [selectedImages, setSelectedImages] = useState([]);
   const { speak, speaking, setSpeaking } = useSpeechSynthesis(); // Usa el hook

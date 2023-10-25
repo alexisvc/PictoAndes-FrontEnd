@@ -8,7 +8,7 @@ export function useRecognitionGame( pictograms ) {
   const [isConfigurated, setIsConfigurated] = useState(false);
   const [currentPictograms, setCurrentPictograms] = useState([]);
   const [currentPictogram, setCurrentPictogram] = useState(null);
-  const [difficulty, setDifficulty] = useState("");
+  const [difficulty, setDifficulty] = useState("Fácil");
   const [synthesis, setSynthesis] = useState(null);
   const [lives, setLives] = useState(5);
   const [points, setPoints] = useState(0);
