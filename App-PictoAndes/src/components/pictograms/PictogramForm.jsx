@@ -30,7 +30,7 @@ export default function PictogramForm({ createPictogram }) {
       setCategoryValue("");
       setImage(null);
 
-      navigate("/");
+      navigate("/pictogram-menu");
     } catch (error) {
       // Notificación de error
       console.error("Error creating pictogram:", error);
@@ -50,24 +50,32 @@ export default function PictogramForm({ createPictogram }) {
   return (
     <div className="pictogram-form-container">
       <div className="form-section">
-        <h3>Create a new pictogram</h3>
+        <h3>Crear un nuevo Pictograma</h3>
         <form onSubmit={handleSubmit}>
+          <div className="form-input">
+            <p>Nombre:</p>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Ingresa un Nombre"
               value={nameValue}
               onChange={(e) => setNameValue(e.target.value)}
               required
               className="input-field"
             />
+          </div>
+          <div className="form-input">
+            <p>Categoría:</p>
             <input
               type="text"
-              placeholder="Category"
+              placeholder="Ingresa una Categoría"
               value={categoryValue}
               onChange={(e) => setCategoryValue(e.target.value)}
               required
               className="input-field"
             />
+          </div>
+          <div className="form-input">
+            <p>Imagen:</p>
             <input
               type="file"
               accept="image/*"
@@ -75,22 +83,21 @@ export default function PictogramForm({ createPictogram }) {
               required
               className="input-field"
             />
+          </div>
           <div className="button-container">
             <button className="create-button">
               <FaSave />
-              {/*<span> Create</span>*/}
             </button>
-            <button className="cancel-button" onClick={() => navigate("/")}>
+            <button className="cancel-button" onClick={() => navigate("/pictogram-menu")}>
               <FaTimes />
-              {/*<span> Cancel</span>*/}
             </button>
           </div>
         </form>
       </div>
       <div className="img-form">
         <img
-          src="src\assets\characters\condor.png"
-          alt="imagen de la aventura"
+          src="src/assets/characters/condor.png"
+          alt="Imagen de la Aventura"
         />
       </div>
     </div>

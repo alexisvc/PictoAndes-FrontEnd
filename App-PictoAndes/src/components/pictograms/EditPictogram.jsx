@@ -34,7 +34,7 @@ function EditPictogram({ pictogram, updatePictogram }) {
       setNewName('');
       setNewCategory('');
       setNewImage(null);
-      navigate('/');
+      navigate('/pictogram-menu');
       
     } catch (error) {
       // Notificación de error
@@ -54,37 +54,42 @@ function EditPictogram({ pictogram, updatePictogram }) {
       <div className="form-section-edit">
         <h3>Edit Pictogram</h3>
         <form onSubmit={handleUpdate}>
-
+        <div className="form-input">
+          <p>Nombre:</p>
             <input
               type="text"
-              placeholder="Name"
+              placeholder="Ingresa un Nombre"
               value={newName}
               onChange={(e) => setNewName(e.target.value)}
               required
               className="input-field"
             />
-
+        </div>
+        <div className="form-input">
+          <p>Categoría:</p>
             <input
               type="text"
-              placeholder="Category"
+              placeholder="Ingresa una Categoría"
               value={newCategory}
               onChange={(e) => setNewCategory(e.target.value)}
               required
               className="input-field"
             />
-
+        </div>
+        <div className="form-input">
+          <p>Imagen:</p>
             <input
               type="file"
               onChange={(e) => setNewImage(e.target.files[0])}
               className="input-field"
             />
-
+        </div>
           <div className="button-container">
             <button type="submit" className="create-button">
               <FaSave />
               {/*<span> Update Pictogram</span>*/}
             </button>
-            <button type="button" className="cancel-button" onClick={() => navigate("/")}>
+            <button type="button" className="cancel-button" onClick={() => navigate("/pictogram-menu")}>
               <FaTimes />
               {/*<span> Cancel</span>*/}
             </button>

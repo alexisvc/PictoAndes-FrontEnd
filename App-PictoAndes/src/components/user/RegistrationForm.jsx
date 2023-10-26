@@ -12,7 +12,7 @@ const RegistrationForm = () => {
   const [termsAccepted, setTermsAccepted] = useState(false); // Agregar estado para el checkbox
   const navigate = useNavigate();
 
-  const { registerUser, isRegistered } = useRegistration();
+  const { registerUser } = useRegistration();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -62,12 +62,13 @@ const RegistrationForm = () => {
         />
       </div>
       <div className="registration-form">
-        <h2 className="registration-heading">REGISTER</h2>
+        <h3>Registrarse</h3>
         <form onSubmit={handleRegister}>
-          <div>
+          <div className="form-input">
+            <p>Nombre de usuario:</p>
             <input
               type="text"
-              placeholder="username"
+              placeholder="Ingresa tu nombre de usuario"
               name="username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -75,10 +76,11 @@ const RegistrationForm = () => {
               className="input-field"
             />
           </div>
-          <div>
+          <div className="form-input">
+            <p>Nombre:</p>
             <input
               type="text"
-              placeholder="name"
+              placeholder="Ingresa tu nombre"
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -86,10 +88,11 @@ const RegistrationForm = () => {
               className="input-field"
             />
           </div>
-          <div>
+          <div className="form-input">
+            <p>Contraseña:</p>
             <input
               type="password"
-              placeholder="password"
+              placeholder="Ingresa tu contraseña"
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -97,26 +100,29 @@ const RegistrationForm = () => {
               className="input-field"
             />
           </div>
-          <div>
+          <div className="input-terms">
             <label className="terms">
               <input
                 type="checkbox"
                 checked={termsAccepted}
                 onChange={handleTermsAcceptedChange}
               />
-              I accept all terms & conditions
+              Acepto todos los términos y condiciones
             </label>
           </div>
           <div>
             <button className="register-button" type="submit">
-              Register
+              Registrarse
             </button>
           </div>
         </form>
         <div className="footer-register">
           <p>
-            Already have an account?
-            <Link to="/login" className="register-link"> Login now</Link>
+            ¿Ya tienes una cuenta?
+            <Link to="/login" className="register-link">
+              {" "}
+              Iniciar sesión ahora
+            </Link>
           </p>
         </div>
       </div>

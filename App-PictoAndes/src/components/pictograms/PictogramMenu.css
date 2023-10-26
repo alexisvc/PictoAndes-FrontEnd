@@ -1,0 +1,54 @@
+.pictogram-menu {
+    width: 100%;
+    height: 100%;
+    background-image: url("src/assets/backgrounds/list.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pictogram-menu h1 {
+    font-size: 8vh;
+    color: #EAF2E3;
+    -webkit-text-stroke: 1.5px black;
+}
+
+.pictogram-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
+}
+
+.pictogram-content button {
+    margin: 10px;
+    padding: 20px 30px;
+    font-family: 'Satisfy', cursive;
+    color: #EAF2E3;
+    background-color: #FF637D;
+    border: none;
+    border-radius: 5px;
+    font-size: 2.5vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+  .pictogram-content button:hover {
+    background-color: #FF637D;
+    transform: scale(1.1);
+  }
+  
+  .link-button {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .pictogram-content img {
+    margin: 2vh auto;
+    width: 45vh;
+  }

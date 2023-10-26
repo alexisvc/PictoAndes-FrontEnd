@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
-import "./LoginForm.css"
+import "./LoginForm.css";
 
 export const LoginForm = ({ login }) => {
   const [username, setUsername] = useState("");
@@ -36,12 +36,13 @@ export const LoginForm = ({ login }) => {
   return (
     <div className="login">
       <div className="login-form">
-        <h2 className="login-heading">LOGIN</h2>
+        <h2 className="login-heading">Iniciar Sesión</h2>
         <form onSubmit={handleLogin}>
-          <div>
+          <div className="form-input">
+            <p>Usuario:</p>
             <input
               type="text"
-              placeholder="username"
+              placeholder="Introduce tu nombre de usuario"
               value={username}
               name="username"
               onChange={(e) => setUsername(e.target.value)}
@@ -49,10 +50,11 @@ export const LoginForm = ({ login }) => {
               className="input-field"
             />
           </div>
-          <div>
+          <div className="form-input">
+            <p>Contraseña:</p>
             <input
               type="password"
-              placeholder="password"
+              placeholder="Ingresa tu contraseña"
               value={password}
               name="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -66,8 +68,11 @@ export const LoginForm = ({ login }) => {
         </form>
         <div className="footer-login">
           <p>
-            Don't have an account?
-            <Link to="/register" className="login-link"> Signup now</Link>
+            ¿No tienes una cuenta?
+            <Link to="/register" className="login-link">
+              {" "}
+              Regístrate ahora
+            </Link>
           </p>
         </div>
       </div>

@@ -1,0 +1,19 @@
+  .acc-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("src/assets/backgrounds/bosque2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    font-family: 'Satisfy', cursive;
+  }
+
+  .acc-game h1 {
+    font-size: 35px;
+    color: #FF637D;
+    -webkit-text-stroke: 1px white;
+  }

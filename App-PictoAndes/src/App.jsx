@@ -16,9 +16,12 @@ import PictogramList from "./components/pictograms/PictogramList";
 import { useUser } from "./hooks/useUser";
 import { usePictograms } from "./hooks/usePictograms";
 import Home from "./components/Home";
-import { FaHome, FaUser } from "react-icons/fa";
+import { FaHome, FaUserPlus, FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import "./App.css";
 import RecognitionGame from "./components/games/recognition-game/RecognitionGame";
+import PictogramMenu from "./components/pictograms/PictogramMenu";
+import GameMenu from "./components/games/GameMenu";
+import AccGame from "./components/games/acc-game/AccGame";
 
 function App() {
   const { user, logout, login } = useUser();
@@ -32,55 +35,59 @@ function App() {
       <Router>
         <ToastContainer />
         <div className="navbar">
-          {!isLoggedIn && (
+          {!isLoggedIn ? (
             <>
               <div className="nav-left">
                 <button>
                   <Link to="/">
                     <FaHome />
+                    <span>Inicio</span>
                   </Link>
                 </button>
               </div>
               <div className="nav-right">
                 <button>
-                  <Link to="/login">Login</Link>
+                  <FaSignInAlt />
+                  <Link to="/login">Iniciar sesión</Link>
                 </button>
                 <button>
-                  <Link to="/register">Register</Link>
+                  <FaUserPlus />
+                  <Link to="/register">Registrarse</Link>
                 </button>
               </div>
             </>
-          )}
-
-          {isLoggedIn && (
+          ) : (
             <>
               <div className="nav-left">
                 <button>
                   <Link to="/">
                     <FaHome />
+                    <span>Inicio</span>
                   </Link>
                 </button>
               </div>
               <div className="nav-right">
                 <button>
-                  <Link to="/create">Create a new Pictogram</Link>
+                  <Link to="/pictogram-menu">
+                    <span>Pictogramas</span>
+                  </Link>
                 </button>
                 <button>
-                  <Link to="/saac">SAAC</Link>
+                  <Link to="/saac">
+                  <span>Tablero</span>
+                  </Link>
                 </button>
                 <button>
-                  <Link to="/game">Game</Link>
-                </button>
-                <button>
-                  <Link to="/pictograms">Pictograms</Link>
+                  <Link to="/game-menu">
+                  <span>Juegos</span>
+                  </Link>
                 </button>
                 <button onClick={logout}>
-                  <Link to="/">Logout</Link>
+                  <Link to="/">
+                    <FaSignOutAlt />
+                    <span>Cerrar sesión</span>
+                  </Link>
                 </button>
-                {/*<button>
-                  <FaUser/>
-                  <span>{user.username}</span>
-            </button>*/}
               </div>
             </>
           )}
@@ -90,23 +97,11 @@ function App() {
           <Routes>
             <Route
               path="/login"
-              element={
-                isLoggedIn ? <Navigate to="/" /> : <LoginForm login={login} />
-              }
+              element={ isLoggedIn ? <Navigate to="/" /> : <LoginForm login={login} /> }
             />
             <Route
               path="/register"
               element={isLoggedIn ? <Navigate to="/" /> : <RegistrationForm />}
-            />
-            <Route
-              path="/create"
-              element={
-                isLoggedIn ? (
-                  <PictogramForm createPictogram={createPictogram} />
-                ) : (
-                  <Navigate to="/login" />
-                )
-              }
             />
             <Route
               path="/saac"
@@ -114,19 +109,38 @@ function App() {
                 isLoggedIn ? <PictogramDisplay images={pictograms} /> : <Home />
               }
             />
-            {/*<Route path="/game" element={ isLoggedIn ? <MenuGame pictograms={pictograms} /> : <Home />} /> */}
             <Route
-              path="/game"
+              path="/game-menu"
               element={
-                isLoggedIn ? (
-                  <RecognitionGame pictograms={pictograms} />
-                ) : (
-                  <Home />
-                )
+                isLoggedIn ? (<GameMenu />) : (<Home />)
               }
             />
             <Route
-              path="/pictograms"
+              path="/recognition-game"
+              element={
+                isLoggedIn ? (<RecognitionGame pictograms={pictograms} />) : (<Home />)
+              }
+            />
+            <Route
+              path="/acc-game"
+              element={
+                isLoggedIn ? (<AccGame />) : (<Home />)
+              }
+            />
+            <Route
+              path="/pictogram-menu"
+              element={isLoggedIn ? <PictogramMenu /> : <Home />}
+            />
+            <Route
+              path="/pictogram-form"
+              element={
+                isLoggedIn ? (
+                  <PictogramForm createPictogram={createPictogram} />
+                ) : ( <Home /> )
+              }
+            />
+            <Route
+              path="/pictogram-list"
               element={
                 isLoggedIn ? (
                   <PictogramList

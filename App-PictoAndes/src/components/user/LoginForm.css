@@ -24,16 +24,18 @@
     justify-content: center;
 }
 
+
 .login-heading {
     font-size: 6vh;
     color: #FF637D;
     -webkit-text-stroke: 0.5px black;
+    margin: 0.5vh auto;
 }
 
 .login-button {
     font-size: 2.25vh;
     width: 80%;
-    margin: 10px;
+    margin: 2vh auto;
     padding: 10px;
     background-color: #FF637D;
     font-family: 'Satisfy', cursive;

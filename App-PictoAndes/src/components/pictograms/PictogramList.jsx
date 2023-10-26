@@ -37,9 +37,9 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
     <div className="pictogram-list-container">
       {!showEditForm && (
         <>
-          <h2 className="heading">Pictogram List</h2>
+          <h2 className="heading">Lista de pictogramas</h2>
           <div className="filter">
-            <span>Filter: </span>
+            <span>Filtrar: </span>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
@@ -60,10 +60,10 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           <table className="pictogram-table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Pictogram</th>
-                <th>Actions</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Pictograma</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
