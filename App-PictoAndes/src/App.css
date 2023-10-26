@@ -48,6 +48,10 @@
     height: 100%;
 }
 
+.navbar button a:hover {
+    color: #000;
+}
+
 .navbar svg {
     margin-right: 5px;
     margin-top: 5px;

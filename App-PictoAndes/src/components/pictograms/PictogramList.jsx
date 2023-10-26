@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
-import Togglable from "../Togglable";
 import EditPictogram from "./EditPictogram";
 
 function PictogramList({ pictograms, updatePictogram, deletePictogram }) {

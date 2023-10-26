@@ -11,15 +11,14 @@
     font-size: 2rem;
     margin-bottom: 20px;
     color:black
-
 }
 
 .question img {
-    width: 200px;
-    height: 200px;
+    width: 20vh;
+    height: 20vh;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    border: 2px solid #66D7D1;
+    border: 2px solid #000000;
     border-radius: 5px;
     margin-bottom: 2px;
 }
@@ -38,6 +37,6 @@
   }
  
   .question-btn button:hover {
-    background-color: #0056b3;
+    background-color: #66D7D1;
     transform: scale(1.1);
   }

@@ -3,6 +3,7 @@ import confetti from "canvas-confetti";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import { Howl } from "howler";
 
 export function useRecognitionGame( pictograms ) {
   const [isConfigurated, setIsConfigurated] = useState(false);
@@ -14,6 +15,9 @@ export function useRecognitionGame( pictograms ) {
   const [points, setPoints] = useState(0);
   const [badges, setBadges] = useState(0);
   const [resetGame, setResetGame] = useState(false);
+
+  const correctSoundHowl = new Howl({ src: 'src/assets/sounds/correct-choice-43861.mp3' });
+  const incorrectSoundHowl = new Howl({ src: 'src/assets/sounds/negative_beeps-6008.mp3' });
 
   const navigate = useNavigate();
 
@@ -86,6 +90,7 @@ export function useRecognitionGame( pictograms ) {
         position: "top-right",
         autoClose: 3000,
       });
+      correctSoundHowl.play();
       setPoints(points + 1);
       const updatedPictograms = currentPictograms.filter((pictogram) => pictogram.name !== imageName);
       setCurrentPictograms(updatedPictograms);
@@ -93,27 +98,43 @@ export function useRecognitionGame( pictograms ) {
       if (updatedPictograms.length > 0) {
         getRandomPictogram(updatedPictograms);
       } else {
-        toast.success("¡Has completado el juego!", {
-          position: "top-right",
-          autoClose: 3000,
-        });
         setBadges(badges + 1);
         if (difficulty === "Fácil") {
-          setDifficulty("Normal");
-          getRandomPictograms("Normal");
+          toast.success("¡Has completado el nivel!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+          setTimeout(() => {
+            setDifficulty("Normal");
+            getRandomPictograms("Normal");
+          }, 2000);
         } else if (difficulty === "Normal") {
-          setDifficulty("Difícil");
-          getRandomPictograms("Difícil");
+          toast.success("¡Has completado el nivel!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+          setTimeout(() => {
+            setDifficulty("Difícil");
+            getRandomPictograms("Difícil");
+          }, 2000);
         } else {
-          setDifficulty("Fácil");
-          getRandomPictograms("Fácil");
+          toast.success("¡Has completado el juego!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+          setTimeout(() => {
+            //setDifficulty("Fácil");
+            //getRandomPictograms("Fácil");
+            navigate("/");
+          }, 2000);
         }
       }
     } else {
-      toast.error("Incorrecto. Intenta de nuevo.", {
+      toast.error("Incorrecto. Intenta de nuevo ...", {
         position: "top-right",
         autoClose: 3000,
       });
+      incorrectSoundHowl.play();
       setLives(lives - 1);
       if (lives - 1 === 0) {
         toast.error("¡Has perdido todas tus vidas!", {

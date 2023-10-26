@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaEdit, FaSave, FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
@@ -20,7 +21,6 @@ export default function PictogramForm({ createPictogram }) {
 
     try {
       await createPictogram(formData);
-
       // Notificación de éxito
       toast.success("Pictogram created successfully", {
         position: "top-right",
@@ -52,7 +52,6 @@ export default function PictogramForm({ createPictogram }) {
       <div className="form-section">
         <h3>Create a new pictogram</h3>
         <form onSubmit={handleSubmit}>
-          <div>
             <input
               type="text"
               placeholder="Name"
@@ -61,8 +60,6 @@ export default function PictogramForm({ createPictogram }) {
               required
               className="input-field"
             />
-          </div>
-          <div>
             <input
               type="text"
               placeholder="Category"
@@ -71,8 +68,6 @@ export default function PictogramForm({ createPictogram }) {
               required
               className="input-field"
             />
-          </div>
-          <div>
             <input
               type="file"
               accept="image/*"
@@ -80,11 +75,14 @@ export default function PictogramForm({ createPictogram }) {
               required
               className="input-field"
             />
-          </div>
           <div className="button-container">
-            <button className="create-button">Create</button>
+            <button className="create-button">
+              <FaSave />
+              {/*<span> Create</span>*/}
+            </button>
             <button className="cancel-button" onClick={() => navigate("/")}>
-              Cancel
+              <FaTimes />
+              {/*<span> Cancel</span>*/}
             </button>
           </div>
         </form>

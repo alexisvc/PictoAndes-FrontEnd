@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+import { FaPlayCircle } from "react-icons/fa";
+import { FiDelete, FiTrash2 } from "react-icons/fi";
 
 export function PictogramDisplay({ images }) {
   const [selectedImages, setSelectedImages] = useState([]);
-  const { speak, speaking, setSpeaking } = useSpeechSynthesis(); // Usa el hook
+  const { speak, speaking, setSpeaking } = useSpeechSynthesis();
   const [selectedCategory, setSelectedCategory] = useState("");
-
-  const navigate = useNavigate();
 
   const categories = Array.from(new Set(images.map((image) => image.category)));
 
@@ -78,13 +78,13 @@ export function PictogramDisplay({ images }) {
 
         <div className="button-acc">
           <button onClick={handleDeleteLastImage} disabled={speaking}>
-            Eliminar
-          </button>
-          <button onClick={handleDeleteAllImages} disabled={speaking}>
-            Eliminar todos
+            <FiDelete />
           </button>
           <button onClick={handleReadSelectedImages} disabled={speaking}>
-            Play
+            <FaPlayCircle/>
+          </button>
+          <button onClick={handleDeleteAllImages} disabled={speaking}>
+            <FiTrash2 />
           </button>
         </div>
       </div>

@@ -8,12 +8,11 @@
 }
 
 .images img {
-    width: 100px;
-    height: 100px;
+    width: 15vh;
+    height: 15vh;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
-    border: 1px solid #ddd;
-    border: 2px solid #66D7D1;
+    border: 2px solid #000000;
     border-radius: 5px;
 }
 

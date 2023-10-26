@@ -3,11 +3,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router';
 import "./EditPictogram.css";
+import { FaSave, FaTimes } from "react-icons/fa";
 
 function EditPictogram({ pictogram, updatePictogram }) {
   const [newName, setNewName] = useState(pictogram.name);
   const [newCategory, setNewCategory] = useState(pictogram.category);
-  const [newImage, setNewImage] = useState(null); // Para almacenar la nueva imagen
+  const [newImage, setNewImage] = useState(null);
   const navigate = useNavigate();
 
   const handleUpdate = async (e) => {
@@ -53,7 +54,7 @@ function EditPictogram({ pictogram, updatePictogram }) {
       <div className="form-section-edit">
         <h3>Edit Pictogram</h3>
         <form onSubmit={handleUpdate}>
-          <div>
+
             <input
               type="text"
               placeholder="Name"
@@ -62,8 +63,7 @@ function EditPictogram({ pictogram, updatePictogram }) {
               required
               className="input-field"
             />
-          </div>
-          <div>
+
             <input
               type="text"
               placeholder="Category"
@@ -72,18 +72,21 @@ function EditPictogram({ pictogram, updatePictogram }) {
               required
               className="input-field"
             />
-          </div>
-          <div>
+
             <input
               type="file"
               onChange={(e) => setNewImage(e.target.files[0])}
               className="input-field"
             />
-          </div>
+
           <div className="button-container">
-            <button type="submit" className="create-button">Update Pictogram</button>
+            <button type="submit" className="create-button">
+              <FaSave />
+              {/*<span> Update Pictogram</span>*/}
+            </button>
             <button type="button" className="cancel-button" onClick={() => navigate("/")}>
-              Cancel
+              <FaTimes />
+              {/*<span> Cancel</span>*/}
             </button>
           </div>
         </form>
