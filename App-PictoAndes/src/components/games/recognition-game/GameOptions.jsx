@@ -1,10 +1,10 @@
 import React from "react";
-import { FaPlayCircle } from "react-icons/fa";
 import "./GameOptions.css";
 
 function GameOptions({ difficulty, setDifficulty, onStartGame }) {
   const handleDifficultyClick = (selectedDifficulty) => {
     setDifficulty(selectedDifficulty);
+    onStartGame();
   };
 
   return (
@@ -27,12 +27,6 @@ function GameOptions({ difficulty, setDifficulty, onStartGame }) {
           className={difficulty === "Difícil" ? "selected" : ""}
         >
           Difícil
-        </button>
-      </div>
-
-      <div className="difficulty-play">
-        <button onClick={onStartGame}>
-          <FaPlayCircle />
         </button>
       </div>
     </div>

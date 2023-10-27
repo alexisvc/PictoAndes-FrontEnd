@@ -15,6 +15,8 @@ export function useRecognitionGame( pictograms ) {
   const [points, setPoints] = useState(0);
   const [badges, setBadges] = useState(0);
   const [resetGame, setResetGame] = useState(false);
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [message, setMessage] = useState("");
 
   const correctSoundHowl = new Howl({ src: 'src/assets/sounds/correct-choice-43861.mp3' });
   const incorrectSoundHowl = new Howl({ src: 'src/assets/sounds/negative_beeps-6008.mp3' });
@@ -106,6 +108,8 @@ export function useRecognitionGame( pictograms ) {
             autoClose: 3000,
           });
           successSoundHowl.play();
+          setShowPopUp(true);
+          setMessage("¡Has completado el nivel!")
           setTimeout(() => {
             setDifficulty("Normal");
             getRandomPictograms("Normal");
@@ -116,6 +120,8 @@ export function useRecognitionGame( pictograms ) {
             autoClose: 3000,
           });
           successSoundHowl.play();
+          setShowPopUp(true);
+          setMessage("¡Has completado el nivel!")
           setTimeout(() => {
             setDifficulty("Difícil");
             getRandomPictograms("Difícil");
@@ -126,6 +132,8 @@ export function useRecognitionGame( pictograms ) {
             position: "top-right",
             autoClose: 3000,
           });
+          setShowPopUp(true);
+          setMessage("¡Has completado el juego!")
           setTimeout(() => {
             //setDifficulty("Fácil");
             //getRandomPictograms("Fácil");
@@ -186,5 +194,8 @@ export function useRecognitionGame( pictograms ) {
     handleMouseOver,
     checkAnswer,
     handleResetGame,
+    showPopUp,
+    setShowPopUp,
+    message,
   };
 }

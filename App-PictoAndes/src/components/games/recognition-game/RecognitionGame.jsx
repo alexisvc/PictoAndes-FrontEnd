@@ -5,6 +5,7 @@ import PictogramOptions from "./PictogramOptions";
 import GameOptions from "./GameOptions";
 import "./RecognitionGame.css";
 import { useRecognitionGame } from "../../../hooks/useRecognitionGame";
+import PopUp from "../PopUp";
 
 function RecognitionGame({ pictograms }) {
   const {
@@ -19,20 +20,20 @@ function RecognitionGame({ pictograms }) {
     badges,
     handleMouseOver,
     checkAnswer,
+    showPopUp,
+    setShowPopUp,
+    message
   } = useRecognitionGame(pictograms);
-
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleStartGame = () => {
     setIsConfigurated(true);
-    setIsPlaying(true);
   };
 
   return (
     <div className="recognition-game">
       <h1>Juego de Reconocimiento</h1>
       <div className="game-canva">
-      {!isConfigurated && !isPlaying && (
+      {!isConfigurated && (
           <GameOptions
             difficulty={difficulty}
             setDifficulty={setDifficulty}
@@ -45,7 +46,6 @@ function RecognitionGame({ pictograms }) {
           <PictogramQuestion
             currentPictogram={currentPictogram}
             handleMouseOver={handleMouseOver}
-            checkAnswer={checkAnswer}
           />
           <PictogramOptions
             currentPictograms={currentPictograms}
@@ -53,6 +53,10 @@ function RecognitionGame({ pictograms }) {
             checkAnswer={checkAnswer}
           />
         </div>
+      )}
+
+      {showPopUp &&(
+        <PopUp message={message} onClose={() => {setShowPopUp(false)}} />
       )}
       </div>
     </div>
