@@ -18,6 +18,7 @@ export function useRecognitionGame( pictograms ) {
 
   const correctSoundHowl = new Howl({ src: 'src/assets/sounds/correct-choice-43861.mp3' });
   const incorrectSoundHowl = new Howl({ src: 'src/assets/sounds/negative_beeps-6008.mp3' });
+  const successSoundHowl = new Howl({ src: 'src/assets/sounds/success.mp3' });
 
   const navigate = useNavigate();
 
@@ -57,7 +58,7 @@ export function useRecognitionGame( pictograms ) {
   const handleMouseOver = (textToSpeak) => {
     if (synthesis) {
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.rate = 0.50; // 0.1 - 10
+      utterance.rate = 0.85; // 0.1 - 10
 
       // Obtener la voz por defecto "Microsoft Sabina - Spanish (Mexico)"
       const voices = window.speechSynthesis.getVoices();
@@ -104,6 +105,7 @@ export function useRecognitionGame( pictograms ) {
             position: "top-right",
             autoClose: 3000,
           });
+          successSoundHowl.play();
           setTimeout(() => {
             setDifficulty("Normal");
             getRandomPictograms("Normal");
@@ -113,11 +115,13 @@ export function useRecognitionGame( pictograms ) {
             position: "top-right",
             autoClose: 3000,
           });
+          successSoundHowl.play();
           setTimeout(() => {
             setDifficulty("Difícil");
             getRandomPictograms("Difícil");
           }, 2000);
         } else {
+          successSoundHowl.play();
           toast.success("¡Has completado el juego!", {
             position: "top-right",
             autoClose: 3000,
@@ -125,7 +129,7 @@ export function useRecognitionGame( pictograms ) {
           setTimeout(() => {
             //setDifficulty("Fácil");
             //getRandomPictograms("Fácil");
-            navigate("/");
+            navigate("/game-menu");
           }, 2000);
         }
       }
