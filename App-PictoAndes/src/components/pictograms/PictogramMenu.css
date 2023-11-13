@@ -9,14 +9,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 5vh;
 }
 
-.pictogram-menu h1 {
-  font-size: 8vh;
-  color: yellow;
-  -webkit-text-stroke: 1.5px black;
-  margin: auto;
-}
 
 .pictogram-menu p {
   font-size: 5vh;

@@ -51,8 +51,8 @@ function Home({ user }) {
             </Link>
           </button>
           <button>
-            <Link to="/saac" className="link-button">
-              <span>Tablero</span>
+            <Link to="/acc-menu" className="link-button">
+              <span>Tablero de Comunicación</span>
             </Link>
           </button>
           <button>
@@ -62,6 +62,10 @@ function Home({ user }) {
           </button>
         </div>
       )}
+      <div className="footer">
+        <p>Realizado por: Vizuete Alexis</p>
+        <p>© 2023 PictoAndes</p>
+      </div>
     </div>
   );
 }

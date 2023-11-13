@@ -1,14 +1,22 @@
-/* Estilos para el formulario de edición de pictogramas */
+.edit-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-image: url("src/assets/backgrounds/list.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .edit-pictogram-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-image: url("src/assets/backgrounds/list.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
     height: 100%;
     width: 100%;
     font-family: 'Satisfy', cursive;
@@ -16,7 +24,7 @@
   
   .form-section-edit {
     width: 70%;
-    height: 70%;
+    height: 80%;
     margin: 10px auto;
     padding: 10px;
     border: 1px solid #ccc;

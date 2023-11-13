@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  row-gap: 5vh;
 }
 
 .nav-button {
@@ -43,7 +44,7 @@
 
 .game-menu p {
   font-size: 5vh;
-  color: orange;
+  color: #ccc;
   -webkit-text-stroke: 1px black;
   margin: 0;
   text-align: center;

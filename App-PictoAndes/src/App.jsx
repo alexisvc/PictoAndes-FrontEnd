@@ -22,6 +22,7 @@ import RecognitionGame from "./components/games/recognition-game/RecognitionGame
 import PictogramMenu from "./components/pictograms/PictogramMenu";
 import GameMenu from "./components/games/GameMenu";
 import AccGame from "./components/games/acc-game/AccGame";
+import PictogramAccMenu from "./components/acc/PictogramACCMenu";
 
 function App() {
   const { user, logout, login } = useUser();
@@ -34,14 +35,14 @@ function App() {
     <div className="app">
       <Router>
         <ToastContainer />
-        <div className="navbar">
+        {/*<div className="navbar">
           {!isLoggedIn ? (
             <>
               <div className="nav-left">
                 <button>
                   <Link to="/">
                     <FaHome />
-                    {/*<span>Inicio</span>*/}
+                    <span>Inicio</span>
                   </Link>
                 </button>
               </div>
@@ -66,7 +67,7 @@ function App() {
                 <button>
                   <Link to="/">
                     <FaHome />
-                    {/*<span>Inicio</span>*/}
+                    <span>Inicio</span>
                   </Link>
                 </button>
               </div>
@@ -89,13 +90,13 @@ function App() {
                 <button onClick={logout}>
                   <Link to="/">
                     <FaSignOutAlt />
-                    {/*<span>Cerrar sesión</span>*/}
+                    <span>Cerrar sesión</span>
                   </Link>
                 </button>
               </div>
             </>
           )}
-        </div>
+          </div>*/}
 
         <div className="content">
           <Routes>
@@ -106,6 +107,10 @@ function App() {
             <Route
               path="/register"
               element={isLoggedIn ? <Navigate to="/" /> : <RegistrationForm />}
+            />
+            <Route
+              path="/acc-menu"
+              element={isLoggedIn ? (<PictogramAccMenu />) : (<Home />)}
             />
             <Route
               path="/saac"
@@ -139,7 +144,9 @@ function App() {
               path="/pictogram-form"
               element={
                 isLoggedIn ? (
-                  <PictogramForm createPictogram={createPictogram} />
+                  <PictogramForm 
+                    createPictogram={createPictogram} 
+                  />
                 ) : ( <Home /> )
               }
             />

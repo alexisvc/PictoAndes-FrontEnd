@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaCircle, FaEdit, FaHome, FaTrash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
 import EditPictogram from "./EditPictogram";
@@ -65,6 +65,13 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                 </select>
               </div>
             </div>
+            <button
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <FaHome />
+            </button>
           </div>
         </>
       )}
@@ -118,6 +125,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
         <EditPictogram
           pictogram={selectedPictogram}
           updatePictogram={updatePictogram}
+          setShowEditForm={setShowEditForm}
         />
       )}
     </div>

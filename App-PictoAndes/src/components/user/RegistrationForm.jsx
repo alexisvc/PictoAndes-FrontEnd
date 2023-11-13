@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegistrationForm.css";
+import { FaArrowCircleLeft, FaHome } from "react-icons/fa";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -28,7 +29,7 @@ const RegistrationForm = () => {
     try {
       await registerUser({ username, name, password });
       toast.success("Registro exitoso", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 3000,
       });
       setUsername("");
@@ -54,76 +55,98 @@ const RegistrationForm = () => {
   }, [termsAccepted]);
 
   return (
-    <div className="registration">
-      <div className="img-form">
-        <img
-          src="src\assets\characters\condor.png"
-          alt="imagen de la aventura"
-        />
+    <div className="registration-content">
+      <div className="app-navigation">
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FaArrowCircleLeft />
+        </button>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FaHome />
+        </button>
       </div>
-      <div className="registration-form">
-        <h3>Registrarse</h3>
-        <form onSubmit={handleRegister}>
-          <div className="form-input">
-            <p>Nombre de usuario:</p>
-            <input
-              type="text"
-              placeholder="Ingresa tu nombre de usuario"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="input-field"
-            />
-          </div>
-          <div className="form-input">
-            <p>Nombre:</p>
-            <input
-              type="text"
-              placeholder="Ingresa tu nombre"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="input-field"
-            />
-          </div>
-          <div className="form-input">
-            <p>Contraseña:</p>
-            <input
-              type="password"
-              placeholder="Ingresa tu contraseña"
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="input-field"
-            />
-          </div>
-          <div className="input-terms">
-            <label className="terms">
+      <div className="registration">
+        
+        <div className="img-form">
+        <div className="registration-title">
+          <h1>PictoAndes</h1>
+        </div>
+          <img
+            src="src\assets\characters\condor.png"
+            alt="imagen de la aventura"
+          />
+        </div>
+        <div className="registration-form">
+          <h3>Registrarse</h3>
+          <form onSubmit={handleRegister}>
+            <div className="form-input">
+              <p>Nombre completo:</p>
               <input
-                type="checkbox"
-                checked={termsAccepted}
-                onChange={handleTermsAcceptedChange}
+                type="text"
+                placeholder="Ingresa tu nombre"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                className="input-field"
               />
-              Acepto todos los términos y condiciones
-            </label>
+            </div>
+            <div className="form-input">
+              <p>Usuario:</p>
+              <input
+                type="text"
+                placeholder="Ingresa tu nombre de usuario"
+                name="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className="input-field"
+              />
+            </div>
+            <div className="form-input">
+              <p>Contraseña:</p>
+              <input
+                type="password"
+                placeholder="Ingresa tu contraseña"
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className="input-field"
+              />
+            </div>
+            <div className="input-terms">
+              <label className="terms">
+                <input
+                  type="checkbox"
+                  checked={termsAccepted}
+                  onChange={handleTermsAcceptedChange}
+                />
+                Acepto todos los términos y condiciones
+              </label>
+            </div>
+            <div>
+              <button className="register-button" type="submit">
+                Registrarse
+              </button>
+            </div>
+          </form>
+          <div className="footer-register">
+            <p>
+              ¿Ya tienes una cuenta?
+              <Link to="/login" className="register-link">
+                {" "}
+                Iniciar sesión
+              </Link>
+            </p>
           </div>
-          <div>
-            <button className="register-button" type="submit">
-              Registrarse
-            </button>
-          </div>
-        </form>
-        <div className="footer-register">
-          <p>
-            ¿Ya tienes una cuenta?
-            <Link to="/login" className="register-link">
-              {" "}
-              Iniciar sesión ahora
-            </Link>
-          </p>
         </div>
       </div>
     </div>

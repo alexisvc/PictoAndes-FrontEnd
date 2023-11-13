@@ -1,42 +1,30 @@
-.pictogram-form-container {
-  display: grid;
-  grid-template-columns: 10% 1fr 30%;
+.create-content {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  height: 100%;
+  width: 100%;
   background-image: url("src/assets/backgrounds/list.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100%;
-  font-family: 'Satisfy', cursive;
 }
 
-.nav-button-aux {
-  height: 90%;
-  width: fit-content;
-  display: flex;
-  justify-content: start;
-}
-
-.nav-button-aux button {
-  margin: 3vh;
-  padding: 1.5vh;
-  color: #EAF2E3;
-  background-color: #FF637D;
-  border: none;
-  border-radius: 5px;
-  font-size: 5vh;
-  cursor: pointer;
-  height: fit-content;
-  width: fit-content;
-  display: flex;
+.pictogram-form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
   align-items: center;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  font-family: 'Satisfy', cursive;
 }
 
 .form-section {
   width: 70%;
-  height: 70%;
+  height: 80%;
   margin: 10px auto;
   padding: 10px;
   border: 1px solid #ccc;
@@ -90,11 +78,8 @@
   border-radius: 5px;
   cursor: pointer;
   display: flex;
-  /* Utiliza flexbox */
   justify-content: center;
-  /* Centra horizontalmente */
   align-items: center;
-  /* Centra verticalmente */
 }
 
 .create-button:hover {
@@ -114,11 +99,8 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   display: flex;
-  /* Utiliza flexbox */
   justify-content: center;
-  /* Centra horizontalmente */
   align-items: center;
-  /* Centra verticalmente */
 }
 
 .cancel-button:hover {

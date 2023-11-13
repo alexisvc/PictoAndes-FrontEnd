@@ -6,6 +6,8 @@ import GameOptions from "./GameOptions";
 import "./RecognitionGame.css";
 import { useRecognitionGame } from "../../../hooks/useRecognitionGame";
 import PopUp from "../PopUp";
+import { useNavigate } from "react-router-dom";
+import { FaArrowCircleLeft, FaCircle } from "react-icons/fa";
 
 function RecognitionGame({ pictograms }) {
   const {
@@ -29,9 +31,29 @@ function RecognitionGame({ pictograms }) {
     setIsConfigurated(true);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="recognition-game">
-      <h1>Juego de Reconocimiento</h1>
+      <div className="app-navigation">
+        <button
+          onClick={() => {
+            navigate("/game-menu");
+          }}
+        >
+          <FaArrowCircleLeft />
+        </button>
+
+        <h1>Juego de reconocimiento</h1>
+        
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FaCircle />
+        </button>
+      </div>
       <div className="game-canva">
       {!isConfigurated && (
           <GameOptions

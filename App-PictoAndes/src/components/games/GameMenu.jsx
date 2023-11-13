@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./GameMenu.css";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaCircle } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 
@@ -12,23 +12,32 @@ function GameMenu() {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Hola bienvenido al mundo de los pictogramas");
+      speak("Hola, a continuacion se mostraran una serie de pictogramas, debes seleccionar la que corresponda");
     }
   };
   return (
     <div className="game-menu">
-      <div className="nav-button">
+      <div className="app-navigation">
         <button
           onClick={() => {
             navigate("/");
           }}
         >
-          <FaArrowAltCircleLeft />
+          <FaArrowCircleLeft />
+        </button>
+
+        <h1>Juego de reconocimiento</h1>
+        
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FaCircle />
         </button>
       </div>
       <div>
-        <h1>Menú de Juegos</h1>
-        <p className="message">Hola bienvenido al mundo de los pictogramas</p>
+        <p className="message">Texto que ayude a dar información</p>
         <div className="game-content">
           <button>
             <Link to="/recognition-game" className="link-button">
@@ -39,11 +48,6 @@ function GameMenu() {
             src="src/assets/characters/condor.png"
             alt="Imagen de la Aventura"
           />
-          <button>
-            <Link to="/acc-game" className="link-button">
-              Oraciones
-            </Link>
-          </button>
         </div>
       </div>
       <div className="footer-button">
