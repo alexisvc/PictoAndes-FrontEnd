@@ -41,18 +41,22 @@ function App() {
                 <button>
                   <Link to="/">
                     <FaHome />
-                    <span>Inicio</span>
+                    {/*<span>Inicio</span>*/}
                   </Link>
                 </button>
               </div>
               <div className="nav-right">
                 <button>
-                  <FaSignInAlt />
-                  <Link to="/login">Iniciar sesión</Link>
+                  <Link to="/login">
+                    <FaSignInAlt />
+                    <span>Iniciar sesión</span>
+                  </Link>
                 </button>
                 <button>
-                  <FaUserPlus />
-                  <Link to="/register">Registrarse</Link>
+                  <Link to="/register">
+                    <FaUserPlus />
+                    <span>Registrarse</span>
+                  </Link>
                 </button>
               </div>
             </>
@@ -62,7 +66,7 @@ function App() {
                 <button>
                   <Link to="/">
                     <FaHome />
-                    <span>Inicio</span>
+                    {/*<span>Inicio</span>*/}
                   </Link>
                 </button>
               </div>
@@ -85,7 +89,7 @@ function App() {
                 <button onClick={logout}>
                   <Link to="/">
                     <FaSignOutAlt />
-                    <span>Cerrar sesión</span>
+                    {/*<span>Cerrar sesión</span>*/}
                   </Link>
                 </button>
               </div>

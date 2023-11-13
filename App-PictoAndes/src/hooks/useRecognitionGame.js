@@ -153,11 +153,39 @@ export function useRecognitionGame( pictograms ) {
           position: "top-right",
           autoClose: 3000,
         });
-        setDifficulty("Fácil");
-        getRandomPictograms("Fácil");
-        setBadges(0);
-        setPoints(0);
-        setLives(5);
+          /*setShowPopUp(true);
+          setMessage("¡Has perdido todas tus vidas!")
+          setDifficulty("Fácil");
+          getRandomPictograms("Fácil");
+          setBadges(0);
+          setPoints(0);
+          setLives(5);
+          navigate("/game-menu");*/
+        if ( difficulty === "Fácil" ) {
+          setShowPopUp(true);
+          setMessage("¡Has perdido todas tus vidas!")
+          setDifficulty("Fácil");
+          getRandomPictograms("Fácil");
+          setBadges(0);
+          setPoints(0);
+          setLives(5);
+        } else if ( difficulty === "Normal" ) {
+          setShowPopUp(true);
+          setMessage("¡Has perdido todas tus vidas!")
+          setDifficulty("Normal");
+          getRandomPictograms("Normal");
+          setBadges(0);
+          setPoints(0);
+          setLives(5);
+        } else {
+          setShowPopUp(true);
+          setMessage("¡Has perdido todas tus vidas!")
+          setDifficulty("Difícil");
+          getRandomPictograms("Difícil");
+          setBadges(0);
+          setPoints(0);
+          setLives(5);
+        }
       }
     }
   };

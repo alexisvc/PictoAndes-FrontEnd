@@ -196,7 +196,7 @@ const answersData = [
         <div className="question">
           <h2>Selecciona el pictograma que pertenezca</h2> 
           <img
-            src={answersData.find(item => item.name === currentPictogram.name)?.url || currentPictogram.url}
+            src={answersData.find(item => item.name === currentPictogram.name && item.category === currentPictogram.category)?.url || currentPictogram.url}
             alt={currentPictogram.name}
           />
           <div className="question-btn">

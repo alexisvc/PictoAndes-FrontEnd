@@ -38,7 +38,6 @@ export function useSpeechSynthesis() {
         console.error('La síntesis de voz no está soportada en este navegador.');
       }
     } else {
-      // Si ya está hablando, detener la síntesis
       stopSpeaking();
     }
   };

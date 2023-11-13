@@ -52,7 +52,6 @@
 }
 
 .welcome button:hover {
-  background-color: #005f9a;
   transform: scale(1.1);
 }
 
@@ -63,7 +62,7 @@
 
 .welcome img {
   margin: 2vh auto;
-  width: 45vh;
+  width: 30vh;
 }
 
 

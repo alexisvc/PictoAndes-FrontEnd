@@ -13,25 +13,40 @@
 }
 
 .heading {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh;
+}
+
+.heading h2{
   font-size: 5vh;
-  color: #EAF2E3;
+  color: yellow;
   -webkit-text-stroke: 1.5px black;
-  height: 5%;
+  margin: auto;
 }
 
 .filter {
   height: fit-content;
   height: 5%;
-  margin-bottom: 2vh;
+  margin: 2vh;
 }
 
 .filter span {
   font-size: 2.25vh;
 }
 
+.filter select {
+  font-size: 2.25vh;
+  text-align: center;
+}
+
 .pictogram-table-container {
   width: 90%;
-  height: 90%;
+  height: 80%;
   overflow-y: auto;
 }
 

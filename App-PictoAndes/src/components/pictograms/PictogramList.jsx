@@ -3,8 +3,11 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
 import EditPictogram from "./EditPictogram";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
+  const navigate = useNavigate();
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedPictogram, setSelectedPictogram] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("todos");
@@ -37,20 +40,31 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
     <div className="pictogram-list-container">
       {!showEditForm && (
         <>
-          <h2 className="heading">Lista de pictogramas</h2>
-          <div className="filter">
-            <span>Filtrar: </span>
-            <select
-              value={selectedCategory}
-              onChange={(e) => setSelectedCategory(e.target.value)}
+          <div className="nav-button">
+            <button
+              onClick={() => {
+                navigate("/pictogram-menu");
+              }}
             >
-              <option value="todos">Todos</option>
-              {uniqueCategories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
+              <FaArrowAltCircleLeft />
+            </button>
+            <div className="heading">
+              <h2>Lista de pictogramas</h2>
+              <div className="filter">
+                <span>Filtrar: </span>
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                >
+                  <option value="todos">Todos</option>
+                  {uniqueCategories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
         </>
       )}

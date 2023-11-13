@@ -6,7 +6,7 @@ function PictogramOptions({ currentPictograms, handleMouseOver, checkAnswer }) {
   return (
     <div className="images">
       {currentPictograms.map((pictogram) => (
-        <div key={pictogram.name}>
+        <div key={pictogram.id}>
           <img src={pictogram.url} alt={pictogram.name} onClick={() => checkAnswer(pictogram.name)}/>
           <div className="options-btn">
             <button onClick={() => handleMouseOver(pictogram.name)}>

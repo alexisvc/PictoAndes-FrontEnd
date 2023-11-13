@@ -28,6 +28,8 @@
  .selected-images {
    display: flex;
    align-items: center;
+   justify-content: center;
+   margin: auto;
    overflow-x: auto;
    height: max-content;
  }
@@ -36,18 +38,19 @@
    background-color: #fff;
    border: 1px solid #ccc;
    border-radius: 5px;
-   margin: 10px;
-   padding: 10px;
+   margin: 1vh;
+   padding: 1vh;
    text-align: center;
  }
 
  .selected-images .card p {
+  margin: 0;
    color: #000;
  }
 
  .selected-images .card img {
-   width: 50px;
-   height: 50px;
+   width: 10vh;
+   height: 10vh;
    border: none;
  }
 
@@ -67,11 +70,8 @@
    cursor: pointer;
    font-size: 5vh;
    display: flex;
-   /* Utiliza flexbox */
    justify-content: center;
-   /* Centra horizontalmente */
    align-items: center;
-   /* Centra verticalmente */
  }
 
  .button-acc button:disabled {
@@ -170,9 +170,13 @@
  }
 
  .image-grid .card img {
-   width: 50px;
-   height: 50px;
+  width: 10vh;
+  height: 10vh;
    border: none;
+ }
+
+ .image-grid .card p {
+  margin: 0;
  }
 
  .image-grid .card p {

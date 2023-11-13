@@ -3,6 +3,7 @@ import { FaEdit, FaSave, FaTimes } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
+import { FaArrowAltCircleLeft } from "react-icons/fa"
 import "./PictogramForm.css";
 
 export default function PictogramForm({ createPictogram }) {
@@ -49,6 +50,11 @@ export default function PictogramForm({ createPictogram }) {
 
   return (
     <div className="pictogram-form-container">
+      <div className="nav-button-aux">
+        <button onClick={() => {navigate("/pictogram-menu")}}>
+          <FaArrowAltCircleLeft/>
+        </button>
+      </div>
       <div className="form-section">
         <h3>Crear un nuevo Pictograma</h3>
         <form onSubmit={handleSubmit}>

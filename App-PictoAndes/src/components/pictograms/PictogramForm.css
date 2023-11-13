@@ -1,6 +1,6 @@
 .pictogram-form-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 10% 1fr 30%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -10,6 +10,28 @@
   background-position: center;
   height: 100%;
   font-family: 'Satisfy', cursive;
+}
+
+.nav-button-aux {
+  height: 90%;
+  width: fit-content;
+  display: flex;
+  justify-content: start;
+}
+
+.nav-button-aux button {
+  margin: 3vh;
+  padding: 1.5vh;
+  color: #EAF2E3;
+  background-color: #FF637D;
+  border: none;
+  border-radius: 5px;
+  font-size: 5vh;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 .form-section {
@@ -111,8 +133,8 @@
 }
 
 .form-image img {
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   object-fit: cover;
   border: none;
 }
