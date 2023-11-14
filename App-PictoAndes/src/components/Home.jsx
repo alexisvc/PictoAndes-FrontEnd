@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {
+  FaBars,
   FaGamepad,
   FaSignInAlt,
   FaUserPlus,
 } from "react-icons/fa";
+import FloatingMenu from "./Extras/FloatingMenu";
 
-function Home({ user }) {
+function Home({ user, logout }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const isLoggedIn = !!user;
+
   return (
     <div className="welcome">
-      <h1>Aventura de los</h1>
+      <div className="app-navigation" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+        <button onClick={handleMenuClick}>
+          <FaBars />
+        </button>
+      </div>
+
+      {isMenuOpen && <FloatingMenu onClose={() => {setIsMenuOpen(false)}} user={user} logout={logout}/>}
       <h1>PictoAndes</h1>
-      <h2>La búsqueda de la comunicación</h2>
       <div className="welcome-img">
         <img
           src="src\assets\characters\condor.png"

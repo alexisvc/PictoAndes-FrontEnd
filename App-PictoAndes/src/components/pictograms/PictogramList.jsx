@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { FaCircle, FaEdit, FaHome, FaTrash } from "react-icons/fa";
+import { FaCircle, FaEdit, FaHome, FaQuestion, FaTrash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
 import EditPictogram from "./EditPictogram";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import PopUpHelp from "../extras/PopUpHelp";
 
 function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const navigate = useNavigate();
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedPictogram, setSelectedPictogram] = useState(null);
@@ -38,6 +40,14 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
 
   return (
     <div className="pictogram-list-container">
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      )}
       {!showEditForm && (
         <>
           <div className="nav-button">
@@ -47,6 +57,13 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               }}
             >
               <FaArrowAltCircleLeft />
+            </button>
+            <button
+              onClick={() => {
+                navigate("/pictogram-menu");
+              }}
+            >
+              <FaHome />
             </button>
             <div className="heading">
               <h2>Lista de pictogramas</h2>
@@ -67,10 +84,10 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
             </div>
             <button
               onClick={() => {
-                navigate("/");
+                setIsPopUpOpen(true);
               }}
             >
-              <FaHome />
+              <FaQuestion />
             </button>
           </div>
         </>
@@ -105,13 +122,13 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                       className="edit-button"
                       onClick={() => handleEditClick(pictogram)}
                     >
-                      <FaEdit /> Edit
+                      <FaEdit /> Editar
                     </button>
                     <button
                       className="edit-button"
                       onClick={() => handleDeleteClick(pictogram)}
                     >
-                      <FaTrash /> Delete
+                      <FaTrash /> Eliminar
                     </button>
                   </td>
                 </tr>

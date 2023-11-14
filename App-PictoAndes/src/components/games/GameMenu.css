@@ -1,7 +1,7 @@
 .game-menu {
   width: 100%;
   height: 100%;
-  background-image: url("src/assets/backgrounds/principal.png");
+  background-image: url("src/assets/backgrounds/ciudad-silencio.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 5vh;
+  row-gap: 6vh;
 }
 
 .nav-button {
@@ -97,7 +97,7 @@
 }
 
 .footer-button button {
-  margin: 3vh;
+  margin: 1vh;
   padding: 1.5vh;
   color: #EAF2E3;
   background-color: #FF637D;

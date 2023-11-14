@@ -3,6 +3,8 @@ import {
   FaArrowCircleLeft,
   FaCircle,
   FaEdit,
+  FaHome,
+  FaQuestion,
   FaSave,
   FaTimes,
 } from "react-icons/fa";
@@ -11,8 +13,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import "./PictogramForm.css";
+import PopUpHelp from "../extras/PopUpHelp";
 
 export default function PictogramForm({ createPictogram }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [nameValue, setNameValue] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [image, setImage] = useState(null);
@@ -56,6 +60,12 @@ export default function PictogramForm({ createPictogram }) {
 
   return (
     <div className="create-content">
+      {isPopUpOpen && 
+        <PopUpHelp 
+          onClose={() => {setIsPopUpOpen(false)}}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -64,15 +74,21 @@ export default function PictogramForm({ createPictogram }) {
         >
           <FaArrowCircleLeft />
         </button>
-
+        <button
+          onClick={() => {
+            navigate("/pictogram-menu");
+          }}
+        >
+          <FaHome />
+        </button>
         <h1>PictoAndes</h1>
 
         <button
           onClick={() => {
-            navigate("/");
+            setIsPopUpOpen(true);
           }}
         >
-          <FaCircle />
+          <FaQuestion />
         </button>
       </div>
       <div className="pictogram-form-container">

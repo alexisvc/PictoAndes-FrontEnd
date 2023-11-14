@@ -2,21 +2,21 @@ import React, { useState } from "react";
 import GameHeader from "./GameHeader";
 import PictogramQuestion from "./PictogramQuestion";
 import PictogramOptions from "./PictogramOptions";
-import GameOptions from "./GameOptions";
 import "./RecognitionGame.css";
 import { useRecognitionGame } from "../../../hooks/useRecognitionGame";
-import PopUp from "../PopUp";
-import { useNavigate } from "react-router-dom";
-import { FaArrowCircleLeft, FaCircle } from "react-icons/fa";
+import PopUp from "../../extras/PopUp";
+import { useParams, useNavigate } from "react-router-dom";
+import { FaArrowCircleLeft, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
+import { FiVolume2 } from "react-icons/fi";
+import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
+import PopUpHelp from "../../extras/PopUpHelp";
 
 function RecognitionGame({ pictograms }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const { difficulty } = useParams();
   const {
-    isConfigurated,
-    setIsConfigurated,
     currentPictograms,
     currentPictogram,
-    difficulty,
-    setDifficulty,
     lives,
     points,
     badges,
@@ -25,16 +25,25 @@ function RecognitionGame({ pictograms }) {
     showPopUp,
     setShowPopUp,
     message
-  } = useRecognitionGame(pictograms);
-
-  const handleStartGame = () => {
-    setIsConfigurated(true);
-  };
-
+  } = useRecognitionGame(pictograms, difficulty);
+  const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
+
+  const handleImageClick = () => {
+    if (!speaking) {
+      // Utiliza el hook para hablar
+      speak("Hola, a continuacion se mostraran una serie de pictogramas, debes seleccionar la que corresponda");
+    }
+  };
 
   return (
     <div className="recognition-game">
+      {isPopUpOpen && 
+        <PopUpHelp 
+          onClose={() => {setIsPopUpOpen(false)}}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -43,26 +52,23 @@ function RecognitionGame({ pictograms }) {
         >
           <FaArrowCircleLeft />
         </button>
-
-        <h1>Juego de reconocimiento</h1>
-        
         <button
           onClick={() => {
             navigate("/");
           }}
         >
-          <FaCircle />
+          <FaHome />
+        </button>
+        <h1>Juego de reconocimiento</h1>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaQuestion />
         </button>
       </div>
       <div className="game-canva">
-      {!isConfigurated && (
-          <GameOptions
-            difficulty={difficulty}
-            setDifficulty={setDifficulty}
-            onStartGame={handleStartGame}
-          />
-      )}
-      {isConfigurated && (
         <div className="game">
           <GameHeader lives={lives} points={points} badges={badges} />
           <PictogramQuestion
@@ -75,11 +81,19 @@ function RecognitionGame({ pictograms }) {
             checkAnswer={checkAnswer}
           />
         </div>
-      )}
 
       {showPopUp &&(
         <PopUp message={message} onClose={() => {setShowPopUp(false)}} />
       )}
+      </div>
+      <div className="footer-button">
+        <button
+          onClick={() => {
+            handleImageClick();
+          }}
+        >
+          <FiVolume2 />
+        </button>
       </div>
     </div>
   );

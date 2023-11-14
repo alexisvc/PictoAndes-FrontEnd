@@ -21,8 +21,8 @@ import "./App.css";
 import RecognitionGame from "./components/games/recognition-game/RecognitionGame";
 import PictogramMenu from "./components/pictograms/PictogramMenu";
 import GameMenu from "./components/games/GameMenu";
-import AccGame from "./components/games/acc-game/AccGame";
 import PictogramAccMenu from "./components/acc/PictogramACCMenu";
+import GameOptions from "./components/games/recognition-game/GameOptions";
 
 function App() {
   const { user, logout, login } = useUser();
@@ -102,7 +102,9 @@ function App() {
           <Routes>
             <Route
               path="/login"
-              element={ isLoggedIn ? <Navigate to="/" /> : <LoginForm login={login} /> }
+              element={
+                isLoggedIn ? <Navigate to="/" /> : <LoginForm login={login} />
+              }
             />
             <Route
               path="/register"
@@ -110,7 +112,7 @@ function App() {
             />
             <Route
               path="/acc-menu"
-              element={isLoggedIn ? (<PictogramAccMenu />) : (<Home />)}
+              element={isLoggedIn ? <PictogramAccMenu /> : <Home />}
             />
             <Route
               path="/saac"
@@ -120,20 +122,20 @@ function App() {
             />
             <Route
               path="/game-menu"
-              element={
-                isLoggedIn ? (<GameMenu />) : (<Home />)
-              }
+              element={isLoggedIn ? <GameMenu /> : <Home />}
             />
             <Route
-              path="/recognition-game"
-              element={
-                isLoggedIn ? (<RecognitionGame pictograms={pictograms} />) : (<Home />)
-              }
+              path="/game-config"
+              element={isLoggedIn ? <GameOptions /> : <Home />}
             />
             <Route
-              path="/acc-game"
+              path="/recognition-game/:difficulty"
               element={
-                isLoggedIn ? (<AccGame />) : (<Home />)
+                isLoggedIn ? (
+                  <RecognitionGame pictograms={pictograms} />
+                ) : (
+                  <Home />
+                )
               }
             />
             <Route
@@ -144,10 +146,10 @@ function App() {
               path="/pictogram-form"
               element={
                 isLoggedIn ? (
-                  <PictogramForm 
-                    createPictogram={createPictogram} 
-                  />
-                ) : ( <Home /> )
+                  <PictogramForm createPictogram={createPictogram} />
+                ) : (
+                  <Home />
+                )
               }
             />
             <Route
@@ -164,7 +166,7 @@ function App() {
                 )
               }
             />
-            <Route path="/" element={<Home user={user} />} />
+            <Route path="/" element={<Home user={user} logout={logout} />} />
           </Routes>
         </div>
       </Router>

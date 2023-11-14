@@ -5,11 +5,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { Howl } from "howler";
 
-export function useRecognitionGame( pictograms ) {
-  const [isConfigurated, setIsConfigurated] = useState(false);
+export function useRecognitionGame( pictograms, startDifficulty ) {
   const [currentPictograms, setCurrentPictograms] = useState([]);
   const [currentPictogram, setCurrentPictogram] = useState(null);
-  const [difficulty, setDifficulty] = useState("Fácil");
+  const [difficulty, setDifficulty] = useState(startDifficulty);
   const [synthesis, setSynthesis] = useState(null);
   const [lives, setLives] = useState(5);
   const [points, setPoints] = useState(0);
@@ -26,8 +25,9 @@ export function useRecognitionGame( pictograms ) {
 
   const getRandomPictograms = (selectedDifficulty) => {
     let numberOfPictograms = 3;
-
-    if (selectedDifficulty === "Normal") {
+    if (selectedDifficulty === "Fácil") {
+      numberOfPictograms = 3;
+    } else if (selectedDifficulty === "Normal") {
       numberOfPictograms = 5;
     } else if (selectedDifficulty === "Difícil") {
       numberOfPictograms = 7;
@@ -60,7 +60,7 @@ export function useRecognitionGame( pictograms ) {
   const handleMouseOver = (textToSpeak) => {
     if (synthesis) {
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.rate = 0.85; // 0.1 - 10
+      utterance.rate = 0.75; // 0.1 - 10
 
       // Obtener la voz por defecto "Microsoft Sabina - Spanish (Mexico)"
       const voices = window.speechSynthesis.getVoices();
@@ -135,8 +135,6 @@ export function useRecognitionGame( pictograms ) {
           setShowPopUp(true);
           setMessage("¡Has completado el juego!")
           setTimeout(() => {
-            //setDifficulty("Fácil");
-            //getRandomPictograms("Fácil");
             navigate("/game-menu");
           }, 2000);
         }
@@ -153,14 +151,16 @@ export function useRecognitionGame( pictograms ) {
           position: "top-right",
           autoClose: 3000,
         });
-          /*setShowPopUp(true);
+          setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!")
-          setDifficulty("Fácil");
+          /*setDifficulty("Fácil");
           getRandomPictograms("Fácil");
           setBadges(0);
           setPoints(0);
           setLives(5);
-          navigate("/game-menu");*/
+          setTimeout(() => {
+            navigate("/game-menu");
+          }, 5000);*/
         if ( difficulty === "Fácil" ) {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!")
@@ -192,7 +192,6 @@ export function useRecognitionGame( pictograms ) {
 
   const handleResetGame = () => {
     setResetGame(true);
-    setIsConfigurated(false)
     setDifficulty("Fácil");
     setBadges(0);
     setPoints(0);
@@ -208,8 +207,6 @@ export function useRecognitionGame( pictograms ) {
   }, [difficulty, resetGame]);
 
   return {
-    isConfigurated,
-    setIsConfigurated,
     currentPictograms,
     currentPictogram,
     difficulty,

@@ -3,9 +3,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import "./EditPictogram.css";
-import { FaArrowCircleLeft, FaCircle, FaSave, FaTimes } from "react-icons/fa";
+import { FaArrowCircleLeft, FaCircle, FaHome, FaQuestion, FaSave, FaTimes } from "react-icons/fa";
+import PopUpHelp from "../extras/PopUpHelp";
 
 function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [newName, setNewName] = useState(pictogram.name);
   const [newCategory, setNewCategory] = useState(pictogram.category);
   const [newImage, setNewImage] = useState(null);
@@ -53,6 +55,12 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
 
   return (
     <div className="edit-content">
+      {isPopUpOpen && 
+        <PopUpHelp
+          onClose={() => {setIsPopUpOpen(false)}}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -61,15 +69,21 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
         >
           <FaArrowCircleLeft />
         </button>
-
+        <button
+          onClick={() => {
+            setShowEditForm(false);
+          }}
+        >
+          <FaHome />
+        </button>
         <h1>PictoAndes</h1>
 
         <button
           onClick={() => {
-            navigate("/");
+            setIsPopUpOpen(true);
           }}
         >
-          <FaCircle />
+          <FaQuestion />
         </button>
       </div>
       <div className="edit-pictogram-form">

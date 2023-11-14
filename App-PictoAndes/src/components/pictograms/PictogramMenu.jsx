@@ -1,23 +1,31 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./PictogramMenu.css";
-import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaCircle, FaHome } from "react-icons/fa";
+import { FaArrowCircleLeft, FaHome, FaQuestion } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { useNavigate } from "react-router-dom";
+import PopUpHelp from "../extras/PopUpHelp";
 
 function PictogramMenu() {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
   const handleImageClick = () => {
     if (!speaking) {
-      // Utiliza el hook para hablar
       speak("Hola bienvenido al mundo de los pictogramas, selecciona una opción para continuar");
     }
   };
 
   return (
     <div className="pictogram-menu">
+      {isPopUpOpen && 
+        <PopUpHelp 
+          onClose={() => {setIsPopUpOpen(false)}}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -26,15 +34,20 @@ function PictogramMenu() {
         >
           <FaArrowCircleLeft />
         </button>
-
-        <h1>Menú de Pictogramas</h1>
-        
         <button
           onClick={() => {
             navigate("/");
           }}
         >
           <FaHome />
+        </button>
+        <h1>Menú de Pictogramas</h1>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaQuestion />
         </button>
       </div>
       <p className="message">Selecciona una opción para continuar</p>

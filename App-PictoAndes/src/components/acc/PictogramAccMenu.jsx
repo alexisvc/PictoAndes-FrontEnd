@@ -1,11 +1,14 @@
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaCircle, FaHome } from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { useNavigate } from "react-router-dom";
 import "./PictogramAccMenu.css"
+import PopUpHelp from "../extras/PopUpHelp";
 
 function PictogramAccMenu() {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
@@ -18,6 +21,12 @@ function PictogramAccMenu() {
 
   return (
     <div className="acc-menu">
+      {isPopUpOpen && 
+        <PopUpHelp
+          onClose={() => {setIsPopUpOpen(false)}}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -26,15 +35,20 @@ function PictogramAccMenu() {
         >
           <FaArrowCircleLeft />
         </button>
-
-        <h1>Menú Tablero de Comunicación</h1>
-        
         <button
           onClick={() => {
             navigate("/");
           }}
         >
           <FaHome />
+        </button>
+        <h1>Menú Tablero de Comunicación</h1>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaQuestion />
         </button>
       </div>
       <p className="message">Selecciona la opción para continuar</p>
