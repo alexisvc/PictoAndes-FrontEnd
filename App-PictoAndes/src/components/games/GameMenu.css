@@ -1,7 +1,7 @@
 .game-menu {
   width: 100%;
   height: 100%;
-  background-image: url("src/assets/backgrounds/ciudad-silencio.png");
+  background-image: url("/src/assets/backgrounds/ciudad-silencio.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

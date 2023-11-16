@@ -17,9 +17,15 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
   const [showPopUp, setShowPopUp] = useState(false);
   const [message, setMessage] = useState("");
 
-  const correctSoundHowl = new Howl({ src: 'src/assets/sounds/correct-choice-43861.mp3' });
-  const incorrectSoundHowl = new Howl({ src: 'src/assets/sounds/negative_beeps-6008.mp3' });
-  const successSoundHowl = new Howl({ src: 'src/assets/sounds/success.mp3' });
+  //const correctSoundHowl = new Howl({ src: 'src/assets/sounds/correct-choice-43861.mp3' });
+  //const incorrectSoundHowl = new Howl({ src: 'src/assets/sounds/negative_beeps-6008.mp3' });
+  //const successSoundHowl = new Howl({ src: 'src/assets/sounds/success.mp3' });
+
+  const correctSoundHowl = new Howl({ src: '/sonidos/correct-choice-43861.mp3' });
+  const successSoundHowl = new Howl({ src: '/sonidos/success.mp3' });
+  const incorrectSoundHowl = new Howl({ src: '/sonidos/negative_beeps-6008.mp3' });
+  
+
 
   const navigate = useNavigate();
 
