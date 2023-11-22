@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import {
   FaArrowCircleLeft,
-  FaCircle,
-  FaEdit,
   FaHome,
   FaQuestion,
   FaSave,
@@ -11,7 +9,6 @@ import {
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
 import "./PictogramForm.css";
 import PopUpHelp from "../extras/PopUpHelp";
 
@@ -76,7 +73,7 @@ export default function PictogramForm({ createPictogram }) {
         </button>
         <button
           onClick={() => {
-            navigate("/pictogram-menu");
+            navigate("/");
           }}
         >
           <FaHome />
@@ -128,12 +125,11 @@ export default function PictogramForm({ createPictogram }) {
               />
             </div>
             <div className="button-container">
-              <button className="create-button">
+              <button>
                 <FaSave />
                 <span>Guardar</span>
               </button>
               <button
-                className="cancel-button"
                 onClick={() => navigate("/pictogram-menu")}
               >
                 <FaTimes />

@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
-import {
-  FaBars,
-  FaGamepad,
-  FaSignInAlt,
-  FaUserPlus,
-} from "react-icons/fa";
+import { FaBars, FaGamepad, FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import FloatingMenu from "./Extras/FloatingMenu";
 
 function Home({ user, logout }) {
@@ -20,13 +15,24 @@ function Home({ user, logout }) {
 
   return (
     <div className="welcome">
-      <div className="app-navigation" style={{ display: 'flex', justifyContent: 'flex-end' }}>
+      <div
+        className="app-navigation"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
         <button onClick={handleMenuClick}>
           <FaBars />
         </button>
       </div>
 
-      {isMenuOpen && <FloatingMenu onClose={() => {setIsMenuOpen(false)}} user={user} logout={logout}/>}
+      {isMenuOpen && (
+        <FloatingMenu
+          onClose={() => {
+            setIsMenuOpen(false);
+          }}
+          user={user}
+          logout={logout}
+        />
+      )}
       <h1>PictoAndes</h1>
       <div className="welcome-img">
         <img
@@ -77,8 +83,23 @@ function Home({ user, logout }) {
         </div>
       )}
       <div className="footer">
-        <p>Realizado por: Vizuete Alexis</p>
-        <p>© 2023 PictoAndes</p>
+        <div>
+        <img
+          src="src\assets\logos\epn2.png"
+          alt="imagen de la aventura"
+        />
+        </div>
+        <div>
+          <p>Realizado por: Vizuete Alexis</p>
+          <p>Dirigido por: Doc. Carrión Mayra</p>
+          <p>© 2023 PictoAndes</p>
+        </div>
+        <div>
+        <img
+          src="src\assets\logos\fis.png"
+          alt="imagen de la aventura"
+        />
+        </div>
       </div>
     </div>
   );

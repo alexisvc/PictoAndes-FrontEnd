@@ -5,59 +5,7 @@
     font-family: 'Satisfy', cursive;
 }
 
-.navbar {
-    background-color: #FF637D;
-    color: #EAF2E3;
-    display: flex;
-    justify-content: right;
-    padding: 10px 20px;
-    height: 5%;
-}
-
-.nav-left{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    width: 20%;
-}
-
-.nav-right{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    width: 80%;
-}
-
-.navbar button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #EAF2E3;
-    display: flex;
-    margin: 0 10px;
-}
-
-.navbar button a {
-    text-decoration: none;
-    color: white;
-    font-family: 'Satisfy', cursive;
-    font-size: 2vh;
-    width: 100%;
-    height: 100%;
-}
-
-
-
-.navbar svg {
-    margin-right: 5px;
-    margin-top: 5px;
-    font-size: 25px;
-}
-
 .content {
-    background-color: rgba(215, 84, 84, 0.25);
     height: 100%;
     margin: auto 0;
 }

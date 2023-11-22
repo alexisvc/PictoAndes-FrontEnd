@@ -42,6 +42,7 @@ function PictogramMenu() {
           <FaHome />
         </button>
         <h1>Menú de Pictogramas</h1>
+        
         <button
           onClick={() => {
             setIsPopUpOpen(true);
@@ -50,18 +51,21 @@ function PictogramMenu() {
           <FaQuestion />
         </button>
       </div>
-      <p className="message">Selecciona una opción para continuar</p>
       <div className="pictogram-content">
+        
+        <img
+          src="public\messages\2.png"
+          alt="Imagen de la Aventura"
+        />
+        <div className="buttons">
         <button>
           <Link to="/pictogram-list" className="link-button">Listar Pictogramas</Link>
         </button>
-        <img
-          src="src/assets/characters/condor.png"
-          alt="Imagen de la Aventura"
-        />
         <button>
           <Link to="/pictogram-form" className="link-button">Crear un nuevo Pictograma</Link>
         </button>
+        </div>
+        
       </div>
       <div className="footer-button">
         <button onClick={()=>{handleImageClick()}}>

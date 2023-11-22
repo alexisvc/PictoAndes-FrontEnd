@@ -51,10 +51,9 @@ function GameMenu() {
         </button>
       </div>
       <div>
-        <p className="message">Texto que ayude a dar información</p>
         <div className="game-content">
           <img
-            src="src/assets/characters/condor.png"
+            src="public\messages\2.png"
             alt="Imagen de la Aventura"
           />
           <button>

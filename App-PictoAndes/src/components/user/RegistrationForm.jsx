@@ -64,6 +64,7 @@ const RegistrationForm = () => {
         >
           <FaArrowCircleLeft />
         </button>
+        <h1>PictoAndes</h1>
         <button
           onClick={() => {
             navigate("/");
@@ -73,11 +74,7 @@ const RegistrationForm = () => {
         </button>
       </div>
       <div className="registration">
-        
         <div className="img-form">
-        <div className="registration-title">
-          <h1>PictoAndes</h1>
-        </div>
           <img
             src="src\assets\characters\condor.png"
             alt="imagen de la aventura"
@@ -129,7 +126,7 @@ const RegistrationForm = () => {
                   checked={termsAccepted}
                   onChange={handleTermsAcceptedChange}
                 />
-                Acepto todos los términos y condiciones
+                Acepto todos los <a href="">términos y condiciones</a>
               </label>
             </div>
             <div>

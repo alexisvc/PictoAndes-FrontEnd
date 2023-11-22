@@ -55,11 +55,9 @@ function GameOptions() {
           <FaQuestion />
         </button>
       </div>
-      <div className="content-config">
-        <p className="message">Selecciona la opción para continuar</p>
-        <div className="img-content">
+      <div className="config-content">
           <img
-            src="src/assets/characters/condor.png"
+            src="public\messages\2.png"
             alt="Imagen de la Aventura"
           />
           <div className="difficulty-buttons">
@@ -72,7 +70,6 @@ function GameOptions() {
             <button onClick={() => handleDifficultyClick("Difícil")}>
               Difícil
             </button>
-          </div>
         </div>
       </div>
 

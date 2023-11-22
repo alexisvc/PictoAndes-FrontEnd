@@ -2,15 +2,27 @@ import React, { useState } from "react";
 import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
-import { FaPlayCircle } from "react-icons/fa";
+import {
+  FaArrowCircleLeft,
+  FaHome,
+  FaIceCream,
+  FaPlayCircle,
+  FaQuestion,
+} from "react-icons/fa";
 import { FiDelete, FiTrash2 } from "react-icons/fi";
 
 export function PictogramDisplay({ images }) {
+  const navigate = useNavigate();
   const [selectedImages, setSelectedImages] = useState([]);
   const { speak, speaking, setSpeaking } = useSpeechSynthesis();
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [isCategorySelected, setIsCategorySelected] = useState(false);
 
   const categories = Array.from(new Set(images.map((image) => image.category)));
+  const pronounsPictograms = () =>
+    images.filter((image) => image.category === "Pronombres");
+  const actionsPictograms = () =>
+    images.filter((image) => image.category === "Verbos");
 
   const handleImageClick = (altText, imageUrl) => {
     if (!speaking) {
@@ -58,6 +70,7 @@ export function PictogramDisplay({ images }) {
 
   const handleCategoryFilter = (category) => {
     setSelectedCategory(category);
+    setIsCategorySelected(true);
   };
 
   const filteredImages = selectedCategory
@@ -67,6 +80,30 @@ export function PictogramDisplay({ images }) {
   return (
     <div className="acc-container">
       <div className="selected-images-and-buttons">
+        <div className="button-acc">
+          <button
+            onClick={() => {
+              navigate("/acc-menu");
+            }}
+          >
+            <FaArrowCircleLeft />
+          </button>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <FaHome />
+          </button>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <FaQuestion />
+          </button>
+        </div>
+
         <div className="selected-images">
           {selectedImages.map((image, index) => (
             <div key={index} className="card">
@@ -81,7 +118,7 @@ export function PictogramDisplay({ images }) {
             <FiDelete />
           </button>
           <button onClick={handleReadSelectedImages} disabled={speaking}>
-            <FaPlayCircle/>
+            <FaPlayCircle />
           </button>
           <button onClick={handleDeleteAllImages} disabled={speaking}>
             <FiTrash2 />
@@ -91,32 +128,74 @@ export function PictogramDisplay({ images }) {
 
       {/* Grid para mostrar categorías y pictogramas */}
       <div className="grid-acc">
-        {/* Columna de categorías */}
-        <div className="categories">
-          <button onClick={() => handleCategoryFilter("")}>Todas</button>
-          {categories.map((category, index) => (
-            <button key={index} onClick={() => handleCategoryFilter(category)}>
-              {category}
-            </button>
+        {/* Columna de pronombres */}
+        <div className="pronouns-grid">
+          {pronounsPictograms().map((image, index) => (
+            <div
+              key={index}
+              className="card"
+              onClick={() => handleImageClick(image.name, image.url)}
+            >
+              <img className="pronouns-img" src={image.url} alt={image.name} />
+              <p>{image.name}</p>
+            </div>
           ))}
         </div>
-        {/* Columna de pictogramas */}
-          <div className="image-grid">
+        {/* Columna de acciones */}
+        <div className="actions-grid">
+          {actionsPictograms().map((image, index) => (
+            <div
+              key={index}
+              className="card"
+              onClick={() => handleImageClick(image.name, image.url)}
+            >
+              <img className="actions-img" src={image.url} alt={image.name} />
+              <p>{image.name}</p>
+            </div>
+          ))}
+        </div>
+        {/* Columna de pictogramas  */}
+        {isCategorySelected ? (
+          <div className="categories">
+            <div
+              className="card"
+              onClick={() => {
+                setIsCategorySelected(false);
+                setSelectedCategory("");
+              }}
+            >
+              <FaArrowCircleLeft size={50} />
+              <p>Regresar</p>
+            </div>
             {filteredImages.map((image, index) => (
               <div
                 key={index}
                 className="card"
                 onClick={() => handleImageClick(image.name, image.url)}
               >
-                <div className="card-image">
-                  <img src={image.url} alt={image.name} />
-                </div>
+                <img className="default-img" src={image.url} alt={image.name} />
                 <p>{image.name}</p>
               </div>
             ))}
           </div>
-        </div>
+        ) : (
+          <div className="categories">
+            {categories.map((category, index) => (
+              <button
+                key={index}
+                onClick={() => handleCategoryFilter(category)}
+              >
+                <span>
+                  <FaIceCream size={50} />
+                </span>
+                <span>
+                  {category}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-
+    </div>
   );
 }

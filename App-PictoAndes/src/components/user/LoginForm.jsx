@@ -24,7 +24,7 @@ export const LoginForm = ({ login }) => {
         autoClose: 3000,
       });
     } catch (error) {
-      console.error("Error al hacer login:", error);
+      console.error("Error al ingresar:", error);
       toast.error("Credenciales incorrectas. Por favor, inténtalo de nuevo.", {
         position: "top-right",
         autoClose: 3000,
@@ -44,6 +44,7 @@ export const LoginForm = ({ login }) => {
         >
           <FaArrowCircleLeft />
         </button>
+        <h1>PictoAndes</h1>
         <button
           onClick={() => {
             navigate("/");
@@ -53,10 +54,6 @@ export const LoginForm = ({ login }) => {
         </button>
       </div>
       <div className="login">
-        <div className="login-title">
-          <h1>PictoAndes</h1>
-        </div>
-        
         <div className="login-form">
           <h2 className="login-heading">Iniciar Sesión</h2>
           <form onSubmit={handleLogin}>

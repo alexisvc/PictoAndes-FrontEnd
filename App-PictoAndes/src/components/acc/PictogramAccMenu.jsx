@@ -51,10 +51,9 @@ function PictogramAccMenu() {
           <FaQuestion />
         </button>
       </div>
-      <p className="message">Selecciona la opción para continuar</p>
       <div className="acc-content">
         <img
-          src="src/assets/characters/condor.png"
+          src="public\messages\2.png"
           alt="Imagen de la Aventura"
         />
         <button>

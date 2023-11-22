@@ -17,15 +17,36 @@
   color: black;
   padding: 20px;
   border-radius: 10px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  width: 50%;
+  width: 50%; 
+}
+
+.popup-content p{
+  font-family: 'Satisfy', cursive;
+  font-size: 6vh;
+  color: orange;
+  margin: 0;
+  -webkit-text-stroke: 1px black;
+}
+
+.popup-content img{
+  height: 60vh;
+  width: fit-content;
+}
+
+.close {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
   background: none;
   border: none;
   cursor: pointer;
@@ -38,4 +59,39 @@
   &:hover {
     color: #f00;
   }
+}
+
+.popup-img-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.popup-btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  gap: 1vh;
+}
+
+.popup-btns button{
+    font-size: 3vh;
+    padding: 10px 20px;
+    background-color: #FF637D;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: auto;
+    font-family: 'Satisfy', cursive;
+}
+
+.popup-btns button:hover {
+    background-color: #66D7D1;
+    scale: 1.1;
 }

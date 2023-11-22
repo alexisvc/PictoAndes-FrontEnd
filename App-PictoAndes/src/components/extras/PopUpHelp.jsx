@@ -9,14 +9,18 @@ function PopUpHelp({ url, onClose }) {
   return (
     <div className="popup-help" onClick={onClose}>
       <div className="popup-content-help">
-        <div className="close">
+        <div className="close-help">
           <button className="close-button-help" onClick={onClose}>
             <FaTimes />
           </button>
         </div>
         <div>
-        <h2 className="titulo">Necesitas ayuda para realizar esta actividad?</h2>
-          <p className="subtitulo">En el siguiente video tutorial se mostrará:</p>
+          <h2 className="titulo">
+            Necesitas ayuda para realizar esta actividad?
+          </h2>
+          <h3 className="subtitulo">
+            En el siguiente video tutorial se mostrará:
+          </h3>
         </div>
         <div className="video-container-help">
           <iframe

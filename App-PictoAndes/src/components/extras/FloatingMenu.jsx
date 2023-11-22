@@ -1,31 +1,39 @@
 import React from "react";
 import "./FloatingMenu.css";
 import { FaTimes } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 const FloatingMenu = ({ onClose, user, logout }) => {
-  const navigate = useNavigate();
   return (
     <div className="floating-menu">
       <div className="floating-menu-content">
-        <button className="close-button" onClick={onClose}>
-          <FaTimes />
-        </button>
-        {/* Contenido del menú */}
+        <div className="hd-menu">
+          <div className="close">
+            <button>
+              <FaTimes className="close-txt" onClick={onClose} />
+            </button>
+          </div>
+        </div>
         <div className="menu-buttons">
           <button
             onClick={() => {
-              onClose();
+              window.open("https://fis.epn.edu.ec/index.php/es/", "_blank");
             }}
           >
-            Elemento 1
+            Facultad de Ingeniería en Sistemas EPN
           </button>
           <button
             onClick={() => {
-              onClose();
+              window.open("https://www.epn.edu.ec/", "_blank");
             }}
           >
-            Elemento 2
+            Escuela Politécnica Nacional
+          </button>
+          <button
+            onClick={() => {
+              window.open("https://ludolab.epn.edu.ec/", "_blank");
+            }}
+          >
+            LudoLab
           </button>
           {user && (
             <button
@@ -36,7 +44,7 @@ const FloatingMenu = ({ onClose, user, logout }) => {
             >
               Cerrar Sesión
             </button>
-          ) }
+          )}
         </div>
       </div>
     </div>

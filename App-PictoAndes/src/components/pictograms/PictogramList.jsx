@@ -49,8 +49,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
         />
       )}
       {!showEditForm && (
-        <>
-          <div className="nav-button">
+        <div className="app-navigation">
             <button
               onClick={() => {
                 navigate("/pictogram-menu");
@@ -60,13 +59,25 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
             </button>
             <button
               onClick={() => {
-                navigate("/pictogram-menu");
+                navigate("/");
               }}
             >
               <FaHome />
             </button>
-            <div className="heading">
-              <h2>Lista de pictogramas</h2>
+            <h1>Lista de pictogramas</h1>
+            <button
+              onClick={() => {
+                setIsPopUpOpen(true);
+              }}
+            >
+              <FaQuestion />
+            </button>
+        </div>
+      )}
+
+      {!showEditForm && (
+        <>
+        <div className="heading">
               <div className="filter">
                 <span>Filtrar: </span>
                 <select
@@ -82,19 +93,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                 </select>
               </div>
             </div>
-            <button
-              onClick={() => {
-                setIsPopUpOpen(true);
-              }}
-            >
-              <FaQuestion />
-            </button>
-          </div>
-        </>
-      )}
-
-      {!showEditForm && (
-        <div className="pictogram-table-container">
+            <div className="pictogram-table-container">
           <table className="pictogram-table">
             <thead>
               <tr>
@@ -111,7 +110,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                   <td>{pictogram.category}</td>
                   <td>
                     <img
-                      className="img-edit"
+                      className="img-list"
                       src={pictogram.url}
                       alt={pictogram.name}
                       width="100"
@@ -136,6 +135,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
             </tbody>
           </table>
         </div>
+        </>
       )}
 
       {showEditForm && selectedPictogram && (

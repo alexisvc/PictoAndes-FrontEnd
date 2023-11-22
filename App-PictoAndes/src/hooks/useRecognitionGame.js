@@ -17,26 +17,20 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
   const [showPopUp, setShowPopUp] = useState(false);
   const [message, setMessage] = useState("");
 
-  //const correctSoundHowl = new Howl({ src: 'src/assets/sounds/correct-choice-43861.mp3' });
-  //const incorrectSoundHowl = new Howl({ src: 'src/assets/sounds/negative_beeps-6008.mp3' });
-  //const successSoundHowl = new Howl({ src: 'src/assets/sounds/success.mp3' });
-
   const correctSoundHowl = new Howl({ src: '/sonidos/correct-choice-43861.mp3' });
   const successSoundHowl = new Howl({ src: '/sonidos/success.mp3' });
   const incorrectSoundHowl = new Howl({ src: '/sonidos/negative_beeps-6008.mp3' });
   
-
-
   const navigate = useNavigate();
 
   const getRandomPictograms = (selectedDifficulty) => {
-    let numberOfPictograms = 3;
+    let numberOfPictograms = 4;
     if (selectedDifficulty === "Fácil") {
       numberOfPictograms = 3;
     } else if (selectedDifficulty === "Normal") {
       numberOfPictograms = 5;
     } else if (selectedDifficulty === "Difícil") {
-      numberOfPictograms = 7;
+      numberOfPictograms = 9;
     }
 
     const shuffledPictograms = shuffleArray(pictograms).slice(0, numberOfPictograms);
@@ -96,7 +90,7 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
     if (currentPictogram && currentPictogram.name === imageName) {
       confetti();
       toast.success("¡Muy bien!", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 3000,
       });
       correctSoundHowl.play();
@@ -110,7 +104,7 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
         setBadges(badges + 1);
         if (difficulty === "Fácil") {
           toast.success("¡Has completado el nivel!", {
-            position: "top-right",
+            position: "top-center",
             autoClose: 3000,
           });
           successSoundHowl.play();
@@ -122,7 +116,7 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
           }, 2000);
         } else if (difficulty === "Normal") {
           toast.success("¡Has completado el nivel!", {
-            position: "top-right",
+            position: "top-center",
             autoClose: 3000,
           });
           successSoundHowl.play();
@@ -135,38 +129,26 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
         } else {
           successSoundHowl.play();
           toast.success("¡Has completado el juego!", {
-            position: "top-right",
+            position: "top-center",
             autoClose: 3000,
           });
           setShowPopUp(true);
           setMessage("¡Has completado el juego!")
-          setTimeout(() => {
-            navigate("/game-menu");
-          }, 2000);
         }
       }
     } else {
       toast.error("Incorrecto. Intenta de nuevo ...", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 3000,
       });
       incorrectSoundHowl.play();
       setLives(lives - 1);
       if (lives - 1 === 0) {
         toast.error("¡Has perdido todas tus vidas!", {
-          position: "top-right",
+          position: "top-center",
           autoClose: 3000,
         });
-          setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!")
-          /*setDifficulty("Fácil");
-          getRandomPictograms("Fácil");
-          setBadges(0);
-          setPoints(0);
-          setLives(5);
-          setTimeout(() => {
-            navigate("/game-menu");
-          }, 5000);*/
+          
         if ( difficulty === "Fácil" ) {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!")
@@ -178,16 +160,16 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
         } else if ( difficulty === "Normal" ) {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!")
-          setDifficulty("Normal");
-          getRandomPictograms("Normal");
+          setDifficulty("Fácil");
+          getRandomPictograms("Fácil");
           setBadges(0);
           setPoints(0);
           setLives(5);
         } else {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!")
-          setDifficulty("Difícil");
-          getRandomPictograms("Difícil");
+          setDifficulty("Fácil");
+          getRandomPictograms("Fácil");
           setBadges(0);
           setPoints(0);
           setLives(5);

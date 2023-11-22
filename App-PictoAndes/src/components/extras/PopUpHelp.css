@@ -24,7 +24,7 @@
   width: 50%; 
 }
 
-.close {
+.close-help {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -55,7 +55,7 @@
 }
 
 .subtitulo {
-  font-size: 18px;
+  font-size: 3vh;
   margin: 0;
 }
 

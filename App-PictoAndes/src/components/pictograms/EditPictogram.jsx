@@ -121,13 +121,12 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
               />
             </div>
             <div className="button-container">
-              <button type="submit" className="create-button">
+              <button type="submit">
                 <FaSave />
                 <span> Guardar</span>
               </button>
               <button
                 type="button"
-                className="cancel-button"
                 onClick={() => setShowEditForm(false)}
               >
                 <FaTimes />

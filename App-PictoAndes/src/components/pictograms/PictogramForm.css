@@ -6,6 +6,7 @@
   height: 100%;
   width: 100%;
   background-image: url("/src/assets/backgrounds/list.png");
+  background-image: url("../../public/backgrounds/pictograms.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -67,7 +68,7 @@
   justify-content: center;
 }
 
-.create-button {
+.button-container button {
   font-size: 2.25vh;
   width: 40%;
   margin: 10px;
@@ -83,29 +84,8 @@
   align-items: center;
 }
 
-.create-button:hover {
+.button-container button:hover {
   background-color: #66D7D1;
-}
-
-.cancel-button {
-  font-size: 2.25vh;
-  width: 40%;
-  margin: 10px;
-  padding: 10px;
-  font-family: 'Satisfy', cursive;
-  background-color: #66D7D1;
-  color: #EAF2E3;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cancel-button:hover {
-  background-color: #FF637D;
 }
 
 .form-image {
