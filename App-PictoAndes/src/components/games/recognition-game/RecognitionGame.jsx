@@ -6,18 +6,14 @@ import "./RecognitionGame.css";
 import { useRecognitionGame } from "../../../hooks/useRecognitionGame";
 import PopUp from "../../extras/PopUp";
 import { useParams, useNavigate } from "react-router-dom";
-import {
-  FaArrowCircleLeft,
-  FaHome,
-  FaQuestion,
-} from "react-icons/fa";
+import { FaArrowCircleLeft, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../../extras/PopUpHelp";
 
 function RecognitionGame({ pictograms }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  const { startDifficulty } = useParams();
+  const { difficulty } = useParams();
   const {
     currentPictograms,
     currentPictogram,
@@ -29,40 +25,29 @@ function RecognitionGame({ pictograms }) {
     showPopUp,
     setShowPopUp,
     message
-  } = useRecognitionGame(pictograms, startDifficulty);
+  } = useRecognitionGame(pictograms, difficulty);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Selecciona el pictograma que corresponde al sonido");
+      speak("Hola, a continuacion se mostraran una serie de pictogramas, debes seleccionar la que corresponda");
     }
   };
 
   return (
     <div className="recognition-game">
-      {isPopUpOpen && (
-        <PopUpHelp
-          onClose={() => {
-            setIsPopUpOpen(false);
-          }}
+      {isPopUpOpen && 
+        <PopUpHelp 
+          onClose={() => {setIsPopUpOpen(false)}}
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
-      )}
-      {showPopUp && (
-        <PopUp
-          message={message}
-          onClose={() => {
-            setShowPopUp(false);
-          }}
-          
-        />
-      )}
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
-            navigate("/game-config");
+            navigate("/game-menu");
           }}
         >
           <FaArrowCircleLeft />
@@ -84,10 +69,8 @@ function RecognitionGame({ pictograms }) {
         </button>
       </div>
       <div className="game-canva">
-        <div className="game-header">
-          <GameHeader lives={lives} points={points} badges={badges} />
-        </div>
         <div className="game">
+          <GameHeader lives={lives} points={points} badges={badges} />
           <PictogramQuestion
             currentPictogram={currentPictogram}
             handleMouseOver={handleMouseOver}
@@ -98,8 +81,12 @@ function RecognitionGame({ pictograms }) {
             checkAnswer={checkAnswer}
           />
         </div>
+
+      {showPopUp &&(
+        <PopUp message={message} onClose={() => {setShowPopUp(false)}} />
+      )}
       </div>
-      {/*<div className="footer-button">
+      <div className="footer-button">
         <button
           onClick={() => {
             handleImageClick();
@@ -107,7 +94,7 @@ function RecognitionGame({ pictograms }) {
         >
           <FiVolume2 />
         </button>
-      </div>*/}
+      </div>
     </div>
   );
 }

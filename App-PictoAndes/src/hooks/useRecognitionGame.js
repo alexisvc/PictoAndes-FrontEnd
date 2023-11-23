@@ -24,13 +24,13 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
   const navigate = useNavigate();
 
   const getRandomPictograms = (selectedDifficulty) => {
-    let numberOfPictograms = 4;
+    let numberOfPictograms = 3;
     if (selectedDifficulty === "Fácil") {
       numberOfPictograms = 3;
     } else if (selectedDifficulty === "Normal") {
       numberOfPictograms = 5;
     } else if (selectedDifficulty === "Difícil") {
-      numberOfPictograms = 9;
+      numberOfPictograms = 7;
     }
 
     const shuffledPictograms = shuffleArray(pictograms).slice(0, numberOfPictograms);
@@ -91,7 +91,7 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
       confetti();
       toast.success("¡Muy bien!", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       correctSoundHowl.play();
       setPoints(points + 1);
@@ -105,33 +105,31 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
         if (difficulty === "Fácil") {
           toast.success("¡Has completado el nivel!", {
             position: "top-center",
-            autoClose: 3000,
+            autoClose: 2000,
           });
           successSoundHowl.play();
           setShowPopUp(true);
           setMessage("¡Has completado el nivel!")
-          setTimeout(() => {
+          //setTimeout(() => {
             setDifficulty("Normal");
             getRandomPictograms("Normal");
-          }, 2000);
+            navigate("/recognition-game/Normal");
+          //}, 2000);
         } else if (difficulty === "Normal") {
           toast.success("¡Has completado el nivel!", {
             position: "top-center",
-            autoClose: 3000,
+            autoClose: 2000,
           });
           successSoundHowl.play();
           setShowPopUp(true);
           setMessage("¡Has completado el nivel!")
-          setTimeout(() => {
+          //setTimeout(() => {
             setDifficulty("Difícil");
             getRandomPictograms("Difícil");
-          }, 2000);
+            navigate("/recognition-game/Difícil");
+          //}, 2000);
         } else {
           successSoundHowl.play();
-          toast.success("¡Has completado el juego!", {
-            position: "top-center",
-            autoClose: 3000,
-          });
           setShowPopUp(true);
           setMessage("¡Has completado el juego!")
         }
@@ -139,16 +137,15 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
     } else {
       toast.error("Incorrecto. Intenta de nuevo ...", {
         position: "top-center",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       incorrectSoundHowl.play();
       setLives(lives - 1);
       if (lives - 1 === 0) {
         toast.error("¡Has perdido todas tus vidas!", {
           position: "top-center",
-          autoClose: 3000,
+          autoClose: 2000,
         });
-          
         if ( difficulty === "Fácil" ) {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!")
