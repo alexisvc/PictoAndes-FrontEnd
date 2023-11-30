@@ -3,7 +3,10 @@ import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import {
+  FaAlignLeft,
   FaArrowCircleLeft,
+  FaArrowLeft,
+  FaArrowRight,
   FaHome,
   FaIceCream,
   FaPlayCircle,
@@ -164,7 +167,7 @@ export function PictogramDisplay({ images }) {
                 setSelectedCategory("");
               }}
             >
-              <FaArrowCircleLeft size={50} />
+              <FaArrowLeft size={50} className="icon" />
               <p>Regresar</p>
             </div>
             {filteredImages.map((image, index) => (
@@ -186,11 +189,9 @@ export function PictogramDisplay({ images }) {
                 onClick={() => handleCategoryFilter(category)}
               >
                 <span>
-                  <FaIceCream size={50} />
+                  <FaArrowRight size={50} />
                 </span>
-                <span>
-                  {category}
-                </span>
+                <span>{category}</span>
               </button>
             ))}
           </div>

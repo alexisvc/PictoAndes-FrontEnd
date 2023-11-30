@@ -91,7 +91,6 @@ function Home({ user, logout }) {
         </div>
         <div>
           <p>Realizado por: Vizuete Alexis</p>
-          <p>Dirigido por: Doc. Carrión Mayra</p>
           <p>© 2023 PictoAndes</p>
         </div>
         <div>

@@ -111,6 +111,7 @@
   align-items: center;
   justify-content: space-between;
   height: 95%;
+  width: 85%;
   overflow-y: scroll;
   margin: auto;
   padding: 10px;
@@ -124,6 +125,7 @@
   align-items: center;
   justify-content: space-between;
   height: 95%;
+  width: 90%;
   overflow-y: scroll;
   margin: auto;
   padding: 10px;
@@ -135,9 +137,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  width: 95%;
+  align-items: flex-start;
+  justify-content: start;
+  width: 98%;
   height: 95%;
   overflow-y: auto;
   margin: auto;
@@ -160,6 +162,7 @@
   text-align: center;
   width: 15%;
   border: none;
+  font-family: 'Satisfy', cursive;
 }
 
 .categories button:hover {
@@ -170,17 +173,18 @@
   margin: 5px;
   color: #fff;
   font-size: 1.75vh;
+  font-weight: bold;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ccc;
-  border: 1px solid #ccc;
+  background-color: white;
+  border: 1px solid #bbb;
   border-radius: 5px;
   text-align: center;
-  padding: 10px 2px;
+  padding: 10px 5px;
   margin: 7px;
   cursor: pointer;
 }
@@ -189,6 +193,10 @@
   margin: 5px 0 0 0;
   color: #000;
   font-size: 1.75vh;
+}
+
+.icon {
+  color: #000;
 }
 
 .pronouns-img {
@@ -200,7 +208,7 @@
 }
 
 .actions-img {
-  background-color: greenyellow;
+  background-color: green;
   width: 10vh;
   height: 10vh;
   border: none;
@@ -208,7 +216,7 @@
 }
 
 .default-img {
-  background-color: burlywood;
+  background-color: darkgoldenrod;
   width: 10vh;
   height: 10vh;
   border: none;

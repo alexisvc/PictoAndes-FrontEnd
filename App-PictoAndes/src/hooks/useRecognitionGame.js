@@ -79,7 +79,6 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
       } else {
         console.error('La voz por defecto no está disponible.');
       }
-
       synthesis.speak(utterance);
     } else {
       console.error('La síntesis de voz no está soportada en este navegador.');
@@ -103,11 +102,6 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
       } else {
         setBadges(badges + 1);
         if (difficulty === "Fácil") {
-          toast.success("¡Has completado el nivel!", {
-            position: "top-center",
-            autoClose: 2000,
-          });
-          successSoundHowl.play();
           setShowPopUp(true);
           setMessage("¡Has completado el nivel!")
           //setTimeout(() => {
@@ -115,12 +109,8 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
             getRandomPictograms("Normal");
             navigate("/recognition-game/Normal");
           //}, 2000);
-        } else if (difficulty === "Normal") {
-          toast.success("¡Has completado el nivel!", {
-            position: "top-center",
-            autoClose: 2000,
-          });
           successSoundHowl.play();
+        } else if (difficulty === "Normal") { 
           setShowPopUp(true);
           setMessage("¡Has completado el nivel!")
           //setTimeout(() => {
@@ -128,10 +118,11 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
             getRandomPictograms("Difícil");
             navigate("/recognition-game/Difícil");
           //}, 2000);
-        } else {
           successSoundHowl.play();
+        } else {
           setShowPopUp(true);
           setMessage("¡Has completado el juego!")
+          successSoundHowl.play();
         }
       }
     } else {

@@ -15,7 +15,7 @@ function GameMenu() {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Hola, a continuacion se mostraran una serie de pictogramas, debes seleccionar la que corresponda");
+      speak("Texto descriptivo");
     }
   };
   return (
