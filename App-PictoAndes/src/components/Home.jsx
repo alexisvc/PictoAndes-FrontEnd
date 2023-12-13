@@ -21,6 +21,7 @@ function Home({ user, logout }) {
       >
         <button onClick={handleMenuClick}>
           <FaBars />
+          <span>Menú</span>
         </button>
       </div>
 
@@ -77,7 +78,7 @@ function Home({ user, logout }) {
           </button>
           <button>
             <Link to="/game-menu" className="link-button">
-              <span> Juegos</span>
+              <span>Juego de Reconocimiento</span>
             </Link>
           </button>
         </div>
@@ -90,12 +91,12 @@ function Home({ user, logout }) {
         />
         </div>
         <div>
-          <p>Realizado por: Vizuete Alexis</p>
+          <p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
           <p>© 2023 PictoAndes</p>
         </div>
         <div>
         <img
-          src="src\assets\logos\fis.png"
+          src="src\assets\logos\ludologo.png"
           alt="imagen de la aventura"
         />
         </div>

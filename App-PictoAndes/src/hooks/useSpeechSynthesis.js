@@ -15,13 +15,13 @@ export function useSpeechSynthesis() {
         // Obtener la voz por defecto "Microsoft Sabina - Spanish (Mexico)"
         const voices = window.speechSynthesis.getVoices();
         const defaultVoice = voices.find(voice => (
-          //voice.name === "Microsoft Sabina - Spanish (Mexico)"
+          voice.name === "Microsoft Sabina - Spanish (Mexico)"
           //voice.name === "Microsoft Raul - Spanish (Mexico)"
           //voice.name === "Microsoft Helena - Spanish (Spain)"
           //voice.name === "Microsoft Laura - Spanish (Spain)"
           //voice.name === "Microsoft Pablo - Spanish (Spain)"
           //voice.name === "Google español"
-          voice.name === "Google español de Estados Unidos"
+          //voice.name === "Google español de Estados Unidos"
         ));
 
         if (defaultVoice) {

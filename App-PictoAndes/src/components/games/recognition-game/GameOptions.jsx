@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./GameOptions.css";
-import { FaArrowCircleLeft, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBookOpen, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
 import { FiVolume2 } from "react-icons/fi";
@@ -38,6 +38,7 @@ function GameOptions() {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
         </button>
         <button
           onClick={() => {
@@ -45,6 +46,7 @@ function GameOptions() {
           }}
         >
           <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>Juego de reconocimiento</h1>
         <button
@@ -52,7 +54,16 @@ function GameOptions() {
             setIsPopUpOpen(true);
           }}
         >
+          <FaBookOpen />
+          <span>Instrucciones</span>
+        </button>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
           <FaQuestion />
+          <span>Ayuda</span>
         </button>
       </div>
       <div className="config-content">
@@ -80,6 +91,7 @@ function GameOptions() {
           }}
         >
           <FiVolume2 />
+          <span>Audio</span>
         </button>
       </div>
     </div>

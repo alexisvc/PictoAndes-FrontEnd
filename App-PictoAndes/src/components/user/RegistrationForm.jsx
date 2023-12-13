@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegistrationForm.css";
-import { FaArrowCircleLeft, FaHome } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBook, FaBookOpen, FaHome } from "react-icons/fa";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
@@ -63,6 +63,15 @@ const RegistrationForm = () => {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
+        </button>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>PictoAndes</h1>
         <button
@@ -70,7 +79,8 @@ const RegistrationForm = () => {
             navigate("/");
           }}
         >
-          <FaHome />
+          <FaBookOpen />
+          <span>Instrucciones</span>
         </button>
       </div>
       <div className="registration">

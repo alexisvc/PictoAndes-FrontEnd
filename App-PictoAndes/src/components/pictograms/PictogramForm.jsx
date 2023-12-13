@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   FaArrowCircleLeft,
+  FaBookOpen,
   FaHome,
   FaQuestion,
   FaSave,
@@ -70,6 +71,7 @@ export default function PictogramForm({ createPictogram }) {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
         </button>
         <button
           onClick={() => {
@@ -77,15 +79,24 @@ export default function PictogramForm({ createPictogram }) {
           }}
         >
           <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>PictoAndes</h1>
-
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaBookOpen />
+          <span>Instrucciones</span>
+        </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
           <FaQuestion />
+          <span>Ayuda</span>
         </button>
       </div>
       <div className="pictogram-form-container">

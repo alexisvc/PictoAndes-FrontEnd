@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./GameMenu.css";
-import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaBookOpen, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../extras/PopUpHelp";
@@ -33,6 +33,7 @@ function GameMenu() {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
         </button>
         <button
           onClick={() => {
@@ -40,6 +41,7 @@ function GameMenu() {
           }}
         >
           <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>Juego de reconocimiento</h1>
         <button
@@ -47,7 +49,16 @@ function GameMenu() {
             setIsPopUpOpen(true);
           }}
         >
+          <FaBookOpen />
+          <span>Instrucciones</span>
+        </button>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
           <FaQuestion />
+          <span>Ayuda</span>  
         </button>
       </div>
       <div>
@@ -58,7 +69,7 @@ function GameMenu() {
           />
           <button>
             <Link to="/game-config" className="link-button">
-              Reconocimiento
+              Jugar
             </Link>
           </button> 
         </div>
@@ -70,6 +81,7 @@ function GameMenu() {
           }}
         >
           <FiVolume2 />
+          <span>Audio</span>
         </button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./PictogramMenu.css";
-import { FaArrowCircleLeft, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { useNavigate } from "react-router-dom";
@@ -33,6 +33,7 @@ function PictogramMenu() {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
         </button>
         <button
           onClick={() => {
@@ -40,15 +41,24 @@ function PictogramMenu() {
           }}
         >
           <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>Menú de Pictogramas</h1>
-        
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaBookOpen />
+          <span>Instrucciones</span>
+        </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
           <FaQuestion />
+          <span>Ayuda</span>
         </button>
       </div>
       <div className="pictogram-content">
@@ -70,6 +80,7 @@ function PictogramMenu() {
       <div className="footer-button">
         <button onClick={()=>{handleImageClick()}}>
           <FiVolume2/>
+          <span>Audio</span>
         </button>
       </div>
     </div>

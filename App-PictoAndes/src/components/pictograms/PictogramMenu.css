@@ -8,9 +8,8 @@
   background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  row-gap: 5vh;
 }
 
 .pictogram-menu p {

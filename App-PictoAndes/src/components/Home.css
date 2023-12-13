@@ -63,6 +63,7 @@
 }
 
 .app-navigation button {
+  font-family: 'Satisfy', cursive;
   padding: 1.5vh;
   margin: 1vh;
   color: #EAF2E3;
@@ -74,7 +75,14 @@
   height: fit-content;
   width: fit-content;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.app-navigation button span {
+  margin-top: 0.5vh;
+  font-size: 2vh;
+  font-weight: bold;
 }
 
 .app-navigation button:hover {
@@ -108,6 +116,7 @@
 }
 
 .footer-button button {
+  font-family: 'Satisfy', cursive;
   margin: 1vh;
   padding: 1.5vh;
   color: #EAF2E3;
@@ -119,7 +128,14 @@
   height: fit-content;
   width: fit-content;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.footer-button button span {
+  margin-top: 0.5vh;
+  font-size: 2vh;
+  font-weight: bold;
 }
 
 .footer-button button:hover {

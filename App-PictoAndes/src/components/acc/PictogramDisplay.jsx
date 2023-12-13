@@ -3,12 +3,11 @@ import "./PictogramDisplay.css";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import {
-  FaAlignLeft,
   FaArrowCircleLeft,
   FaArrowLeft,
   FaArrowRight,
+  FaBookOpen,
   FaHome,
-  FaIceCream,
   FaPlayCircle,
   FaQuestion,
 } from "react-icons/fa";
@@ -21,9 +20,13 @@ export function PictogramDisplay({ images }) {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isCategorySelected, setIsCategorySelected] = useState(false);
 
-  const categories = Array.from(new Set(images.map((image) => image.category)));
+  // Obtiene las categorías de los pictogramas y las filtra para que no se muestren en el menú
+  const categories = Array.from(new Set(images.map((image) => image.category)))
+  .filter((categoria) => categoria !== 'Pronombres' && categoria !== 'Verbos');
+  // Filtra los pictogramas por categoría para mostrarlos en la columna de pronombres
   const pronounsPictograms = () =>
     images.filter((image) => image.category === "Pronombres");
+  // Filtra los pictogramas por categoría para mostrarlos en la columna de verbos
   const actionsPictograms = () =>
     images.filter((image) => image.category === "Verbos");
 
@@ -88,8 +91,10 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               navigate("/acc-menu");
             }}
+            disabled={speaking}
           >
             <FaArrowCircleLeft />
+            <span>Atrás</span>
           </button>
           <button
             onClick={() => {
@@ -97,6 +102,15 @@ export function PictogramDisplay({ images }) {
             }}
           >
             <FaHome />
+            <span>Inicio</span>
+          </button>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <FaBookOpen />
+            <span>Instrucciones</span>
           </button>
           <button
             onClick={() => {
@@ -104,6 +118,7 @@ export function PictogramDisplay({ images }) {
             }}
           >
             <FaQuestion />
+            <span>Ayuda</span>
           </button>
         </div>
 
@@ -119,12 +134,15 @@ export function PictogramDisplay({ images }) {
         <div className="button-acc">
           <button onClick={handleDeleteLastImage} disabled={speaking}>
             <FiDelete />
+            <span>Eliminar</span>
           </button>
           <button onClick={handleReadSelectedImages} disabled={speaking}>
             <FaPlayCircle />
+            <span>Reproducir</span>
           </button>
           <button onClick={handleDeleteAllImages} disabled={speaking}>
             <FiTrash2 />
+            <span>Eliminar</span>
           </button>
         </div>
       </div>

@@ -3,7 +3,15 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import "./EditPictogram.css";
-import { FaArrowCircleLeft, FaCircle, FaHome, FaQuestion, FaSave, FaTimes } from "react-icons/fa";
+import {
+  FaArrowCircleLeft,
+  FaBookOpen,
+  FaCircle,
+  FaHome,
+  FaQuestion,
+  FaSave,
+  FaTimes,
+} from "react-icons/fa";
 import PopUpHelp from "../extras/PopUpHelp";
 
 function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
@@ -55,12 +63,14 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
 
   return (
     <div className="edit-content">
-      {isPopUpOpen && 
+      {isPopUpOpen && (
         <PopUpHelp
-          onClose={() => {setIsPopUpOpen(false)}}
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
-      }
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -68,6 +78,7 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
         </button>
         <button
           onClick={() => {
@@ -75,15 +86,24 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
           }}
         >
           <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>PictoAndes</h1>
-
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaBookOpen />
+          <span>Instrucciones</span>
+        </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
           <FaQuestion />
+          <span>Ayuda</span>
         </button>
       </div>
       <div className="edit-pictogram-form">
@@ -125,10 +145,7 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
                 <FaSave />
                 <span> Guardar</span>
               </button>
-              <button
-                type="button"
-                onClick={() => setShowEditForm(false)}
-              >
+              <button type="button" onClick={() => setShowEditForm(false)}>
                 <FaTimes />
                 <span> Cancelar</span>
               </button>
@@ -136,7 +153,11 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
           </form>
         </div>
         <div className="img-form">
-          <img src={pictogram.url} alt={pictogram.name} />
+          {/*<img src={pictogram.url} alt={pictogram.name} />*/}
+          <img
+            src="src\assets\characters\condor.png"
+            alt="imagen de la aventura"
+          />
         </div>
       </div>
     </div>

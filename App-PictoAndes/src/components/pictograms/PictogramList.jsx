@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCircle, FaEdit, FaHome, FaQuestion, FaTrash } from "react-icons/fa";
+import { FaBookOpen, FaCircle, FaEdit, FaHome, FaQuestion, FaTrash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
 import EditPictogram from "./EditPictogram";
@@ -56,6 +56,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               }}
             >
               <FaArrowAltCircleLeft />
+              <span>Atrás</span>
             </button>
             <button
               onClick={() => {
@@ -63,6 +64,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               }}
             >
               <FaHome />
+              <span>Inicio</span>
             </button>
             <h1>Lista de pictogramas</h1>
             <button
@@ -70,7 +72,16 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                 setIsPopUpOpen(true);
               }}
             >
+              <FaBookOpen />
+              <span>Instrucciones</span>
+            </button>
+            <button
+              onClick={() => {
+                setIsPopUpOpen(true);
+              }}
+            >
               <FaQuestion />
+              <span>Ayuda</span>
             </button>
         </div>
       )}

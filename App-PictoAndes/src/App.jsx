@@ -35,69 +35,6 @@ function App() {
     <div className="app">
       <Router>
         <ToastContainer />
-        {/*<div className="navbar">
-          {!isLoggedIn ? (
-            <>
-              <div className="nav-left">
-                <button>
-                  <Link to="/">
-                    <FaHome />
-                    <span>Inicio</span>
-                  </Link>
-                </button>
-              </div>
-              <div className="nav-right">
-                <button>
-                  <Link to="/login">
-                    <FaSignInAlt />
-                    <span>Iniciar sesión</span>
-                  </Link>
-                </button>
-                <button>
-                  <Link to="/register">
-                    <FaUserPlus />
-                    <span>Registrarse</span>
-                  </Link>
-                </button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="nav-left">
-                <button>
-                  <Link to="/">
-                    <FaHome />
-                    <span>Inicio</span>
-                  </Link>
-                </button>
-              </div>
-              <div className="nav-right">
-                <button>
-                  <Link to="/pictogram-menu">
-                    <span>Pictogramas</span>
-                  </Link>
-                </button>
-                <button>
-                  <Link to="/saac">
-                  <span>Tablero</span>
-                  </Link>
-                </button>
-                <button>
-                  <Link to="/game-menu">
-                  <span>Juegos</span>
-                  </Link>
-                </button>
-                <button onClick={logout}>
-                  <Link to="/">
-                    <FaSignOutAlt />
-                    <span>Cerrar sesión</span>
-                  </Link>
-                </button>
-              </div>
-            </>
-          )}
-          </div>*/}
-
         <div className="content">
           <Routes>
             <Route

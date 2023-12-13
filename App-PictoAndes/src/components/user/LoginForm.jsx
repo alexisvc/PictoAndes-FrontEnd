@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import { FaArrowCircleLeft, FaHome } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBook, FaBookOpen, FaHome } from "react-icons/fa";
 
 export const LoginForm = ({ login }) => {
   const [username, setUsername] = useState("");
@@ -16,16 +16,15 @@ export const LoginForm = ({ login }) => {
 
     try {
       await login({ username, password });
-      console.log("Login realizado con éxito");
       setUsername("");
       setPassword("");
-      toast.success("Login exitoso", {
+      toast.success("¡Felicidades! Tu ingreso fue exitoso.", {
         position: "top-right",
         autoClose: 3000,
       });
     } catch (error) {
       console.error("Error al ingresar:", error);
-      toast.error("Credenciales incorrectas. Por favor, inténtalo de nuevo.", {
+      toast.error("Credenciales son incorrectas. Por favor, inténtalo de nuevo.", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -43,6 +42,15 @@ export const LoginForm = ({ login }) => {
           }}
         >
           <FaArrowCircleLeft />
+          <span>Atrás</span>
+        </button>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          <FaHome />
+          <span>Inicio</span>
         </button>
         <h1>PictoAndes</h1>
         <button
@@ -50,7 +58,8 @@ export const LoginForm = ({ login }) => {
             navigate("/");
           }}
         >
-          <FaHome />
+          <FaBookOpen />
+          <span>Instrucciones</span>
         </button>
       </div>
       <div className="login">

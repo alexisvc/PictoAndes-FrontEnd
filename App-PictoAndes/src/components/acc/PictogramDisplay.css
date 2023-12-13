@@ -70,17 +70,26 @@
 }
 
 .button-acc button {
-  margin-left: 10px;
-  padding: 10px 20px;
+  font-family: 'Satisfy', cursive;
+  padding: 1.5vh;
+  margin: 1vh;
+  color: #EAF2E3;
   background-color: #FF637D;
-  color: #fff;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   font-size: 5vh;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.button-acc button span {
+  margin-top: 0.5vh;
+  font-size: 2vh;
+  font-weight: bold;
 }
 
 .button-acc button:disabled {
@@ -216,7 +225,7 @@
 }
 
 .default-img {
-  background-color: darkgoldenrod;
+  background-color: burlywood;
   width: 10vh;
   height: 10vh;
   border: none;
