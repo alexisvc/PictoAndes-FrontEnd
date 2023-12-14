@@ -3,12 +3,24 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import { FaArrowCircleLeft, FaBook, FaBookOpen, FaHome } from "react-icons/fa";
+import {
+  FaArrowCircleLeft,
+  FaBook,
+  FaBookOpen,
+  FaHome,
+  FaQuestion,
+} from "react-icons/fa";
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 export const LoginForm = ({ login }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+  const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -24,17 +36,45 @@ export const LoginForm = ({ login }) => {
       });
     } catch (error) {
       console.error("Error al ingresar:", error);
-      toast.error("Credenciales son incorrectas. Por favor, inténtalo de nuevo.", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      toast.error(
+        "Credenciales son incorrectas. Por favor, inténtalo de nuevo.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+        }
+      );
       setUsername("");
       setPassword("");
     }
   };
 
+  const handleImageClick = () => {
+    if (!speaking) {
+      speak(
+        "Hola bienvenido al mundo de los pictogramas, selecciona una opción para continuar"
+      );
+    }
+  };
+
   return (
     <div className="login-content">
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
+          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+        />
+      )}
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás ingresar al sistema haciendo uso de tu usuario y contraseña. Completa cada uno de los campos para ingresar a PictoAndes."}
+          url={"/public/gifs/login.gif"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -55,11 +95,19 @@ export const LoginForm = ({ login }) => {
         <h1>PictoAndes</h1>
         <button
           onClick={() => {
-            navigate("/");
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />
           <span>Instrucciones</span>
+        </button>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaQuestion />
+          <span>Ayuda</span>
         </button>
       </div>
       <div className="login">

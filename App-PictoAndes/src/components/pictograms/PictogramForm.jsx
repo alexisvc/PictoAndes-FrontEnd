@@ -12,9 +12,12 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router";
 import "./PictogramForm.css";
 import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 export default function PictogramForm({ createPictogram }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const [nameValue, setNameValue] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [image, setImage] = useState(null);
@@ -64,6 +67,12 @@ export default function PictogramForm({ createPictogram }) {
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
       }
+      {isPopUpOpenInstructions &&
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/src/assets/characters/condor.png"}
+          onClose={() => {setIsPopUpOpenInstructions(false)}} />
+      }
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -84,7 +93,7 @@ export default function PictogramForm({ createPictogram }) {
         <h1>PictoAndes</h1>
         <button
           onClick={() => {
-            setIsPopUpOpen(true);
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />

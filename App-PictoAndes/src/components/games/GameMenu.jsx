@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./GameMenu.css";
-import { FaArrowAltCircleLeft, FaArrowCircleLeft, FaBookOpen, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 function GameMenu() {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
@@ -26,6 +29,15 @@ function GameMenu() {
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
       }
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/src/assets/characters/condor.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -46,7 +58,7 @@ function GameMenu() {
         <h1>Juego de reconocimiento</h1>
         <button
           onClick={() => {
-            setIsPopUpOpen(true);
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />
@@ -69,7 +81,7 @@ function GameMenu() {
           />
           <button>
             <Link to="/game-config" className="link-button">
-              Jugar
+              Continuar
             </Link>
           </button> 
         </div>

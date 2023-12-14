@@ -9,16 +9,18 @@ import { useParams, useNavigate } from "react-router-dom";
 import {
   FaArrowCircleLeft,
   FaBookOpen,
-  FaCircle,
-  FaHome,
-  FaQuestion,
+  FaFilm,
+  FaHome
 } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../../extras/PopUpHelp";
+import PopUpInstructions from "../../extras/PopUpInstructions";
 
 function RecognitionGame({ pictograms }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const { difficulty } = useParams();
   const {
     currentPictograms,
@@ -38,9 +40,7 @@ function RecognitionGame({ pictograms }) {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak(
-        "Hola, a continuacion se mostraran una serie de pictogramas, debes seleccionar la que corresponda"
-      );
+      speak("Texto descriptivo con indicaciones  del juego");
     }
   };
 
@@ -52,6 +52,15 @@ function RecognitionGame({ pictograms }) {
             setIsPopUpOpen(false);
           }}
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      )}
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/public/gifs/giphy.gif"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
         />
       )}
       <div className="app-navigation">
@@ -74,7 +83,7 @@ function RecognitionGame({ pictograms }) {
         <h1>Juego de reconocimiento</h1>
         <button
           onClick={() => {
-            setIsPopUpOpen(true);
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />
@@ -85,14 +94,21 @@ function RecognitionGame({ pictograms }) {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
-          <span>Ayuda</span>
+          <FaFilm />
+          <span>Demostración</span>
         </button>
       </div>
       <div className="game-canva">
-        <div className="game">
+        <div className="game-header">
+          <div>
+          <img className="statment" src="/public/messages/3.png" alt="imagen" />
+          </div>
+          <div>
           <GameHeader lives={lives} points={points} badges={badges} />
-          <div className="">
+          </div>
+        </div>
+
+        <div className="game">
             <PictogramQuestion
               currentPictogram={currentPictogram}
               handleMouseOver={handleMouseOver}
@@ -102,7 +118,6 @@ function RecognitionGame({ pictograms }) {
               handleMouseOver={handleMouseOver}
               checkAnswer={checkAnswer}
             />
-          </div>
         </div>
 
         {showPopUp && (

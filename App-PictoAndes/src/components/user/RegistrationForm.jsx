@@ -4,13 +4,26 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegistrationForm.css";
-import { FaArrowCircleLeft, FaBook, FaBookOpen, FaHome } from "react-icons/fa";
+import {
+  FaArrowCircleLeft,
+  FaBook,
+  FaBookOpen,
+  FaHome,
+  FaQuestion,
+} from "react-icons/fa";
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false); // Agregar estado para el checkbox
+
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+  const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
   const { registerUser } = useRegistration();
@@ -54,6 +67,14 @@ const RegistrationForm = () => {
     setTermsAccepted(!termsAccepted);
   }, [termsAccepted]);
 
+  const handleImageClick = () => {
+    if (!speaking) {
+      speak(
+        "Hola bienvenido al mundo de los pictogramas, selecciona una opción para continuar"
+      );
+    }
+  };
+
   return (
     <div className="registration-content">
       <div className="app-navigation">
@@ -76,14 +97,39 @@ const RegistrationForm = () => {
         <h1>PictoAndes</h1>
         <button
           onClick={() => {
-            navigate("/");
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />
           <span>Instrucciones</span>
         </button>
+        <button
+          onClick={() => {
+            setIsPopUpOpen(true);
+          }}
+        >
+          <FaQuestion />
+          <span>Ayuda</span>
+        </button>
       </div>
       <div className="registration">
+        {isPopUpOpen && (
+          <PopUpHelp
+            onClose={() => {
+              setIsPopUpOpen(false);
+            }}
+            url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+          />
+        )}
+        {isPopUpOpenInstructions && (
+          <PopUpInstructions
+            instructions={"En esta sección podrás crear y listar pictogramas"}
+            url={"/src/assets/characters/condor.png"}
+            onClose={() => {
+              setIsPopUpOpenInstructions(false);
+            }}
+          />
+        )}
         <div className="img-form">
           <img
             src="src\assets\characters\condor.png"

@@ -12,8 +12,13 @@ import {
   FaQuestion,
 } from "react-icons/fa";
 import { FiDelete, FiTrash2 } from "react-icons/fi";
+import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 export function PictogramDisplay({ images }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const navigate = useNavigate();
   const [selectedImages, setSelectedImages] = useState([]);
   const { speak, speaking, setSpeaking } = useSpeechSynthesis();
@@ -21,8 +26,9 @@ export function PictogramDisplay({ images }) {
   const [isCategorySelected, setIsCategorySelected] = useState(false);
 
   // Obtiene las categorías de los pictogramas y las filtra para que no se muestren en el menú
-  const categories = Array.from(new Set(images.map((image) => image.category)))
-  .filter((categoria) => categoria !== 'Pronombres' && categoria !== 'Verbos');
+  const categories = Array.from(
+    new Set(images.map((image) => image.category))
+  ).filter((categoria) => categoria !== "Pronombres" && categoria !== "Verbos");
   // Filtra los pictogramas por categoría para mostrarlos en la columna de pronombres
   const pronounsPictograms = () =>
     images.filter((image) => image.category === "Pronombres");
@@ -85,6 +91,23 @@ export function PictogramDisplay({ images }) {
 
   return (
     <div className="acc-container">
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
+          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+        />
+      )}
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/src/assets/characters/condor.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="selected-images-and-buttons">
         <div className="button-acc">
           <button
@@ -100,22 +123,25 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               navigate("/");
             }}
+            disabled={speaking}
           >
             <FaHome />
             <span>Inicio</span>
           </button>
           <button
             onClick={() => {
-              navigate("/");
+              setIsPopUpOpenInstructions(true);
             }}
+            disabled={speaking}
           >
             <FaBookOpen />
             <span>Instrucciones</span>
           </button>
           <button
             onClick={() => {
-              navigate("/");
+              setIsPopUpOpen(true);
             }}
+            disabled={speaking}
           >
             <FaQuestion />
             <span>Ayuda</span>

@@ -1,14 +1,24 @@
 import React, { useState } from "react";
-import { FaBookOpen, FaCircle, FaEdit, FaHome, FaQuestion, FaTrash } from "react-icons/fa";
+import {
+  FaBookOpen,
+  FaCircle,
+  FaEdit,
+  FaHome,
+  FaQuestion,
+  FaTrash,
+} from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
 import EditPictogram from "./EditPictogram";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const navigate = useNavigate();
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedPictogram, setSelectedPictogram] = useState(null);
@@ -48,104 +58,113 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
       )}
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/src/assets/characters/condor.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       {!showEditForm && (
         <div className="app-navigation">
-            <button
-              onClick={() => {
-                navigate("/pictogram-menu");
-              }}
-            >
-              <FaArrowAltCircleLeft />
-              <span>Atrás</span>
-            </button>
-            <button
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              <FaHome />
-              <span>Inicio</span>
-            </button>
-            <h1>Lista de pictogramas</h1>
-            <button
-              onClick={() => {
-                setIsPopUpOpen(true);
-              }}
-            >
-              <FaBookOpen />
-              <span>Instrucciones</span>
-            </button>
-            <button
-              onClick={() => {
-                setIsPopUpOpen(true);
-              }}
-            >
-              <FaQuestion />
-              <span>Ayuda</span>
-            </button>
+          <button
+            onClick={() => {
+              navigate("/pictogram-menu");
+            }}
+          >
+            <FaArrowAltCircleLeft />
+            <span>Atrás</span>
+          </button>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            <FaHome />
+            <span>Inicio</span>
+          </button>
+          <h1>Lista de pictogramas</h1>
+          <button
+            onClick={() => {
+              setIsPopUpOpenInstructions(true);
+            }}
+          >
+            <FaBookOpen />
+            <span>Instrucciones</span>
+          </button>
+          <button
+            onClick={() => {
+              setIsPopUpOpen(true);
+            }}
+          >
+            <FaQuestion />
+            <span>Ayuda</span>
+          </button>
         </div>
       )}
 
       {!showEditForm && (
         <>
-        <div className="heading">
-              <div className="filter">
-                <span>Filtrar: </span>
-                <select
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  <option value="todos">Todos</option>
-                  {uniqueCategories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </div>
+          <div className="heading">
+            <div className="filter">
+              <span>Filtrar: </span>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="todos">Todos</option>
+                {uniqueCategories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className="pictogram-table-container">
-          <table className="pictogram-table">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Categoría</th>
-                <th>Pictograma</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredPictograms.map((pictogram) => (
-                <tr key={pictogram.id}>
-                  <td>{pictogram.name}</td>
-                  <td>{pictogram.category}</td>
-                  <td>
-                    <img
-                      className="img-list"
-                      src={pictogram.url}
-                      alt={pictogram.name}
-                      width="100"
-                    />
-                  </td>
-                  <td className="buttons-edit">
-                    <button
-                      className="edit-button"
-                      onClick={() => handleEditClick(pictogram)}
-                    >
-                      <FaEdit /> Editar
-                    </button>
-                    <button
-                      className="edit-button"
-                      onClick={() => handleDeleteClick(pictogram)}
-                    >
-                      <FaTrash /> Eliminar
-                    </button>
-                  </td>
+          </div>
+          <div className="pictogram-table-container">
+            <table className="pictogram-table">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Pictograma</th>
+                  <th></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {filteredPictograms.map((pictogram) => (
+                  <tr key={pictogram.id}>
+                    <td>{pictogram.name}</td>
+                    <td>{pictogram.category}</td>
+                    <td>
+                      <img
+                        className="img-list"
+                        src={pictogram.url}
+                        alt={pictogram.name}
+                        width="100"
+                      />
+                    </td>
+                    <td className="buttons-edit">
+                      <button
+                        className="edit-button"
+                        onClick={() => handleEditClick(pictogram)}
+                      >
+                        <FaEdit /> Editar
+                      </button>
+                      <button
+                        className="edit-button"
+                        onClick={() => handleDeleteClick(pictogram)}
+                      >
+                        <FaTrash /> Eliminar
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
 

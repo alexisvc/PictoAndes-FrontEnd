@@ -3,7 +3,7 @@ import "./GameHeader.css";
 
 function GameHeader({ lives, points, badges }) {
   const livesIcon = "❤️".repeat(lives);
-  const badgesIcon = "🏆".repeat(badges);
+  const badgesIcon = "⭐".repeat(badges);
 
   return (
       <div className="game-stats">
@@ -12,7 +12,8 @@ function GameHeader({ lives, points, badges }) {
           <span className="stat-lives">{livesIcon}</span>
         </div>
         <div className="stat">
-          <progress className="stat-progress" max={15} value={points}></progress>
+          <span className="stat-label">Progreso: </span>
+          <progress className="stat-progress" max={3} value={points}></progress>
         </div>
         <div className="stat">
         <span className="stat-label">Premios: </span>

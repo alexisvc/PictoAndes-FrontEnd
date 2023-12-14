@@ -1,7 +1,7 @@
 .welcome {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background-image: url("../../public/backgrounds/main.png");
@@ -118,7 +118,7 @@
 .footer-button button {
   font-family: 'Satisfy', cursive;
   margin: 1vh;
-  padding: 1.5vh;
+  padding: 1vh 2vh;
   color: #EAF2E3;
   background-color: #FF637D;
   border: none;

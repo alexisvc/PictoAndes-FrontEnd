@@ -1,13 +1,13 @@
 .game-stats {
   width: fit-content;
-  height: auto;
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.8);
   border: 2px solid black;
   border-radius: 5px;
-  margin: 10px auto;
-  padding: 5px;
+  padding: 1vw;
+  margin: auto;
 }
 
 .stat {

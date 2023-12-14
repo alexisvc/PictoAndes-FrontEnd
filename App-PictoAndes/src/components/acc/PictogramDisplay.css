@@ -1,7 +1,7 @@
 .acc-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background-image: url("../../public/backgrounds/acc.png");
@@ -60,7 +60,7 @@
 .selected-images .card img {
   width: 10vh;
   height: 10vh;
-  background-color: aliceblue;
+  background-color: darkorange;
 }
 
 .button-acc {

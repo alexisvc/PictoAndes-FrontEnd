@@ -1,7 +1,7 @@
 .pictogram-list-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   background-image: url("../../public/backgrounds/pictograms.png");

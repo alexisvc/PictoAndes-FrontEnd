@@ -13,9 +13,12 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import PopUpHelp from "../extras/PopUpHelp";
+import PopUpInstructions from "../extras/PopUpInstructions";
 
 function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const [newName, setNewName] = useState(pictogram.name);
   const [newCategory, setNewCategory] = useState(pictogram.category);
   const [newImage, setNewImage] = useState(null);
@@ -71,6 +74,15 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
       )}
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/src/assets/characters/condor.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -91,7 +103,7 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
         <h1>PictoAndes</h1>
         <button
           onClick={() => {
-            setIsPopUpOpen(true);
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />

@@ -1,0 +1,49 @@
+import React from "react";
+import "./PopUpInstructions.css";
+import { FaTimes } from "react-icons/fa";
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+import { FiVolume2 } from "react-icons/fi";
+
+function PopUpInstructions({ instructions, url, onClose }) {
+  const { speak, speaking } = useSpeechSynthesis();
+
+  const handleSpeechClick = () => {
+    if (!speaking) {
+      var text = instructions;
+      speak(text);
+    }
+  };
+
+  return (
+    <div className="popup-instructions">
+      <div className="popup-content-instructions">
+        <div className="close-instructions">
+          <button className="close-button-instructions" onClick={onClose}>
+            <FaTimes />
+          </button>
+        </div>
+        <div>
+          <h2 className="titulo-instructions">
+            Instrucciones:
+          </h2>
+          <h3 className="subtitulo-instructions">
+            {instructions}
+          </h3>
+          <img src={url} alt="Imagen de instrucciones" className="img-instructions" />
+        </div>
+        <div className="footer-button">
+        <button
+          onClick={() => {
+            handleSpeechClick();
+          }}
+        >
+          <FiVolume2 />
+          <span>Audio</span>
+        </button>
+      </div>
+      </div>
+    </div>
+  );
+}
+
+export default PopUpInstructions;

@@ -85,20 +85,17 @@ function Home({ user, logout }) {
       )}
       <div className="footer">
         <div>
-        <img
-          src="src\assets\logos\epn2.png"
-          alt="imagen de la aventura"
-        />
+          <img src="src\assets\logos\epn2.png" alt="imagen de la aventura" />
         </div>
         <div>
           <p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
           <p>© 2023 PictoAndes</p>
         </div>
         <div>
-        <img
-          src="src\assets\logos\ludologo.png"
-          alt="imagen de la aventura"
-        />
+          <img
+            src="src\assets\logos\ludologo.png"
+            alt="imagen de la aventura"
+          />
         </div>
       </div>
     </div>

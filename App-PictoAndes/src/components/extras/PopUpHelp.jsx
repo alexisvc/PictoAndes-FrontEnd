@@ -1,13 +1,22 @@
-// PopUpHelp.js
 import React from "react";
 import "./PopUpHelp.css";
 import { FaTimes } from "react-icons/fa";
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+import { FiVolume2 } from "react-icons/fi";
 
 function PopUpHelp({ url, onClose }) {
   const videoId = url.split("v=")[1];
+  const { speak, speaking } = useSpeechSynthesis();
+
+  const handleImageClick = () => {
+    if (!speaking) {
+      // Utiliza el hook para hablar
+      speak("En el siguiente video tutorial se mostrará como realizar la actividad:");
+    }
+  };
 
   return (
-    <div className="popup-help" onClick={onClose}>
+    <div className="popup-help">
       <div className="popup-content-help">
         <div className="close-help">
           <button className="close-button-help" onClick={onClose}>
@@ -16,10 +25,10 @@ function PopUpHelp({ url, onClose }) {
         </div>
         <div>
           <h2 className="titulo">
-            Necesitas ayuda para realizar esta actividad?
+            Demostración
           </h2>
           <h3 className="subtitulo">
-            En el siguiente video tutorial se mostrará:
+            En el siguiente video tutorial se mostrará como realizar la actividad:
           </h3>
         </div>
         <div className="video-container-help">
@@ -32,6 +41,16 @@ function PopUpHelp({ url, onClose }) {
             allowFullScreen
           ></iframe>
         </div>
+        <div className="footer-button">
+        <button
+          onClick={() => {
+            handleImageClick();
+          }}
+        >
+          <FiVolume2 />
+          <span>Audio</span>
+        </button>
+      </div>
       </div>
     </div>
   );

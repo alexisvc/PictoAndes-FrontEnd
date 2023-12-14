@@ -5,9 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
 import { FiVolume2 } from "react-icons/fi";
 import PopUpHelp from "../../extras/PopUpHelp";
+import PopUpInstructions from "../../extras/PopUpInstructions";
 
 function GameOptions() {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
@@ -31,6 +34,15 @@ function GameOptions() {
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
       }
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"En esta sección podrás crear y listar pictogramas"}
+          url={"/src/assets/characters/condor.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -51,7 +63,7 @@ function GameOptions() {
         <h1>Juego de reconocimiento</h1>
         <button
           onClick={() => {
-            setIsPopUpOpen(true);
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaBookOpen />
