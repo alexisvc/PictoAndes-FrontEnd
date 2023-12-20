@@ -5,8 +5,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  background-image: url("src/assets/backgrounds/list.png");
-  background-image: url("../../public/backgrounds/pictograms.png");
+  background-image: url("../../backgrounds/pictograms.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

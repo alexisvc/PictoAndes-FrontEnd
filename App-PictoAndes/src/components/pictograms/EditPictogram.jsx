@@ -6,7 +6,6 @@ import "./EditPictogram.css";
 import {
   FaArrowCircleLeft,
   FaBookOpen,
-  FaCircle,
   FaHome,
   FaQuestion,
   FaSave,
@@ -15,13 +14,19 @@ import {
 import PopUpHelp from "../extras/PopUpHelp";
 import PopUpInstructions from "../extras/PopUpInstructions";
 
-function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
+function EditPictogram({
+  pictogram,
+  updatePictogram,
+  setShowEditForm,
+  categories,
+}) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
 
   const [newName, setNewName] = useState(pictogram.name);
   const [newCategory, setNewCategory] = useState(pictogram.category);
   const [newImage, setNewImage] = useState(null);
+
   const navigate = useNavigate();
 
   const handleUpdate = async (e) => {
@@ -40,7 +45,7 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
       await updatePictogram(pictogram.id, updatedPictogram);
 
       // Notificación de éxito
-      toast.success("Pictogram updated successfully", {
+      toast.success("Pictograma editado exitosamente", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -50,9 +55,8 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
       setShowEditForm(false);
     } catch (error) {
       // Notificación de error
-      console.error("Error updating pictogram:", error);
       toast.error(
-        "There was an error updating the pictogram. Please try again.",
+        "Error al editar el pictograma.",
         {
           position: "top-right",
           autoClose: 3000,
@@ -94,7 +98,7 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
         </button>
         <button
           onClick={() => {
-            setShowEditForm(false);
+            navigate("/");
           }}
         >
           <FaHome />
@@ -135,14 +139,17 @@ function EditPictogram({ pictogram, updatePictogram, setShowEditForm }) {
             </div>
             <div className="form-input">
               <p>Categoría:</p>
-              <input
-                type="text"
-                placeholder="Ingresa una Categoría"
+              <select
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
                 required
-                className="input-field"
-              />
+              >
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-input">
               <p>Imagen:</p>

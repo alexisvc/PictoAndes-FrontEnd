@@ -24,8 +24,14 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const [selectedPictogram, setSelectedPictogram] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("todos");
   const uniqueCategories = [
-    ...new Set(pictograms.map((pictogram) => pictogram.category)),
+    ...new Set(
+      pictograms.map((pictogram) => pictogram.category)
+    ),
   ];
+
+  if (!uniqueCategories.includes("Personalizados")) {
+    uniqueCategories.push("Personalizados");
+  }
 
   const filteredPictograms =
     selectedCategory === "todos"
@@ -173,6 +179,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           pictogram={selectedPictogram}
           updatePictogram={updatePictogram}
           setShowEditForm={setShowEditForm}
+          categories={uniqueCategories}
         />
       )}
     </div>

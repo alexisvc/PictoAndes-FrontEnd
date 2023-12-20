@@ -1,8 +1,7 @@
 .pictogram-menu {
   width: 100%;
   height: 100%;
-  background-image: url("/src/assets/backgrounds/list.png");
-  background-image: url("../../public/backgrounds/pictograms.png");
+  background-image: url("../../backgrounds/pictograms.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

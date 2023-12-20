@@ -14,7 +14,7 @@ import "./PictogramForm.css";
 import PopUpHelp from "../extras/PopUpHelp";
 import PopUpInstructions from "../extras/PopUpInstructions";
 
-export default function PictogramForm({ createPictogram }) {
+export default function PictogramForm({ createPictogram, pictograms }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
 
@@ -22,6 +22,17 @@ export default function PictogramForm({ createPictogram }) {
   const [categoryValue, setCategoryValue] = useState("");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
+
+  const uniqueCategories = [
+    ...new Set(
+      pictograms.map((pictogram) => pictogram.category)
+    ),
+  ];
+  
+  // Añade "Personalizados" solo si no existe
+  if (!uniqueCategories.includes("Personalizados")) {
+    uniqueCategories.push("Personalizados");
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +45,7 @@ export default function PictogramForm({ createPictogram }) {
     try {
       await createPictogram(formData);
       // Notificación de éxito
-      toast.success("Pictogram created successfully", {
+      toast.success("Pictograma creado exitosamente", {
         position: "top-right",
         autoClose: 3000,
       });
@@ -45,9 +56,8 @@ export default function PictogramForm({ createPictogram }) {
       navigate("/pictogram-menu");
     } catch (error) {
       // Notificación de error
-      console.error("Error creating pictogram:", error);
       toast.error(
-        "There was an error creating the pictogram. Please try again.",
+        "Error al crear el pictograma.",
         {
           position: "top-right",
           autoClose: 3000,
@@ -125,14 +135,17 @@ export default function PictogramForm({ createPictogram }) {
             </div>
             <div className="form-input">
               <p>Categoría:</p>
-              <input
-                type="text"
-                placeholder="Ingresa una Categoría"
+              <select
                 value={categoryValue}
                 onChange={(e) => setCategoryValue(e.target.value)}
                 required
-                className="input-field"
-              />
+              >
+                {uniqueCategories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-input">
               <p>Imagen:</p>

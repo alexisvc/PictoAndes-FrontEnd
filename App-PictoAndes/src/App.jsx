@@ -83,7 +83,7 @@ function App() {
               path="/pictogram-form"
               element={
                 isLoggedIn ? (
-                  <PictogramForm createPictogram={createPictogram} />
+                  <PictogramForm createPictogram={createPictogram} pictograms={pictograms}/>
                 ) : (
                   <Home />
                 )
