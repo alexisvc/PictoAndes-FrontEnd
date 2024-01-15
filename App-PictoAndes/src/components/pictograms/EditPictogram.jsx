@@ -10,6 +10,7 @@ import {
   FaQuestion,
   FaSave,
   FaTimes,
+  FaYoutube,
 } from "react-icons/fa";
 import PopUpHelp from "../extras/PopUpHelp";
 import PopUpInstructions from "../extras/PopUpInstructions";
@@ -110,15 +111,15 @@ function EditPictogram({
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>
         </button>
       </div>

@@ -10,6 +10,7 @@ import {
   FaBookOpen,
   FaHome,
   FaQuestion,
+  FaYoutube,
 } from "react-icons/fa";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../extras/PopUpHelp";
@@ -100,15 +101,15 @@ const RegistrationForm = () => {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>
         </button>
       </div>

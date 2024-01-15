@@ -2,7 +2,7 @@ import React from "react";
 import "./FloatingMenu.css";
 import { FaTimes } from "react-icons/fa";
 
-const FloatingMenu = ({ onClose, user, logout }) => {
+const FloatingMenu = ({ onClose }) => {
   return (
     <div className="floating-menu">
       <div className="floating-menu-content">
@@ -16,35 +16,25 @@ const FloatingMenu = ({ onClose, user, logout }) => {
         <div className="menu-buttons">
           <button
             onClick={() => {
-              window.open("https://fis.epn.edu.ec/index.php/es/", "_blank");
+              //window.open("https://fis.epn.edu.ec/index.php/es/", "_blank");
             }}
           >
-            Facultad de Ingeniería en Sistemas EPN
+            Sobre nosotros
           </button>
           <button
             onClick={() => {
-              window.open("https://www.epn.edu.ec/", "_blank");
+              //window.open("https://www.epn.edu.ec/", "_blank");
             }}
           >
-            Escuela Politécnica Nacional
+            Contactanos
           </button>
           <button
             onClick={() => {
-              window.open("https://ludolab.epn.edu.ec/", "_blank");
+              //window.open("https://ludolab.epn.edu.ec/", "_blank");
             }}
           >
-            LudoLab
+            Colaboradores
           </button>
-          {user && (
-            <button
-              onClick={() => {
-                logout();
-                onClose();
-              }}
-            >
-              Cerrar Sesión
-            </button>
-          )}
         </div>
       </div>
     </div>

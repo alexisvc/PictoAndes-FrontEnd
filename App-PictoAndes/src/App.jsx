@@ -23,6 +23,7 @@ import PictogramMenu from "./components/pictograms/PictogramMenu";
 import GameMenu from "./components/games/GameMenu";
 import PictogramAccMenu from "./components/acc/PictogramACCMenu";
 import GameOptions from "./components/games/recognition-game/GameOptions";
+import Welcome from "./components/Welcome";
 
 function App() {
   const { user, logout, login } = useUser();
@@ -98,6 +99,16 @@ function App() {
                     updatePictogram={updatePictogram}
                     deletePictogram={deletePictogram}
                   />
+                ) : (
+                  <Home />
+                )
+              }
+            />
+            <Route
+              path="/main-menu"
+              element={
+                isLoggedIn ? (
+                  <Welcome user={user} logout={logout} />
                 ) : (
                   <Home />
                 )

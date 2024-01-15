@@ -42,8 +42,8 @@
 }
 
 .welcome img {
-  margin: 2vh auto;
-  width: 30vh;
+  margin: 1vh auto;
+  height: 30vh;
 }
 
 .app-navigation{
@@ -88,6 +88,19 @@
 .app-navigation button:hover {
   transform: scale(1.1);
   background-color: #66D7D1;
+}
+
+.home-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
+
+.home-content img {
+  margin: 2vh auto;
+  height: 40vh;
 }
 
 .footer{

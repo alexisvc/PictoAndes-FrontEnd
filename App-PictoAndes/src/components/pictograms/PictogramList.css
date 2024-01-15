@@ -76,6 +76,7 @@
 .img-list {
   background-color: aliceblue;
   border: 1px solid #000;
+  width: 8vw;
 }
 
 .edit-button {

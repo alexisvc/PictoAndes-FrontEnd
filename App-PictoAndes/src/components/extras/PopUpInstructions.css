@@ -26,9 +26,26 @@
 
 .close-instructions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+
+.contenedor-titulo-instructions {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-instructions {
+  text-align: center;
+  margin: 0;
+  font-family: 'Satisfy', cursive;
+  font-size: 6vh;
+  color: orange;
+  margin: 0;
+  -webkit-text-stroke: 1px black;
 }
 
 .close-button-instructions {
@@ -46,13 +63,6 @@
   }
 }
 
-.titulo-instructions {
-  font-family: 'Satisfy', cursive;
-  font-size: 6vh;
-  color: yellow;
-  margin: 0;
-  -webkit-text-stroke: 1px black;
-}
 
 .subtitulo-instructions {
   font-size: 3vh;
@@ -60,7 +70,7 @@
 }
 
 .img-instructions {
-  height: 30vh;
+  height: 50vh;
   margin: 2vh;
 }
 

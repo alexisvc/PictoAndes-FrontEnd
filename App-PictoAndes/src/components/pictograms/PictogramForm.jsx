@@ -6,6 +6,7 @@ import {
   FaQuestion,
   FaSave,
   FaTimes,
+  FaYoutube,
 } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,19 +20,21 @@ export default function PictogramForm({ createPictogram, pictograms }) {
   const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
 
   const [nameValue, setNameValue] = useState("");
-  const [categoryValue, setCategoryValue] = useState("");
+  const [categoryValue, setCategoryValue] = useState("Personalizados");
   const [image, setImage] = useState(null);
   const navigate = useNavigate();
 
   const uniqueCategories = [
-    ...new Set(
-      pictograms.map((pictogram) => pictogram.category)
-    ),
-  ];
-  
-  // Añade "Personalizados" solo si no existe
-  if (!uniqueCategories.includes("Personalizados")) {
-    uniqueCategories.push("Personalizados");
+    ...new Set(pictograms.map((pictogram) => pictogram.category)),
+  ].sort();
+
+  // Mueve "Personalizados" al principio si ya existe, o agrégalo al principio si no existe
+  if (uniqueCategories.includes("Personalizados")) {
+    uniqueCategories.unshift(
+      ...uniqueCategories.splice(uniqueCategories.indexOf("Personalizados"), 1)
+    );
+  } else {
+    uniqueCategories.unshift("Personalizados");
   }
 
   const handleSubmit = async (e) => {
@@ -56,13 +59,10 @@ export default function PictogramForm({ createPictogram, pictograms }) {
       navigate("/pictogram-menu");
     } catch (error) {
       // Notificación de error
-      toast.error(
-        "Error al crear el pictograma.",
-        {
-          position: "top-right",
-          autoClose: 3000,
-        }
-      );
+      toast.error("Error al crear el pictograma.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
       setNameValue("");
       setCategoryValue("");
       setImage(null);
@@ -71,18 +71,23 @@ export default function PictogramForm({ createPictogram, pictograms }) {
 
   return (
     <div className="create-content">
-      {isPopUpOpen && 
-        <PopUpHelp 
-          onClose={() => {setIsPopUpOpen(false)}}
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
           url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
         />
-      }
-      {isPopUpOpenInstructions &&
+      )}
+      {isPopUpOpenInstructions && (
         <PopUpInstructions
           instructions={"En esta sección podrás crear y listar pictogramas"}
           url={"/src/assets/characters/condor.png"}
-          onClose={() => {setIsPopUpOpenInstructions(false)}} />
-      }
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -94,7 +99,7 @@ export default function PictogramForm({ createPictogram, pictograms }) {
         </button>
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaHome />
@@ -106,15 +111,15 @@ export default function PictogramForm({ createPictogram, pictograms }) {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>
         </button>
       </div>
@@ -162,9 +167,7 @@ export default function PictogramForm({ createPictogram, pictograms }) {
                 <FaSave />
                 <span>Guardar</span>
               </button>
-              <button
-                onClick={() => navigate("/pictogram-menu")}
-              >
+              <button onClick={() => navigate("/pictogram-menu")}>
                 <FaTimes />
                 <span>Cancelar</span>
               </button>

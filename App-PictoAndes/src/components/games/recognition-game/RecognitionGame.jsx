@@ -10,7 +10,9 @@ import {
   FaArrowCircleLeft,
   FaBookOpen,
   FaFilm,
-  FaHome
+  FaHome,
+  FaQuestion,
+  FaYoutube
 } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
@@ -74,7 +76,7 @@ function RecognitionGame({ pictograms }) {
         </button>
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaHome />
@@ -86,16 +88,16 @@ function RecognitionGame({ pictograms }) {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaFilm />
-          <span>Demostración</span>
+          <FaYoutube />
+          <span>Ayuda</span>
         </button>
       </div>
       <div className="game-canva">

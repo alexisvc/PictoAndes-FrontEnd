@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./GameMenu.css";
-import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion, FaYoutube } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../extras/PopUpHelp";
@@ -41,7 +41,7 @@ function GameMenu() {
       <div className="app-navigation">
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaArrowCircleLeft />
@@ -49,7 +49,7 @@ function GameMenu() {
         </button>
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaHome />
@@ -61,15 +61,15 @@ function GameMenu() {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>  
         </button>
       </div>

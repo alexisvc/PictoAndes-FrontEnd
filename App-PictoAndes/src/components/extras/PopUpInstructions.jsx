@@ -18,29 +18,34 @@ function PopUpInstructions({ instructions, url, onClose }) {
     <div className="popup-instructions">
       <div className="popup-content-instructions">
         <div className="close-instructions">
+          <div className="contenedor-titulo-instructions">
+            <h2 className="titulo-instructions">Indicaciones:</h2>
+          </div>
           <button className="close-button-instructions" onClick={onClose}>
             <FaTimes />
           </button>
         </div>
+
         <div>
-          <h2 className="titulo-instructions">
-            Instrucciones:
-          </h2>
-          <h3 className="subtitulo-instructions">
+          {/*<h3 className="subtitulo-instructions">
             {instructions}
-          </h3>
-          <img src={url} alt="Imagen de instrucciones" className="img-instructions" />
+  </h3>*/}
+          <img
+            src={url}
+            alt="Imagen de instrucciones"
+            className="img-instructions"
+          />
         </div>
         <div className="footer-button">
-        <button
-          onClick={() => {
-            handleSpeechClick();
-          }}
-        >
-          <FiVolume2 />
-          <span>Audio</span>
-        </button>
-      </div>
+          <button
+            onClick={() => {
+              handleSpeechClick();
+            }}
+          >
+            <FiVolume2 />
+            <span>Audio</span>
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -5,11 +5,11 @@ import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import {
   FaArrowCircleLeft,
   FaArrowLeft,
-  FaArrowRight,
   FaBookOpen,
   FaHome,
   FaPlayCircle,
   FaQuestion,
+  FaYoutube,
 } from "react-icons/fa";
 import { FiDelete, FiTrash2 } from "react-icons/fi";
 import PopUpHelp from "../extras/PopUpHelp";
@@ -28,7 +28,9 @@ export function PictogramDisplay({ images }) {
   // Obtiene las categorías de los pictogramas y las filtra para que no se muestren en el menú
   const categories = Array.from(
     new Set(images.map((image) => image.category))
-  ).filter((categoria) => categoria !== "Pronombres" && categoria !== "Verbos");
+  )
+    .filter((categoria) => categoria !== "Pronombres" && categoria !== "Verbos")
+    .sort();
   // Filtra los pictogramas por categoría para mostrarlos en la columna de pronombres
   const pronounsPictograms = () =>
     images.filter((image) => image.category === "Pronombres");
@@ -109,7 +111,7 @@ export function PictogramDisplay({ images }) {
         />
       )}
       <div className="selected-images-and-buttons">
-        <div className="button-acc">
+        <div className="button-nav">
           <button
             onClick={() => {
               navigate("/acc-menu");
@@ -121,30 +123,12 @@ export function PictogramDisplay({ images }) {
           </button>
           <button
             onClick={() => {
-              navigate("/");
+              navigate("/main-menu");
             }}
             disabled={speaking}
           >
             <FaHome />
             <span>Inicio</span>
-          </button>
-          <button
-            onClick={() => {
-              setIsPopUpOpenInstructions(true);
-            }}
-            disabled={speaking}
-          >
-            <FaBookOpen />
-            <span>Instrucciones</span>
-          </button>
-          <button
-            onClick={() => {
-              setIsPopUpOpen(true);
-            }}
-            disabled={speaking}
-          >
-            <FaQuestion />
-            <span>Ayuda</span>
           </button>
         </div>
 
@@ -158,9 +142,9 @@ export function PictogramDisplay({ images }) {
         </div>
 
         <div className="button-acc">
-          <button onClick={handleDeleteLastImage} disabled={speaking}>
+        <button onClick={handleDeleteLastImage} disabled={speaking}>
             <FiDelete />
-            <span>Eliminar</span>
+            <span>Quitar</span>
           </button>
           <button onClick={handleReadSelectedImages} disabled={speaking}>
             <FaPlayCircle />
@@ -168,7 +152,28 @@ export function PictogramDisplay({ images }) {
           </button>
           <button onClick={handleDeleteAllImages} disabled={speaking}>
             <FiTrash2 />
-            <span>Eliminar</span>
+            <span>Borrar</span>
+          </button>
+        </div>
+
+        <div className="button-nav">
+          <button
+            onClick={() => {
+              setIsPopUpOpenInstructions(true);
+            }}
+            disabled={speaking}
+          >
+            <FaQuestion />
+            <span>Indicaciones</span>
+          </button>
+          <button
+            onClick={() => {
+              setIsPopUpOpen(true);
+            }}
+            disabled={speaking}
+          >
+            <FaYoutube />
+            <span>Ayuda</span>
           </button>
         </div>
       </div>
@@ -233,7 +238,11 @@ export function PictogramDisplay({ images }) {
                 onClick={() => handleCategoryFilter(category)}
               >
                 <span>
-                  <FaArrowRight size={50} />
+                  <img
+                    className="category-icon"
+                    src={`http://localhost:3001/icons/${category}.png`}
+                    alt={category}
+                  />
                 </span>
                 <span>{category}</span>
               </button>

@@ -42,7 +42,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #ccc;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 5px;
   text-align: center;
@@ -60,16 +60,17 @@
 .selected-images .card img {
   width: 10vh;
   height: 10vh;
-  background-color: darkorange;
+  background-color: white;
 }
 
-.button-acc {
+/*Btns para navegar*/
+.button-nav {
   display: flex;
   align-items: center;
   margin: auto 20px;
 }
 
-.button-acc button {
+.button-nav button {
   font-family: 'Satisfy', cursive;
   padding: 1.5vh;
   margin: 1vh;
@@ -86,9 +87,51 @@
   align-items: center; 
 }
 
-.button-acc button span {
+.button-nav button span {
   margin-top: 0.5vh;
   font-size: 2vh;
+  font-weight: bold;
+}
+
+.button-nav button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button-nav button:hover {
+  background-color: #66D7D1;
+}
+
+/*Btns para ACC*/
+.button-acc {
+  display: flex;
+  align-items: center;
+  margin: auto 20px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.button-acc button {
+  font-family: 'Satisfy', cursive;
+  padding: 1vh;
+  margin: 1vh;
+  color: #EAF2E3;
+  background-color: #50a8a3;
+  border: none;
+  border-radius: 5px;
+  font-size: 5vh;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.button-acc button span {
+  margin-top: 0.5vh;
+  font-size: 1.75vh;
   font-weight: bold;
 }
 
@@ -98,7 +141,7 @@
 }
 
 .button-acc button:hover {
-  background-color: #66D7D1;
+  background-color: #FF637D;
 }
 
 .grid-acc {
@@ -169,7 +212,7 @@
   border-radius: 5px;
   cursor: pointer;
   text-align: center;
-  width: 15%;
+  width: 13%;
   border: none;
   font-family: 'Satisfy', cursive;
 }
@@ -181,8 +224,13 @@
 .categories span {
   margin: 5px;
   color: #fff;
-  font-size: 1.75vh;
+  font-size: 2vh;
   font-weight: bold;
+}
+
+.category-icon {
+  width: 10vh;
+  height: 10vh;
 }
 
 .card {
@@ -196,12 +244,20 @@
   padding: 10px 5px;
   margin: 7px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
+.card:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+
 
 .card p {
   margin: 5px 0 0 0;
   color: #000;
-  font-size: 1.75vh;
+  font-size: 2vh;
 }
 
 .icon {
@@ -231,3 +287,4 @@
   border: none;
   margin: 3px;
 }
+

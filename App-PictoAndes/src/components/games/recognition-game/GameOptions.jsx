@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./GameOptions.css";
-import { FaArrowCircleLeft, FaBookOpen, FaCircle, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBookOpen, FaCircle, FaHome, FaQuestion, FaYoutube } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
 import { FiVolume2 } from "react-icons/fi";
@@ -54,7 +54,7 @@ function GameOptions() {
         </button>
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaHome />
@@ -66,15 +66,15 @@ function GameOptions() {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>
         </button>
       </div>

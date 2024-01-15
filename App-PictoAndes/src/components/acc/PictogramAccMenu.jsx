@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion } from "react-icons/fa";
+import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion, FaYoutube } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { useNavigate } from "react-router-dom";
@@ -39,7 +39,7 @@ function PictogramAccMenu() {
       <div className="app-navigation">
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaArrowCircleLeft />
@@ -47,7 +47,7 @@ function PictogramAccMenu() {
         </button>
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaHome />
@@ -59,15 +59,15 @@ function PictogramAccMenu() {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>
         </button>
       </div>

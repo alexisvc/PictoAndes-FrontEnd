@@ -6,6 +6,7 @@ import {
   FaBookOpen,
   FaHome,
   FaQuestion,
+  FaYoutube,
 } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
@@ -40,7 +41,7 @@ function PictogramMenu() {
       {isPopUpOpenInstructions && (
         <PopUpInstructions
           instructions={"En esta sección podrás crear y listar pictogramas"}
-          url={"/src/assets/characters/condor.png"}
+          url={"public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -49,7 +50,7 @@ function PictogramMenu() {
       <div className="app-navigation">
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu");
           }}
         >
           <FaArrowCircleLeft />
@@ -57,7 +58,7 @@ function PictogramMenu() {
         </button>
         <button
           onClick={() => {
-            navigate("/");
+            navigate("/main-menu  ");
           }}
         >
           <FaHome />
@@ -69,15 +70,15 @@ function PictogramMenu() {
             setIsPopUpOpenInstructions(true);
           }}
         >
-          <FaBookOpen />
-          <span>Instrucciones</span>
+          <FaQuestion />
+          <span>Indicaciones</span>
         </button>
         <button
           onClick={() => {
             setIsPopUpOpen(true);
           }}
         >
-          <FaQuestion />
+          <FaYoutube />
           <span>Ayuda</span>
         </button>
       </div>

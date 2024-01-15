@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
   FaBookOpen,
-  FaCircle,
   FaEdit,
   FaHome,
   FaQuestion,
   FaTrash,
+  FaYoutube,
 } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "./PictogramList.css";
@@ -23,14 +23,18 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const [showEditForm, setShowEditForm] = useState(false);
   const [selectedPictogram, setSelectedPictogram] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("todos");
-  const uniqueCategories = [
-    ...new Set(
-      pictograms.map((pictogram) => pictogram.category)
-    ),
-  ];
 
-  if (!uniqueCategories.includes("Personalizados")) {
-    uniqueCategories.push("Personalizados");
+  const uniqueCategories = [
+    ...new Set(pictograms.map((pictogram) => pictogram.category)),
+  ].sort();
+
+  // Mueve "Personalizados" al principio si ya existe, o agrégalo al principio si no existe
+  if (uniqueCategories.includes("Personalizados")) {
+    uniqueCategories.unshift(
+      ...uniqueCategories.splice(uniqueCategories.indexOf("Personalizados"), 1)
+    );
+  } else {
+    uniqueCategories.unshift("Personalizados");
   }
 
   const filteredPictograms =
@@ -85,7 +89,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           </button>
           <button
             onClick={() => {
-              navigate("/");
+              navigate("/main-menu");
             }}
           >
             <FaHome />
@@ -97,15 +101,15 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               setIsPopUpOpenInstructions(true);
             }}
           >
-            <FaBookOpen />
-            <span>Instrucciones</span>
+            <FaQuestion />
+            <span>Indicaciones</span>
           </button>
           <button
             onClick={() => {
               setIsPopUpOpen(true);
             }}
           >
-            <FaQuestion />
+            <FaYoutube />
             <span>Ayuda</span>
           </button>
         </div>
