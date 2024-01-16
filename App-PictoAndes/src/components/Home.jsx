@@ -48,12 +48,10 @@ function Home({ user, logout }) {
             className="app-navigation"
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
-            {/*<button>
-              <FaSignOutAlt onClick={logout} />
-              <span>Salir</span>
-      </button>*/}
           </div>
+          <h2>Bienvenido a</h2>
           <h1>PictoAndes</h1>
+          
           <div className="welcome-img">
             <img
               src="src\assets\characters\condor.png"
@@ -74,7 +72,7 @@ function Home({ user, logout }) {
               </Link>
             </button>
             <button>
-              <Link to="register" className="link-button">
+              <Link to="/register" className="link-button">
                 <FaUserPlus />
                 <span> Registrarse</span>
               </Link>
@@ -111,7 +109,7 @@ function Home({ user, logout }) {
               <span>Salir</span>
             </button>
           </div>
-          <h1>PictoAndes</h1>
+          <h2>Bienvenido a PictoAndes</h2>
           <div className="home-content">
             <img
             src="public\messages\2.png" 

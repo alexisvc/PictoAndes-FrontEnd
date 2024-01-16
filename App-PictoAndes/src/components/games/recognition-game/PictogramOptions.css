@@ -12,9 +12,9 @@
 .images img {
     width: 12vh;
     height: 12vh;
-    border: 2px solid #000000;
+    border: 1.5px solid #000000;
     border-radius: 5px;
-    background-color: aqua;
+    background-color: coral;
     cursor: pointer;
 }
 
@@ -26,16 +26,14 @@
     padding: 10px 20px;
     color: #fff;
     background-color: #FF637D;
-    border: 2px solid #fa3153;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     text-align: center;
     transition: background-color 0.3s;
-  }
- 
-.options-btn button:hover {
-background-color: #66D7D1;
-border: 2px solid #036963;
 }
 
+.options-btn button:hover {
+    background-color: #66D7D1;
+}

@@ -98,13 +98,13 @@ export function PictogramDisplay({ images }) {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
         />
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
           instructions={"En esta sección podrás crear y listar pictogramas"}
-          url={"/src/assets/characters/condor.png"}
+          url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -116,7 +116,6 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               navigate("/acc-menu");
             }}
-            disabled={speaking}
           >
             <FaArrowCircleLeft />
             <span>Atrás</span>
@@ -125,7 +124,6 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               navigate("/main-menu");
             }}
-            disabled={speaking}
           >
             <FaHome />
             <span>Inicio</span>
@@ -161,7 +159,6 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               setIsPopUpOpenInstructions(true);
             }}
-            disabled={speaking}
           >
             <FaQuestion />
             <span>Indicaciones</span>
@@ -170,7 +167,6 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               setIsPopUpOpen(true);
             }}
-            disabled={speaking}
           >
             <FaYoutube />
             <span>Ayuda</span>
@@ -208,7 +204,7 @@ export function PictogramDisplay({ images }) {
         </div>
         {/* Columna de pictogramas  */}
         {isCategorySelected ? (
-          <div className="categories">
+          <div className="pictograms">
             <div
               className="card"
               onClick={() => {
@@ -219,6 +215,7 @@ export function PictogramDisplay({ images }) {
               <FaArrowLeft size={50} className="icon" />
               <p>Regresar</p>
             </div>
+            <div className="pictograms-grid">
             {filteredImages.map((image, index) => (
               <div
                 key={index}
@@ -229,6 +226,7 @@ export function PictogramDisplay({ images }) {
                 <p>{image.name}</p>
               </div>
             ))}
+            </div>
           </div>
         ) : (
           <div className="categories">

@@ -26,13 +26,13 @@ function GameMenu() {
       {isPopUpOpen && 
         <PopUpHelp 
           onClose={() => {setIsPopUpOpen(false)}}
-          url={"https://www.youtube.com/watch?v=wiglQFrf6MM"}
+          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
         />
       }
       {isPopUpOpenInstructions && (
         <PopUpInstructions
           instructions={"En esta sección podrás crear y listar pictogramas"}
-          url={"/src/assets/characters/condor.png"}
+          url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}

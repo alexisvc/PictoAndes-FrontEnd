@@ -44,7 +44,7 @@ function Welcome({ user, logout }) {
           logout={logout}
         />
       )}
-      <h1>PictoAndes</h1>
+      <h2>Bienvenido a PictoAndes</h2>
       <div className="welcome-img">
         <img
           src="src\assets\characters\condor.png"

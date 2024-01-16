@@ -70,7 +70,7 @@ export const LoginForm = ({ login }) => {
       {isPopUpOpenInstructions && (
         <PopUpInstructions
           instructions={"En esta sección podrás ingresar al sistema haciendo uso de tu usuario y contraseña. Completa cada uno de los campos para ingresar a PictoAndes."}
-          url={"/public/gifs/login.gif"}
+          url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}

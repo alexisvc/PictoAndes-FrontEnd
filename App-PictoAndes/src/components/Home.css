@@ -13,7 +13,14 @@
 
 .welcome h1 {
   font-family: 'Satisfy', cursive;
-  font-size: 15vh;
+  font-size: 12vh;
+  color: yellow;
+  margin: 0;
+  -webkit-text-stroke: 2px black;
+}
+.welcome h2 {
+  font-family: 'Satisfy', cursive;
+  font-size: 9vh;
   color: yellow;
   margin: 0;
   -webkit-text-stroke: 2px black;
@@ -100,7 +107,7 @@
 
 .home-content img {
   margin: 2vh auto;
-  height: 40vh;
+  height: 53vh;
 }
 
 .footer{

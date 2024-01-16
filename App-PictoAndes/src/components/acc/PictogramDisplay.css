@@ -117,7 +117,7 @@
   padding: 1vh;
   margin: 1vh;
   color: #EAF2E3;
-  background-color: #50a8a3;
+  background-color: #66D7D1;
   border: none;
   border-radius: 5px;
   font-size: 5vh;
@@ -185,6 +185,29 @@
   border-radius: 5px;
 }
 
+.pictograms {
+  display: grid;
+  grid-template-columns: 10% 1fr;
+  width: 98%;
+  height: 95%;
+  overflow-y: auto;
+  margin: auto;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+.pictograms-grid{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: self-start;
+  justify-content: start;
+  width: 98%;
+  height: 95%;
+  overflow-y: auto;
+}
+
 .categories {
   display: flex;
   flex-direction: row;
@@ -219,6 +242,7 @@
 
 .categories button:hover {
   background-color: #66D7D1;
+  transform: scale(1.05);
 }
 
 .categories span {
@@ -245,14 +269,14 @@
   margin: 7px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  height: fit-content;
+  width: fit-content;
 }
 
 .card:hover {
   background-color: #f0f0f0;
   transform: scale(1.05);
 }
-
-
 
 .card p {
   margin: 5px 0 0 0;
