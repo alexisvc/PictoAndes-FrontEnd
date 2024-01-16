@@ -35,6 +35,10 @@ function RecognitionGame({ pictograms }) {
     showPopUp,
     setShowPopUp,
     message,
+    handleContinue,
+    handleUpgradeDifficulty,
+    lose,
+    setLose
   } = useRecognitionGame(pictograms, difficulty);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
@@ -127,7 +131,15 @@ function RecognitionGame({ pictograms }) {
             message={message}
             onClose={() => {
               setShowPopUp(false);
+              setLose(false);
             }}
+            handleContinue={handleContinue}
+            handleFinish={() => {
+              navigate("/game-config");
+            }}
+            handleUpgradeDifficulty={handleUpgradeDifficulty}
+            difficulty={difficulty}
+            lose={lose}
           />
         )}
       </div>

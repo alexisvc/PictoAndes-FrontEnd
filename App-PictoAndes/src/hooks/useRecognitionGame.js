@@ -1,3 +1,4 @@
+// useRecognitionGame.js
 import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import { ToastContainer, toast } from "react-toastify";
@@ -5,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { Howl } from "howler";
 
-export function useRecognitionGame( pictograms, startDifficulty ) {
+export function useRecognitionGame(pictograms, startDifficulty) {
   const [currentPictograms, setCurrentPictograms] = useState([]);
   const [currentPictogram, setCurrentPictogram] = useState(null);
   const [difficulty, setDifficulty] = useState(startDifficulty);
@@ -16,11 +17,16 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
   const [resetGame, setResetGame] = useState(false);
   const [showPopUp, setShowPopUp] = useState(false);
   const [message, setMessage] = useState("");
+  const [lose, setLose] = useState(false);
 
-  const correctSoundHowl = new Howl({ src: '/sonidos/correct-choice-43861.mp3' });
-  const successSoundHowl = new Howl({ src: '/sonidos/success.mp3' });
-  const incorrectSoundHowl = new Howl({ src: '/sonidos/negative_beeps-6008.mp3' });
-  
+  const correctSoundHowl = new Howl({
+    src: "/sonidos/correct-choice-43861.mp3",
+  });
+  const successSoundHowl = new Howl({ src: "/sonidos/success.mp3" });
+  const incorrectSoundHowl = new Howl({
+    src: "/sonidos/negative_beeps-6008.mp3",
+  });
+
   const navigate = useNavigate();
 
   const getRandomPictograms = (selectedDifficulty) => {
@@ -33,7 +39,10 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
       numberOfPictograms = 7;
     }
 
-    const shuffledPictograms = shuffleArray(pictograms).slice(0, numberOfPictograms);
+    const shuffledPictograms = shuffleArray(pictograms).slice(
+      0,
+      numberOfPictograms
+    );
     setCurrentPictograms(shuffledPictograms);
     getRandomPictogram(shuffledPictograms);
   };
@@ -42,7 +51,10 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
     const shuffledArray = [...array];
     for (let i = shuffledArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      [shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ];
     }
     return shuffledArray;
   };
@@ -62,26 +74,19 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
       const utterance = new SpeechSynthesisUtterance(textToSpeak);
       utterance.rate = 0.75; // 0.1 - 10
 
-      // Obtener la voz por defecto "Microsoft Sabina - Spanish (Mexico)"
       const voices = window.speechSynthesis.getVoices();
-      const defaultVoice = voices.find(voice => (
-        voice.name === "Microsoft Sabina - Spanish (Mexico)"
-        //voice.name === "Microsoft Raul - Spanish (Mexico)"
-        //voice.name === "Microsoft Helena - Spanish (Spain)"
-        //voice.name === "Microsoft Laura - Spanish (Spain)"
-        //voice.name === "Microsoft Pablo - Spanish (Spain)"
-        //voice.name === "Google español"
-        //voice.name === "Google español de Estados Unidos"
-      ));
+      const defaultVoice = voices.find(
+        (voice) => voice.name === "Microsoft Sabina - Spanish (Mexico)"
+      );
 
       if (defaultVoice) {
         utterance.voice = defaultVoice;
       } else {
-        console.error('La voz por defecto no está disponible.');
+        console.error("La voz por defecto no está disponible.");
       }
       synthesis.speak(utterance);
     } else {
-      console.error('La síntesis de voz no está soportada en este navegador.');
+      console.error("La síntesis de voz no está soportada en este navegador.");
     }
   };
 
@@ -94,7 +99,9 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
       });
       correctSoundHowl.play();
       setPoints(points + 1);
-      const updatedPictograms = currentPictograms.filter((pictogram) => pictogram.name !== imageName);
+      const updatedPictograms = currentPictograms.filter(
+        (pictogram) => pictogram.name !== imageName
+      );
       setCurrentPictograms(updatedPictograms);
 
       if (updatedPictograms.length > 0) {
@@ -103,25 +110,15 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
         setBadges(badges + 1);
         if (difficulty === "Fácil") {
           setShowPopUp(true);
-          setMessage("¡Has completado el nivel!")
-          //setTimeout(() => {
-            setDifficulty("Normal");
-            getRandomPictograms("Normal");
-            navigate("/recognition-game/Normal");
-          //}, 2000);
+          setMessage("¡Has completado el nivel!");
           successSoundHowl.play();
-        } else if (difficulty === "Normal") { 
+        } else if (difficulty === "Normal") {
           setShowPopUp(true);
-          setMessage("¡Has completado el nivel!")
-          //setTimeout(() => {
-            setDifficulty("Difícil");
-            getRandomPictograms("Difícil");
-            navigate("/recognition-game/Difícil");
-          //}, 2000);
+          setMessage("¡Has completado el nivel!");
           successSoundHowl.play();
         } else {
           setShowPopUp(true);
-          setMessage("¡Has completado el juego!")
+          setMessage("¡Has completado el juego!");
           successSoundHowl.play();
         }
       }
@@ -137,17 +134,18 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
           position: "top-center",
           autoClose: 2000,
         });
-        if ( difficulty === "Fácil" ) {
+        setLose(true);
+        if (difficulty === "Fácil") {
           setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!")
+          setMessage("¡Has perdido todas tus vidas!");
           setDifficulty("Fácil");
           getRandomPictograms("Fácil");
           setBadges(0);
           setPoints(0);
           setLives(5);
-        } else if ( difficulty === "Normal" ) {
+        } else if (difficulty === "Normal") {
           setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!")
+          setMessage("¡Has perdido todas tus vidas!");
           setDifficulty("Fácil");
           getRandomPictograms("Fácil");
           setBadges(0);
@@ -155,7 +153,7 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
           setLives(5);
         } else {
           setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!")
+          setMessage("¡Has perdido todas tus vidas!");
           setDifficulty("Fácil");
           getRandomPictograms("Fácil");
           setBadges(0);
@@ -168,11 +166,31 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
 
   const handleResetGame = () => {
     setResetGame(true);
-    setDifficulty("Fácil");
+    setDifficulty(difficulty);
     setBadges(0);
     setPoints(0);
     setLives(5);
-    navigate("/");
+  };
+
+  const handleContinue = () => {
+    setLives(5);
+    setPoints(0);
+    setResetGame(true);
+    setShowPopUp(false);
+  };
+
+  const handleUpgradeDifficulty = () => {
+    setLives(5);
+    setPoints(0);
+    if (difficulty === "Fácil") {
+      setDifficulty("Normal");
+      navigate("/recognition-game/Normal");
+    } else if (difficulty === "Normal") {
+      setDifficulty("Difícil");
+      navigate("/recognition-game/Difícil");
+    }
+    setResetGame(true);
+    setShowPopUp(false);
   };
 
   useEffect(() => {
@@ -198,5 +216,9 @@ export function useRecognitionGame( pictograms, startDifficulty ) {
     showPopUp,
     setShowPopUp,
     message,
+    handleContinue,
+    handleUpgradeDifficulty,
+    lose,
+    setLose,
   };
 }
