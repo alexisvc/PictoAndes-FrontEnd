@@ -1,7 +1,7 @@
 // PopUp.js
 import React from "react";
 import "./PopUp.css";
-import { FaTimes } from "react-icons/fa";
+import { FaArrowUp, FaRedo, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { useNavigate } from "react-router-dom";
@@ -42,18 +42,18 @@ function PopUp({
           <div className="popup-btns">
             {!lose ? (
               <>
-                <button onClick={handleContinue}>Seguir jugando</button>
-                <button onClick={handleFinish}>Salir al menú</button>
+                <button onClick={handleContinue}> <FaRedo/> Seguir jugando</button>
+                <button onClick={handleFinish}> <FaSignOutAlt/> Salir al menú</button>
                 {difficulty !== "Difícil" && lose !== true ? (
                   <button onClick={handleUpgradeDifficulty}>
-                    Subir Dificultad
+                    <FaArrowUp/>  Subir Dificultad
                   </button>
                 ) : null}
               </>
             ) : (
               <>
-                <button onClick={onClose}>Intentar de nuevo</button>
-                <button onClick={handleFinish}>Salir al menú</button>
+                <button onClick={onClose}> <FaRedo/> Intentar de nuevo</button>
+                <button onClick={handleFinish}> <FaSignOutAlt/> Salir al menú</button>
               </>
             )}
           </div>

@@ -135,6 +135,7 @@ export function useRecognitionGame(pictograms, startDifficulty) {
           autoClose: 2000,
         });
         setLose(true);
+        //Revisar esto porque creo que no es necesario
         if (difficulty === "Fácil") {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!");
@@ -146,16 +147,16 @@ export function useRecognitionGame(pictograms, startDifficulty) {
         } else if (difficulty === "Normal") {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!");
-          setDifficulty("Fácil");
-          getRandomPictograms("Fácil");
+          setDifficulty("Normal");
+          getRandomPictograms("Normal");
           setBadges(0);
           setPoints(0);
           setLives(5);
         } else {
           setShowPopUp(true);
           setMessage("¡Has perdido todas tus vidas!");
-          setDifficulty("Fácil");
-          getRandomPictograms("Fácil");
+          setDifficulty("Dificil");
+          getRandomPictograms("Dificil");
           setBadges(0);
           setPoints(0);
           setLives(5);
