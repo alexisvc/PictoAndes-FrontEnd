@@ -29,13 +29,13 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   ].sort();
 
   // Mueve "Personalizados" al principio si ya existe, o agrégalo al principio si no existe
-  if (uniqueCategories.includes("Personalizados")) {
+  /*if (uniqueCategories.includes("Personalizados")) {
     uniqueCategories.unshift(
       ...uniqueCategories.splice(uniqueCategories.indexOf("Personalizados"), 1)
     );
   } else {
     uniqueCategories.unshift("Personalizados");
-  }
+  }*/
 
   const filteredPictograms =
     selectedCategory === "todos"
