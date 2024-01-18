@@ -144,7 +144,7 @@ const RegistrationForm = () => {
               <p>Nombre completo:</p>
               <input
                 type="text"
-                placeholder="Ingresa tu nombre"
+                placeholder="Ingresa tu nombre. Ej: Alexis Vizuete"
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -156,7 +156,7 @@ const RegistrationForm = () => {
               <p>Usuario:</p>
               <input
                 type="text"
-                placeholder="Ingresa tu nombre de usuario"
+                placeholder="Ingresa tu nombre de usuario. Ej: alexisvc22"
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}

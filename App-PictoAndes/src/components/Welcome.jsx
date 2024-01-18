@@ -6,6 +6,7 @@ import {
   FaGamepad,
   FaSignInAlt,
   FaSignOutAlt,
+  FaUserAlt,
   FaUserPlus,
 } from "react-icons/fa";
 import FloatingMenu from "./Extras/FloatingMenu";
@@ -25,14 +26,18 @@ function Welcome({ user, logout }) {
         className="app-navigation"
         style={{ display: "flex", justifyContent: "flex-end" }}
       >
-        { isLoggedIn && (<button>
-          <FaSignOutAlt onClick={logout} />
-          <span>Salir</span>
-        </button> )}
-        {/*<button onClick={handleMenuClick}>
-          <FaBars />
-          <span>Menú</span>
-        </button>*/}
+        {isLoggedIn && (
+          <>
+            <div className="user">
+              <FaUserAlt />
+              <span>{user.username}</span>
+            </div>
+            <button>
+              <FaSignOutAlt onClick={logout} />
+              <span>Salir</span>
+            </button>
+          </>
+        )}
       </div>
 
       {isMenuOpen && (
@@ -51,7 +56,7 @@ function Welcome({ user, logout }) {
           alt="imagen de la aventura"
         />
       </div>
-      
+
       {isLoggedIn && (
         <div>
           <button>

@@ -6,6 +6,7 @@ import {
   FaGamepad,
   FaSignInAlt,
   FaSignOutAlt,
+  FaUserAlt,
   FaUserPlus,
 } from "react-icons/fa";
 import FloatingMenu from "./Extras/FloatingMenu";
@@ -104,6 +105,10 @@ function Home({ user, logout }) {
             className="app-navigation"
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
+            <div className="user"> 
+              <FaUserAlt />
+              <span>{user.username}</span>
+            </div>
             <button>
               <FaSignOutAlt onClick={logout} />
               <span>Salir</span>

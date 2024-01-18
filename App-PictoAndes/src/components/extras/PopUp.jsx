@@ -28,9 +28,9 @@ function PopUp({
     <div className="popup">
       <div className="popup-content">
         <div className="close">
-          <button className="close-button" onClick={onClose}>
+          {/*<button className="close-button" onClick={onClose}>
             <FaTimes />
-          </button>
+  </button>*/}
         </div>
         <p>{message}</p>
         <div className="popup-img-btn">

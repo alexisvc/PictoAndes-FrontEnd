@@ -137,8 +137,8 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
             <table className="pictogram-table">
               <thead>
                 <tr>
-                  <th>Nombre</th>
                   <th>Categoría</th>
+                  <th>Nombre</th>
                   <th>Pictograma</th>
                   <th></th>
                 </tr>
@@ -146,8 +146,8 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               <tbody>
                 {filteredPictograms.map((pictogram) => (
                   <tr key={pictogram.id}>
-                    <td>{pictogram.name}</td>
                     <td>{pictogram.category}</td>
+                    <td>{pictogram.name}</td>
                     <td>
                       <img
                         className="img-list"

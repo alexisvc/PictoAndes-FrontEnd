@@ -38,7 +38,8 @@ function RecognitionGame({ pictograms }) {
     handleContinue,
     handleUpgradeDifficulty,
     lose,
-    setLose
+    setLose,
+    pointsDifficulty
   } = useRecognitionGame(pictograms, difficulty);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
@@ -110,7 +111,7 @@ function RecognitionGame({ pictograms }) {
           <img className="statment" src="/public/messages/3.png" alt="imagen" />
           </div>
           <div>
-          <GameHeader lives={lives} points={points} badges={badges} />
+          <GameHeader lives={lives} points={points} badges={badges} pointsDifficulty={pointsDifficulty} />
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./GameHeader.css";
 
-function GameHeader({ lives, points, badges }) {
+function GameHeader({ lives, points, badges, pointsDifficulty }) {
   const livesIcon = "❤️".repeat(lives);
   const badgesIcon = "⭐".repeat(badges);
 
@@ -13,7 +13,7 @@ function GameHeader({ lives, points, badges }) {
         </div>
         <div className="stat">
           <span className="stat-label">Progreso: </span>
-          <progress className="stat-progress" max={3} value={points}></progress>
+          <progress className="stat-progress" max={pointsDifficulty} value={points}></progress>
         </div>
         <div className="stat">
         <span className="stat-label">Premios: </span>

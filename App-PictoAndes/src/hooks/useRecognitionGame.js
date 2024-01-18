@@ -18,6 +18,7 @@ export function useRecognitionGame(pictograms, startDifficulty) {
   const [showPopUp, setShowPopUp] = useState(false);
   const [message, setMessage] = useState("");
   const [lose, setLose] = useState(false);
+  const [pointsDifficulty, setPointsDifficulty] = useState(3);
 
   const correctSoundHowl = new Howl({
     src: "/sonidos/correct-choice-43861.mp3",
@@ -28,6 +29,16 @@ export function useRecognitionGame(pictograms, startDifficulty) {
   });
 
   const navigate = useNavigate();
+
+  const handlePointsDifficulty = (difficulty) => {
+    if (difficulty === "Fácil") {
+      setPointsDifficulty(3);
+    } else if (difficulty === "Normal") {
+      setPointsDifficulty(5);
+    } else if (difficulty === "Difícil") {
+      setPointsDifficulty(7);
+    }
+  };
 
   const getRandomPictograms = (selectedDifficulty) => {
     let numberOfPictograms = 3;
@@ -109,16 +120,22 @@ export function useRecognitionGame(pictograms, startDifficulty) {
       } else {
         setBadges(badges + 1);
         if (difficulty === "Fácil") {
-          setShowPopUp(true);
-          setMessage("¡Has completado el nivel!");
+          setTimeout(() => {
+            setShowPopUp(true);
+            setMessage("¡Muy bien has completado el nivel!");
+          }, 1500);
           successSoundHowl.play();
         } else if (difficulty === "Normal") {
-          setShowPopUp(true);
-          setMessage("¡Has completado el nivel!");
+          setTimeout(() => {
+            setShowPopUp(true);
+            setMessage("¡Muy bien has completado el nivel!");
+          }, 1500);
           successSoundHowl.play();
         } else {
-          setShowPopUp(true);
-          setMessage("¡Has completado el juego!");
+          setTimeout(() => {
+            setShowPopUp(true);
+            setMessage("¡Muy bien has completado el nivel!");
+          }, 1500);
           successSoundHowl.play();
         }
       }
@@ -134,33 +151,18 @@ export function useRecognitionGame(pictograms, startDifficulty) {
           position: "top-center",
           autoClose: 2000,
         });
-        setLose(true);
-        //Revisar esto porque creo que no es necesario
-        if (difficulty === "Fácil") {
+        setTimeout(() => {
+          setLose(true);
           setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!");
-          setDifficulty("Fácil");
-          getRandomPictograms("Fácil");
+          setMessage("¡Ups! Has perdido el juego.");
+          setDifficulty(difficulty);
+        }, 1500);
+        setTimeout(() => {
           setBadges(0);
-          setPoints(0);
-          setLives(5);
-        } else if (difficulty === "Normal") {
-          setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!");
-          setDifficulty("Normal");
-          getRandomPictograms("Normal");
-          setBadges(0);
-          setPoints(0);
-          setLives(5);
-        } else {
-          setShowPopUp(true);
-          setMessage("¡Has perdido todas tus vidas!");
-          setDifficulty("Dificil");
-          getRandomPictograms("Dificil");
-          setBadges(0);
-          setPoints(0);
-          setLives(5);
-        }
+        setPoints(0);
+        setLives(5);
+        //getRandomPictograms(difficulty);
+        }, 1000);
       }
     }
   };
@@ -196,6 +198,7 @@ export function useRecognitionGame(pictograms, startDifficulty) {
 
   useEffect(() => {
     getRandomPictograms(difficulty);
+    handlePointsDifficulty(difficulty);
     setResetGame(false);
     const synthesis = window.speechSynthesis;
     setSynthesis(synthesis);
@@ -221,5 +224,7 @@ export function useRecognitionGame(pictograms, startDifficulty) {
     handleUpgradeDifficulty,
     lose,
     setLose,
+    pointsDifficulty,
+    setPointsDifficulty
   };
 }

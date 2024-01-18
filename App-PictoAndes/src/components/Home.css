@@ -163,6 +163,27 @@
   scale: 1.1;
 }
 
+.user{
+  font-family: 'Satisfy', cursive;
+  margin: 1vh;
+  padding: 1.5vh 2vh;
+  color: #EAF2E3;
+  background-color: #FF637D;
+  border: none;
+  border-radius: 5px;
+  font-size: 3.5vh;
+  cursor: pointer;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.user span {
+  margin-top: 2vh;
+  font-size: 2vh;
+  font-weight: bold;
+}
 
 
