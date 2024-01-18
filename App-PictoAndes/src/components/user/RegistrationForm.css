@@ -1,4 +1,4 @@
-.registration-content{
+.registration-content {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -51,16 +51,26 @@
     font-size: 6vh;
     color: #FF637D;
     -webkit-text-stroke: 0.5px black;
-    margin: 0.5vh auto;;
+    margin: 0.5vh auto;
+    ;
 }
 
 .input-terms {
     margin: 1vh auto;
 }
 
-.terms{
+.terms {
     font-size: 1.75vh;
     color: #333;
+}
+
+.password-field {
+    display: grid;
+    grid-template-columns: 1fr 10%;
+}
+.eye-icon {
+    margin: auto;
+    cursor: pointer;
 }
 
 .register-button {
@@ -81,7 +91,7 @@
     background-color: #66D7D1;
 }
 
-.footer-register{
+.footer-register {
     font-size: 2.25vh;
     color: #333;
 }

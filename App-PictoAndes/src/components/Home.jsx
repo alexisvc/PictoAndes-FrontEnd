@@ -88,10 +88,10 @@ function Home({ user, logout }) {
             </div>
             <div>
               <p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
-              <p>© 2023 PictoAndes</p>
+              <p>© 2024 PictoAndes</p>
             </div>
             <div>
-              <img
+              <img className="logo"
                 src="src\assets\logos\ludologo.png"
                 alt="imagen de la aventura"
               />

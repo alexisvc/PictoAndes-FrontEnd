@@ -46,12 +46,12 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  margin: 1.5vh auto;
+  margin: 1vh auto;
   color: #000;
 }
 
 .form-input p {
-  font-size: 2vh;
+  font-size: 1.8vh;
   color: #000;
   font-weight: bold;
   text-align: left;
@@ -66,10 +66,15 @@
 }
 
 .input-field {
-  padding: 10px;
+  padding: 7px;
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #000;
+}
+
+.eye-icon {
+  width: fit-content;
+  height: fit-content;
 }
 
 .button-container {

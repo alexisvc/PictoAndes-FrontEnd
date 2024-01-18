@@ -6,8 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./RegistrationForm.css";
 import {
   FaArrowCircleLeft,
-  FaBook,
-  FaBookOpen,
   FaHome,
   FaQuestion,
   FaYoutube,
@@ -20,10 +18,11 @@ const RegistrationForm = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [termsAccepted, setTermsAccepted] = useState(false); // Agregar estado para el checkbox
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
-  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
@@ -40,6 +39,30 @@ const RegistrationForm = () => {
       return;
     }
 
+    // Validar las contraseñas
+    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "La contraseña debe tener al menos 8 caracteres alfanuméricos.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+        }
+      );
+      setPassword("");
+      setConfirmPassword("");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("Las contraseñas no coinciden.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      setConfirmPassword("");
+      return;
+    }
+
     try {
       await registerUser({ username, name, password });
       toast.success("Registro exitoso", {
@@ -49,6 +72,7 @@ const RegistrationForm = () => {
       setUsername("");
       setName("");
       setPassword("");
+      setConfirmPassword("");
       setTermsAccepted(false);
       navigate("/login");
     } catch (error) {
@@ -60,6 +84,7 @@ const RegistrationForm = () => {
       setUsername("");
       setName("");
       setPassword("");
+      setConfirmPassword("");
       setTermsAccepted(false);
     }
   };
@@ -98,7 +123,7 @@ const RegistrationForm = () => {
         <h1>PictoAndes</h1>
         <button
           onClick={() => {
-            setIsPopUpOpenInstructions(true);
+            // Mostrar instrucciones
           }}
         >
           <FaQuestion />
@@ -106,7 +131,7 @@ const RegistrationForm = () => {
         </button>
         <button
           onClick={() => {
-            setIsPopUpOpen(true);
+            // Mostrar ayuda
           }}
         >
           <FaYoutube />
@@ -114,23 +139,6 @@ const RegistrationForm = () => {
         </button>
       </div>
       <div className="registration">
-        {isPopUpOpen && (
-          <PopUpHelp
-            onClose={() => {
-              setIsPopUpOpen(false);
-            }}
-            url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
-          />
-        )}
-        {isPopUpOpenInstructions && (
-          <PopUpInstructions
-            instructions={"En esta sección podrás crear y listar pictogramas"}
-            url={"/public/instructions/indicaciones.png"}
-            onClose={() => {
-              setIsPopUpOpenInstructions(false);
-            }}
-          />
-        )}
         <div className="img-form">
           <img
             src="src\assets\characters\condor.png"
@@ -166,15 +174,45 @@ const RegistrationForm = () => {
             </div>
             <div className="form-input">
               <p>Contraseña:</p>
-              <input
-                type="password"
-                placeholder="Ingresa tu contraseña"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="input-field"
-              />
+              <div className="password-field">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Ingresa tu contraseña"
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="input-field"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="eye-icon"
+                >
+                  {showPassword ? "👁️" : "🔒"}
+                </button>
+              </div>
+            </div>
+            <div className="form-input">
+              <p>Confirmar contraseña:</p>
+              <div className="password-field">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirma tu contraseña"
+                  name="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                  className="input-field"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="eye-icon"
+                >
+                  {showConfirmPassword ? "👁️" : "🔒"}
+                </button>
+              </div>
             </div>
             <div className="input-terms">
               <label className="terms">
@@ -192,7 +230,7 @@ const RegistrationForm = () => {
               </button>
             </div>
           </form>
-          <div className="footer-register">
+          {/*<div className="footer-register">
             <p>
               ¿Ya tienes una cuenta?
               <Link to="/login" className="register-link">
@@ -200,7 +238,7 @@ const RegistrationForm = () => {
                 Iniciar sesión
               </Link>
             </p>
-          </div>
+          </div>9*/}
         </div>
       </div>
     </div>
