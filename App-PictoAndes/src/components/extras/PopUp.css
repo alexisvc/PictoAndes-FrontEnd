@@ -36,6 +36,21 @@
   -webkit-text-stroke: 1px black;
 }
 
+.popup-content span {
+  font-family: 'Satisfy', cursive;
+  font-size: 4vh;
+  color: #333;
+  margin: 0;
+  -webkit-text-stroke: 1px black;
+}
+
+.buttons-exit {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 3vh;
+}
+
 .popup-content img{
   height: 60vh;
   width: fit-content;

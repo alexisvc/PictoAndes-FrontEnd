@@ -43,7 +43,7 @@ const RegistrationForm = () => {
     const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
     if (!passwordRegex.test(password)) {
       toast.error(
-        "La contraseña debe tener al menos 8 caracteres alfanuméricos.",
+        "La contraseña debe tener al menos 8 caracteres y contener una letra mayúscula, una minúscula, un número y un símbolo - / :; & @.?!%*",
         {
           position: "top-right",
           autoClose: 3000,

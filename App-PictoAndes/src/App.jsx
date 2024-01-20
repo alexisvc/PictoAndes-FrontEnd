@@ -24,6 +24,7 @@ import GameMenu from "./components/games/GameMenu";
 import PictogramAccMenu from "./components/acc/PictogramACCMenu";
 import GameOptions from "./components/games/recognition-game/GameOptions";
 import Welcome from "./components/Welcome";
+import AboutUs from "./components/extras/AboutUs";
 
 function App() {
   const { user, logout, login } = useUser();
@@ -31,6 +32,7 @@ function App() {
     usePictograms(user);
 
   const isLoggedIn = !!user;
+  const isGuestUser = isLoggedIn && user.username === "invitado";
 
   return (
     <div className="app">
@@ -105,16 +107,20 @@ function App() {
               }
             />
             <Route
+              path="/about-us"
+              element={ <AboutUs />}
+            />
+            <Route
               path="/main-menu"
               element={
                 isLoggedIn ? (
-                  <Welcome user={user} logout={logout} />
+                  <Welcome user={user} logout={logout} isGuestUser={isGuestUser} />
                 ) : (
                   <Home />
                 )
               }
             />
-            <Route path="/" element={<Home user={user} logout={logout} />} />
+            <Route path="/" element={<Home user={user} logout={logout} login={login} />} />
           </Routes>
         </div>
       </Router>

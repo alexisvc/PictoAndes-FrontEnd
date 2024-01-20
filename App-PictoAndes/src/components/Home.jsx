@@ -2,24 +2,21 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {
-  FaBars,
   FaGamepad,
+  FaInfoCircle,
   FaSignInAlt,
   FaSignOutAlt,
   FaUserAlt,
   FaUserPlus,
 } from "react-icons/fa";
-import FloatingMenu from "./Extras/FloatingMenu";
+
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis";
+import PopUpExit from "./extras/PopUpExit";
 
-function Home({ user, logout }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+function Home({ user, logout, login }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const { speak, speaking } = useSpeechSynthesis();
-
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const handleImageClick = () => {
     if (!speaking) {
@@ -29,16 +26,22 @@ function Home({ user, logout }) {
     }
   };
 
+  const handleGuestLogin = async () => {
+    await login({
+      username: "invitado",
+      password: "invitado",
+    });
+  };
+
   const isLoggedIn = !!user;
 
   return (
     <div className="welcome">
-      {isMenuOpen && (
-        <FloatingMenu
+      {isPopUpOpen && (
+        <PopUpExit
           onClose={() => {
-            setIsMenuOpen(false);
+            setIsPopUpOpen(false);
           }}
-          user={user}
           logout={logout}
         />
       )}
@@ -49,10 +52,16 @@ function Home({ user, logout }) {
             className="app-navigation"
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
+            <button>
+              <Link to="/about-us" className="link-button">
+                <FaInfoCircle />
+                <span>Acerca de </span>
+              </Link>
+            </button>
           </div>
           <h2>Bienvenido a</h2>
           <h1>PictoAndes</h1>
-          
+
           <div className="welcome-img">
             <img
               src="src\assets\characters\condor.png"
@@ -66,7 +75,7 @@ function Home({ user, logout }) {
                 <span> Iniciar Sesión</span>
               </Link>
             </button>
-            <button>
+            <button onClick={handleGuestLogin}>
               <Link to="/" className="link-button">
                 <FaGamepad />
                 <span> Jugar como invitado</span>
@@ -86,12 +95,10 @@ function Home({ user, logout }) {
                 alt="imagen de la aventura"
               />
             </div>
+            <div></div>
             <div>
-              <p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
-              <p>© 2024 PictoAndes</p>
-            </div>
-            <div>
-              <img className="logo"
+              <img
+                className="logo"
                 src="src\assets\logos\ludologo.png"
                 alt="imagen de la aventura"
               />
@@ -105,20 +112,18 @@ function Home({ user, logout }) {
             className="app-navigation"
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
-            <div className="user"> 
+            <div className="user">
               <FaUserAlt />
-              <span>{user.username}</span>
+              <span>{user.name}</span>
             </div>
-            <button>
-              <FaSignOutAlt onClick={logout} />
+            <button onClick={() => setIsPopUpOpen(true)}>
+              <FaSignOutAlt />
               <span>Salir</span>
             </button>
           </div>
           <h2>Bienvenido a PictoAndes</h2>
           <div className="home-content">
-            <img
-            src="public\messages\2.png" 
-            alt="imagen de la aventura" />
+            <img src="public\messages\2.png" alt="imagen de la aventura" />
             <div>
               <button>
                 <Link to="/main-menu" className="link-button">

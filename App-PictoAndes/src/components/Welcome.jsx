@@ -9,19 +9,23 @@ import {
   FaUserAlt,
   FaUserPlus,
 } from "react-icons/fa";
-import FloatingMenu from "./Extras/FloatingMenu";
+import PopUpExit from "./extras/PopUpExit";
 
-function Welcome({ user, logout }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+function Welcome({ user, logout, isGuestUser }) {
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
   const isLoggedIn = !!user;
 
   return (
     <div className="welcome">
+      {isPopUpOpen && (
+        <PopUpExit
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
+          logout={logout}
+        />
+      )}
       <div
         className="app-navigation"
         style={{ display: "flex", justifyContent: "flex-end" }}
@@ -30,25 +34,16 @@ function Welcome({ user, logout }) {
           <>
             <div className="user">
               <FaUserAlt />
-              <span>{user.username}</span>
+              <span>{user.name}</span>
             </div>
-            <button>
-              <FaSignOutAlt onClick={logout} />
+            <button onClick={() => setIsPopUpOpen(true)}>
+              <FaSignOutAlt />
               <span>Salir</span>
             </button>
           </>
         )}
+        
       </div>
-
-      {isMenuOpen && (
-        <FloatingMenu
-          onClose={() => {
-            setIsMenuOpen(false);
-          }}
-          user={user}
-          logout={logout}
-        />
-      )}
       <h2>Bienvenido a PictoAndes</h2>
       <div className="welcome-img">
         <img
@@ -59,18 +54,23 @@ function Welcome({ user, logout }) {
 
       {isLoggedIn && (
         <div>
-          <button>
+          {!isGuestUser && (
+            <button>
             <Link to="/pictogram-menu" className="link-button">
+              <FaGamepad />
               <span>Pictogramas</span>
             </Link>
           </button>
+          )}
           <button>
             <Link to="/acc-menu" className="link-button">
+            <FaGamepad />
               <span>Tablero de Comunicación</span>
             </Link>
           </button>
           <button>
             <Link to="/game-menu" className="link-button">
+              <FaGamepad />
               <span>Juego de Reconocimiento</span>
             </Link>
           </button>
@@ -81,8 +81,8 @@ function Welcome({ user, logout }) {
           <img src="src\assets\logos\epn2.png" alt="imagen de la aventura" />
         </div>
         <div>
-          <p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
-          <p>© 2023 PictoAndes</p>
+          {/*<p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
+          <p>© 2023 PictoAndes</p>*/}
         </div>
         <div>
           <img
