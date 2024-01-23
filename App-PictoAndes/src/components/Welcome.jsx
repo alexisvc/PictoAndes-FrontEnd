@@ -4,8 +4,10 @@ import "./Home.css";
 import {
   FaBars,
   FaGamepad,
+  FaList,
   FaSignInAlt,
   FaSignOutAlt,
+  FaTable,
   FaUserAlt,
   FaUserPlus,
 } from "react-icons/fa";
@@ -32,10 +34,12 @@ function Welcome({ user, logout, isGuestUser }) {
       >
         {isLoggedIn && (
           <>
-            <div className="user">
-              <FaUserAlt />
-              <span>{user.name}</span>
-            </div>
+            {/*<button className="user">
+              <Link to="/edit-user" className="link-button">
+                <FaUserAlt />
+                <span>{user.name}</span>
+              </Link>
+        </button>*/}
             <button onClick={() => setIsPopUpOpen(true)}>
               <FaSignOutAlt />
               <span>Salir</span>
@@ -57,14 +61,14 @@ function Welcome({ user, logout, isGuestUser }) {
           {!isGuestUser && (
             <button>
             <Link to="/pictogram-menu" className="link-button">
-              <FaGamepad />
+              <FaList />
               <span>Pictogramas</span>
             </Link>
           </button>
           )}
           <button>
             <Link to="/acc-menu" className="link-button">
-            <FaGamepad />
+            <FaTable />
               <span>Tablero de Comunicación</span>
             </Link>
           </button>
@@ -82,7 +86,7 @@ function Welcome({ user, logout, isGuestUser }) {
         </div>
         <div>
           {/*<p>Realizado por: Vizuete Alexis || Tutora: Dra. Carrión Mayra</p>
-          <p>© 2023 PictoAndes</p>*/}
+          <p>© 2024 PictoAndes</p>*/}
         </div>
         <div>
           <img

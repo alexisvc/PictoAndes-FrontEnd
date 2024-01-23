@@ -23,7 +23,7 @@ function PictogramMenu() {
   const handleImageClick = () => {
     if (!speaking) {
       speak(
-        "Hola bienvenido al mundo de los pictogramas, selecciona una opción para continuar"
+        "Texto descriptivo"
       );
     }
   };
@@ -40,7 +40,7 @@ function PictogramMenu() {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);

@@ -17,7 +17,7 @@ function GameOptions() {
   const handleImageClick = () => {
     if (!speaking) {
       speak(
-        "Hola, a continuación se mostrarán una serie de pictogramas, debes seleccionar la que corresponda"
+        "Texto descriptivo"
       );
     }
   };
@@ -36,7 +36,7 @@ function GameOptions() {
       }
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);

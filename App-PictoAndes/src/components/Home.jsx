@@ -21,15 +21,16 @@ function Home({ user, logout, login }) {
   const handleImageClick = () => {
     if (!speaking) {
       speak(
-        "Hola bienvenido al mundo de los pictogramas, da click en el botón para continuar"
+        "Texto descriptivo"
       );
     }
   };
 
+  // Login de invitado
   const handleGuestLogin = async () => {
     await login({
-      username: "invitado",
-      password: "invitado",
+      username: "invitado@correo.com",
+      password: "invitado123@",
     });
   };
 
@@ -112,10 +113,10 @@ function Home({ user, logout, login }) {
             className="app-navigation"
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
-            <div className="user">
+            {/*<div className="user">
               <FaUserAlt />
               <span>{user.name}</span>
-            </div>
+      </div>*/}
             <button onClick={() => setIsPopUpOpen(true)}>
               <FaSignOutAlt />
               <span>Salir</span>

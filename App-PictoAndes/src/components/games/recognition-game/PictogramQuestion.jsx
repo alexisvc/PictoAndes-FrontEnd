@@ -198,11 +198,7 @@ function PictogramQuestion({ currentPictogram, handleMouseOver }) {
         <img
           className="question-img"
           src={
-            answersData.find(
-              (item) =>
-                item.name === currentPictogram.name &&
-                item.category === currentPictogram.category
-            )?.url || currentPictogram.url
+             currentPictogram.url
           }
           alt={currentPictogram.name}
         />

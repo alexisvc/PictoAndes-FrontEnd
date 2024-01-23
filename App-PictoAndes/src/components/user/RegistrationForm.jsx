@@ -23,6 +23,8 @@ const RegistrationForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+  const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
@@ -31,16 +33,16 @@ const RegistrationForm = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    if (!termsAccepted) {
+    {/*if (!termsAccepted) {
       toast.error("Debes aceptar los términos y condiciones.", {
         position: "top-right",
         autoClose: 3000,
       });
       return;
-    }
+    }*/}
 
     // Validar las contraseñas
-    const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-/:;&@.?!%*]).{8,}$/;
     if (!passwordRegex.test(password)) {
       toast.error(
         "La contraseña debe tener al menos 8 caracteres y contener una letra mayúscula, una minúscula, un número y un símbolo - / :; & @.?!%*",
@@ -66,7 +68,7 @@ const RegistrationForm = () => {
     try {
       await registerUser({ username, name, password });
       toast.success("Registro exitoso", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 3000,
       });
       setUsername("");
@@ -103,6 +105,23 @@ const RegistrationForm = () => {
 
   return (
     <div className="registration-content">
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
+          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+        />
+      )}
+      {isPopUpOpenInstructions && (
+        <PopUpInstructions
+          instructions={"Indicaciones"}
+          url={"/public/instructions/indicaciones.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -123,7 +142,7 @@ const RegistrationForm = () => {
         <h1>PictoAndes</h1>
         <button
           onClick={() => {
-            // Mostrar instrucciones
+            setIsPopUpOpenInstructions(true);
           }}
         >
           <FaQuestion />
@@ -131,7 +150,7 @@ const RegistrationForm = () => {
         </button>
         <button
           onClick={() => {
-            // Mostrar ayuda
+            setIsPopUpOpen(true);
           }}
         >
           <FaYoutube />
@@ -149,7 +168,7 @@ const RegistrationForm = () => {
           <h3>Registrarse</h3>
           <form onSubmit={handleRegister}>
             <div className="form-input">
-              <p>Nombre completo:</p>
+              <p>Nombres:</p>
               <input
                 type="text"
                 placeholder="Ingresa tu nombre. Ej: Alexis Vizuete"
@@ -161,10 +180,10 @@ const RegistrationForm = () => {
               />
             </div>
             <div className="form-input">
-              <p>Usuario:</p>
+              <p>Correo electrónico:</p>
               <input
-                type="text"
-                placeholder="Ingresa tu nombre de usuario. Ej: alexisvc22"
+                type="email"
+                placeholder="Ingresa tu corrreo electrónico. Ej: alexis@correo.com"
                 name="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -214,16 +233,7 @@ const RegistrationForm = () => {
                 </button>
               </div>
             </div>
-            <div className="input-terms">
-              <label className="terms">
-                <input
-                  type="checkbox"
-                  checked={termsAccepted}
-                  onChange={handleTermsAcceptedChange}
-                />
-                Acepto todos los <a href="">términos y condiciones</a>
-              </label>
-            </div>
+            
             <div>
               <button className="register-button" type="submit">
                 Registrarse

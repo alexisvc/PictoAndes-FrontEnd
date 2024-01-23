@@ -20,50 +20,72 @@ function AboutUs() {
       </div>
       <div className="about-content">
         <div className="about-column">
-          <img src="src\assets\logos\epn2.png" alt="Descripción de la imagen 1" />
+          <img
+            src="src\assets\logos\epn2.png"
+            alt="Descripción de la imagen 1"
+          />
           <h1>Escuela Politécnica Nacional </h1>
           <p>
-            En la actualidad, las personas con
-            discapacidades físicas o intelectuales enfrentan diversas
-            dificultades en su vida diaria, desde problemas de movilidad hasta
-            desafíos en la participación activa en terapias. La incorporación de
-            juegos serios para terapia y rehabilitación se presenta como una
-            herramienta prometedora para abordar estos problemas, combinando
-            elementos lúdicos con objetivos terapéuticos.
+            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
+            de las industrias desde el año 1500, cuando un impresor (N. del T.
+            persona que se dedica a la imprenta) desconocido usó una galería de
+            textos y los mezcló de tal manera que logró hacer un libro de textos
+            especimen. No sólo sobrevivió 500 años, sino que tambien ingresó
+            como texto de relleno en documentos electrónicos, quedando
+            esencialmente igual al original. Fue popularizado en los 60s con la
+            creación de las hojas "Letraset", las cuales contenian pasajes de
+            Lorem Ipsum, y más recientemente con software de autoedición, como
+            por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem
+            Ipsum.
           </p>
         </div>
 
         <div className="about-column">
-          <img src="src\assets\logos\ludologo.png" alt="Descripción de la imagen 2" />
-          <h1>Explicación del proyecto</h1>
+          <img
+            src="src\assets\characters\condor.png"
+            alt="Descripción de la imagen 2"
+          />
+          <h1>¿Qué es PictoAndes?</h1>
           <p>
-            Actualmente, existen diversas
-            aplicaciones de Comunicación Aumentativa y Alternativa (CAA), como
-            Proloquo2Go, TouchChat HD y Boardmaker, que ayudan a personas con
-            dificultades del habla. Cada aplicación tiene sus ventajas y
-            desafíos, y la elección depende de las necesidades específicas de
-            cada usuario. Sin embargo, algunas limitaciones, como costos y
-            curvas de aprendizaje, pueden afectar su accesibilidad.
+            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
+            de las industrias desde el año 1500, cuando un impresor (N. del T.
+            persona que se dedica a la imprenta) desconocido usó una galería de
+            textos y los mezcló de tal manera que logró hacer un libro de textos
+            especimen. No sólo sobrevivió 500 años, sino que tambien ingresó
+            como texto de relleno en documentos electrónicos, quedando
+            esencialmente igual al original. Fue popularizado en los 60s con la
+            creación de las hojas "Letraset", las cuales contenian pasajes de
+            Lorem Ipsum, y más recientemente con software de autoedición, como
+            por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem
+            Ipsum.
           </p>
         </div>
 
         <div className="about-column">
-          <img src="src\assets\logos\ludologo.png" alt="Descripción de la imagen 3" />
+          <img
+            src="src\assets\logos\ludologo.png"
+            alt="Descripción de la imagen 3"
+          />
           <h1>Ludolab</h1>
           <p>
-            En respuesta a estas limitaciones, se propone el desarrollo de un
-            Tablero de Comunicación Personalizable basado en imágenes o
-            símbolos. Este proyecto busca mejorar significativamente la
-            comunicación y calidad de vida de las personas con dificultades del
-            habla. Los objetivos incluyen el desarrollo de un tablero adaptable,
-            evaluaciones de usabilidad exitosas y documentación comprensible
-            para los usuarios.
+            Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+            archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar
+            de las industrias desde el año 1500, cuando un impresor (N. del T.
+            persona que se dedica a la imprenta) desconocido usó una galería de
+            textos y los mezcló de tal manera que logró hacer un libro de textos
+            especimen. No sólo sobrevivió 500 años, sino que tambien ingresó
+            como texto de relleno en documentos electrónicos, quedando
+            esencialmente igual al original. Fue popularizado en los 60s con la
+            creación de las hojas "Letraset", las cuales contenian pasajes de
+            Lorem Ipsum, y más recientemente con software de autoedición, como
+            por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem
+            Ipsum.
           </p>
         </div>
       </div>
-      <div className="footer">
-          
-      </div>
+      <div className="footer"></div>
     </div>
   );
 }

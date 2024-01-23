@@ -81,7 +81,7 @@ export default function PictogramForm({ createPictogram, pictograms }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
@@ -146,7 +146,14 @@ export default function PictogramForm({ createPictogram, pictograms }) {
                 required
               >
                 {uniqueCategories.map((category) => (
-                  <option key={category} value={category}>
+                  <option
+                    key={category}
+                    value={category}
+                    style={{
+                      fontWeight: category === "Personalizados" ? "bold" : "normal",
+                      color: category === "Personalizados" ? "red" : "black",
+                    }}
+                  >
                     {category}
                   </option>
                 ))}

@@ -30,6 +30,15 @@ function EditPictogram({
 
   const navigate = useNavigate();
 
+  // Arreglar el categories y verificar si tiene el personalizados o aumentarle
+  if (categories.includes("Personalizados")) {
+    categories.unshift(
+      ...categories.splice(categories.indexOf("Personalizados"), 1)
+    );
+  } else {
+    categories.unshift("Personalizados");
+  }
+
   const handleUpdate = async (e) => {
     e.preventDefault();
 
@@ -81,7 +90,7 @@ function EditPictogram({
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
@@ -146,7 +155,14 @@ function EditPictogram({
                 required
               >
                 {categories.map((category) => (
-                  <option key={category} value={category}>
+                  <option
+                    key={category}
+                    value={category}
+                    style={{
+                      fontWeight: category === "Personalizados" ? "bold" : "normal",
+                      color: category === "Personalizados" ? "red" : "black",
+                    }}
+                  >
                     {category}
                   </option>
                 ))}

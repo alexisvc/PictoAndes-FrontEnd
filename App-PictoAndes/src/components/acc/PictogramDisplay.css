@@ -223,7 +223,7 @@
   border-radius: 5px;
 }
 
-.categories button {
+.categories-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -240,8 +240,30 @@
   font-family: 'Satisfy', cursive;
 }
 
-.categories button:hover {
+.categories-button:hover {
   background-color: #66D7D1;
+  transform: scale(1.05);
+}
+
+.personalizados-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px;
+  padding: 10px;
+  background-color: #03756f;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 13%;
+  border: none;
+  font-family: 'Satisfy', cursive;
+}
+
+.personalizados-button:hover {
+  background-color: #ef2144;
   transform: scale(1.05);
 }
 
@@ -311,4 +333,3 @@
   border: none;
   margin: 3px;
 }
-

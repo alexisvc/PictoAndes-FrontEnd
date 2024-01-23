@@ -5,7 +5,6 @@ import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import {
   FaArrowCircleLeft,
   FaArrowLeft,
-  FaBookOpen,
   FaHome,
   FaPlayCircle,
   FaQuestion,
@@ -31,6 +30,15 @@ export function PictogramDisplay({ images }) {
   )
     .filter((categoria) => categoria !== "Pronombres" && categoria !== "Verbos")
     .sort();
+
+  // Arreglar el categories y verificar si tiene el personalizados o aumentarle
+  if (categories.includes("Personalizados")) {
+    categories.unshift(
+      ...categories.splice(categories.indexOf("Personalizados"), 1)
+    );
+  } else {
+    categories.unshift("Personalizados");
+  }
   // Filtra los pictogramas por categoría para mostrarlos en la columna de pronombres
   const pronounsPictograms = () =>
     images.filter((image) => image.category === "Pronombres");
@@ -103,7 +111,7 @@ export function PictogramDisplay({ images }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
@@ -140,7 +148,7 @@ export function PictogramDisplay({ images }) {
         </div>
 
         <div className="button-acc">
-        <button onClick={handleDeleteLastImage} disabled={speaking}>
+          <button onClick={handleDeleteLastImage} disabled={speaking}>
             <FiDelete />
             <span>Quitar</span>
           </button>
@@ -167,6 +175,7 @@ export function PictogramDisplay({ images }) {
             onClick={() => {
               setIsPopUpOpen(true);
             }}
+            className={isCategorySelected ? "" : "personalizados-button"}
           >
             <FaYoutube />
             <span>Ayuda</span>
@@ -176,7 +185,6 @@ export function PictogramDisplay({ images }) {
 
       {/* Grid para mostrar categorías y pictogramas */}
       <div className="grid-acc">
-        {/* Columna de pronombres */}
         <div className="pronouns-grid">
           {pronounsPictograms().map((image, index) => (
             <div
@@ -189,7 +197,7 @@ export function PictogramDisplay({ images }) {
             </div>
           ))}
         </div>
-        {/* Columna de acciones */}
+
         <div className="actions-grid">
           {actionsPictograms().map((image, index) => (
             <div
@@ -202,7 +210,7 @@ export function PictogramDisplay({ images }) {
             </div>
           ))}
         </div>
-        {/* Columna de pictogramas  */}
+
         {isCategorySelected ? (
           <div className="pictograms">
             <div
@@ -216,16 +224,20 @@ export function PictogramDisplay({ images }) {
               <p>Regresar</p>
             </div>
             <div className="pictograms-grid">
-            {filteredImages.map((image, index) => (
-              <div
-                key={index}
-                className="card"
-                onClick={() => handleImageClick(image.name, image.url)}
-              >
-                <img className="default-img" src={image.url} alt={image.name} />
-                <p>{image.name}</p>
-              </div>
-            ))}
+              {filteredImages.map((image, index) => (
+                <div
+                  key={index}
+                  className="card"
+                  onClick={() => handleImageClick(image.name, image.url)}
+                >
+                  <img
+                    className="default-img"
+                    src={image.url}
+                    alt={image.name}
+                  />
+                  <p>{image.name}</p>
+                </div>
+              ))}
             </div>
           </div>
         ) : (
@@ -234,6 +246,7 @@ export function PictogramDisplay({ images }) {
               <button
                 key={index}
                 onClick={() => handleCategoryFilter(category)}
+                className={category === "Personalizados" ? "personalizados-button" : "categories-button"}
               >
                 <span>
                   <img

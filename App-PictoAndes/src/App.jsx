@@ -25,6 +25,7 @@ import PictogramAccMenu from "./components/acc/PictogramACCMenu";
 import GameOptions from "./components/games/recognition-game/GameOptions";
 import Welcome from "./components/Welcome";
 import AboutUs from "./components/extras/AboutUs";
+import EditUser from "./components/user/EditUser";
 
 function App() {
   const { user, logout, login } = useUser();
@@ -32,7 +33,7 @@ function App() {
     usePictograms(user);
 
   const isLoggedIn = !!user;
-  const isGuestUser = isLoggedIn && user.username === "invitado";
+  const isGuestUser = isLoggedIn && user.username === "invitado@correo.com";
 
   return (
     <div className="app">
@@ -49,6 +50,10 @@ function App() {
             <Route
               path="/register"
               element={isLoggedIn ? <Navigate to="/" /> : <RegistrationForm />}
+            />
+            <Route
+            path="/edit-user"
+            element={ isLoggedIn ? <EditUser user={user} /> : <Home /> }
             />
             <Route
               path="/acc-menu"

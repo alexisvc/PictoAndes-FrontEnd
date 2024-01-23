@@ -18,7 +18,7 @@ function PictogramAccMenu() {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Selecciona la opción para continuar");
+      speak("Texto descriptivo");
     }
   };
 
@@ -32,7 +32,7 @@ function PictogramAccMenu() {
       }
       {isPopUpOpenInstructions &&
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {setIsPopUpOpenInstructions(false)}} />
       }

@@ -28,14 +28,14 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
     ...new Set(pictograms.map((pictogram) => pictogram.category)),
   ].sort();
 
-  // Mueve "Personalizados" al principio si ya existe, o agrégalo al principio si no existe
-  /*if (uniqueCategories.includes("Personalizados")) {
+  const personalizadosIndex = uniqueCategories.indexOf("Personalizados");
+
+  if (personalizadosIndex !== -1) {
+    // "Personalizados" existe, muévelo al principio
     uniqueCategories.unshift(
-      ...uniqueCategories.splice(uniqueCategories.indexOf("Personalizados"), 1)
+      ...uniqueCategories.splice(personalizadosIndex, 1)
     );
-  } else {
-    uniqueCategories.unshift("Personalizados");
-  }*/
+  }
 
   const filteredPictograms =
     selectedCategory === "todos"
@@ -52,7 +52,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const handleDeleteClick = (pictogram) => {
     deletePictogram(pictogram.id);
     // Notificación de éxito
-    toast.success("Pictogram deleted successfully", {
+    toast.success("Pictograma eliminado exitosamente", {
       position: "top-right",
       autoClose: 3000,
     });
@@ -70,7 +70,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
@@ -126,7 +126,15 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
               >
                 <option value="todos">Todos</option>
                 {uniqueCategories.map((category) => (
-                  <option key={category} value={category}>
+                  <option
+                    key={category}
+                    value={category}
+                    style={{
+                      fontWeight:
+                        category === "Personalizados" ? "bold" : "normal",
+                      color: category === "Personalizados" ? "red" : "black",
+                    }}
+                  >
                     {category}
                   </option>
                 ))}
@@ -191,3 +199,5 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
 }
 
 export default PictogramList;
+
+/* ... Código CSS existente ... */

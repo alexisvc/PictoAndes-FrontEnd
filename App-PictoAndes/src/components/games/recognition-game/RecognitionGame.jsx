@@ -47,7 +47,7 @@ function RecognitionGame({ pictograms }) {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Texto descriptivo con indicaciones  del juego");
+      speak("Texto descriptivo");
     }
   };
 
@@ -63,7 +63,7 @@ function RecognitionGame({ pictograms }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás crear y listar pictogramas"}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);

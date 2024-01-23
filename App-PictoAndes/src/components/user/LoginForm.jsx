@@ -18,6 +18,7 @@ import PopUpInstructions from "../extras/PopUpInstructions";
 export const LoginForm = ({ login }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
@@ -59,6 +60,7 @@ export const LoginForm = ({ login }) => {
 
   return (
     <div className="login-content">
+      <ToastContainer />
       {isPopUpOpen && (
         <PopUpHelp
           onClose={() => {
@@ -69,7 +71,7 @@ export const LoginForm = ({ login }) => {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"En esta sección podrás ingresar al sistema haciendo uso de tu usuario y contraseña. Completa cada uno de los campos para ingresar a PictoAndes."}
+          instructions={"Indicaciones"}
           url={"/public/instructions/indicaciones.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
@@ -116,10 +118,10 @@ export const LoginForm = ({ login }) => {
           <h2 className="login-heading">Iniciar Sesión</h2>
           <form onSubmit={handleLogin}>
             <div className="form-input">
-              <p>Usuario:</p>
+              <p>Correo Electrónico:</p>
               <input
-                type="text"
-                placeholder="Introduce tu nombre de usuario"
+                type="email"
+                placeholder="Ingresa tu correo electrónico. Ej: alexis@correo.com"
                 value={username}
                 name="username"
                 onChange={(e) => setUsername(e.target.value)}
@@ -129,15 +131,24 @@ export const LoginForm = ({ login }) => {
             </div>
             <div className="form-input">
               <p>Contraseña:</p>
-              <input
-                type="password"
-                placeholder="Ingresa tu contraseña"
-                value={password}
-                name="password"
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="input-field"
-              />
+              <div className="password-field">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Ingresa tu contraseña"
+                  value={password}
+                  name="password"
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="input-field"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="eye-icon"
+                >
+                  {showPassword ? "👁️" : "🔒"}
+                </button>
+              </div>
             </div>
             <div>
               <button className="login-button">Ingresar</button>
@@ -163,3 +174,5 @@ export const LoginForm = ({ login }) => {
     </div>
   );
 };
+
+export default LoginForm;

@@ -105,7 +105,7 @@ export function useRecognitionGame(pictograms, startDifficulty) {
     if (currentPictogram && currentPictogram.name === imageName) {
       confetti();
       toast.success("¡Muy bien!", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 2000,
       });
       correctSoundHowl.play();
@@ -141,14 +141,14 @@ export function useRecognitionGame(pictograms, startDifficulty) {
       }
     } else {
       toast.error("Incorrecto. Intenta de nuevo ...", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 2000,
       });
       incorrectSoundHowl.play();
       setLives(lives - 1);
       if (lives - 1 === 0) {
         toast.error("¡Has perdido todas tus vidas!", {
-          position: "top-center",
+          position: "top-right",
           autoClose: 2000,
         });
         setTimeout(() => {
