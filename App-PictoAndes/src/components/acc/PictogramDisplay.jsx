@@ -36,9 +36,8 @@ export function PictogramDisplay({ images }) {
     categories.unshift(
       ...categories.splice(categories.indexOf("Personalizados"), 1)
     );
-  } else {
-    categories.unshift("Personalizados");
   }
+
   // Filtra los pictogramas por categoría para mostrarlos en la columna de pronombres
   const pronounsPictograms = () =>
     images.filter((image) => image.category === "Pronombres");
