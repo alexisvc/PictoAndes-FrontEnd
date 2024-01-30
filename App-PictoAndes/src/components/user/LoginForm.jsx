@@ -50,14 +50,6 @@ export const LoginForm = ({ login }) => {
     }
   };
 
-  const handleImageClick = () => {
-    if (!speaking) {
-      speak(
-        "Hola bienvenido al mundo de los pictogramas, selecciona una opción para continuar"
-      );
-    }
-  };
-
   return (
     <div className="login-content">
       <ToastContainer />
@@ -71,8 +63,8 @@ export const LoginForm = ({ login }) => {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Para iniciar sesión ingresa tu correo y contraseña."}
+          url={"public/instructions/login-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -166,7 +158,7 @@ export const LoginForm = ({ login }) => {
         </div>
         <div className="img-form">
           <img
-            src="src\assets\characters\condor.png"
+            src="public\characters\andino.png"
             alt="imagen de la aventura"
           />
         </div>

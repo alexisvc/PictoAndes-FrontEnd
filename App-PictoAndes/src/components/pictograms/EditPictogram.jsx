@@ -90,8 +90,8 @@ function EditPictogram({
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Modifica la información de tus pictogramas aquí."}
+          url={"public/instructions/edit-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -191,7 +191,7 @@ function EditPictogram({
         <div className="img-form">
           {/*<img src={pictogram.url} alt={pictogram.name} />*/}
           <img
-            src="src\assets\characters\condor.png"
+            src="public\characters\andino.png"
             alt="imagen de la aventura"
           />
         </div>

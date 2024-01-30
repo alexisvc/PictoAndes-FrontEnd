@@ -30,16 +30,16 @@
     justify-content: space-evenly;
 }
 
-.difficulty-buttons button {
-    font-size: 2.5vh;
-    padding: 1.5vh 2vw;
-    background-color: #FF637D;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-family: 'Satisfy', cursive;
-}
+    .difficulty-buttons button {
+        font-size: 2.5vh;
+        padding: 1.5vh 2vw;
+        background-color: #FF637D;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Satisfy', cursive;
+    }
 
 .difficulty-buttons button:hover {
     background-color: #66D7D1;

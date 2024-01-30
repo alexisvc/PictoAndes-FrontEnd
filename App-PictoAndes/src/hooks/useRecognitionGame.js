@@ -154,7 +154,7 @@ export function useRecognitionGame(pictograms, startDifficulty) {
         setTimeout(() => {
           setLose(true);
           setShowPopUp(true);
-          setMessage("¡Ups! Has perdido el juego.");
+          setMessage("Has perdido todas tus vidas.");
           setDifficulty(difficulty);
         }, 1500);
         setTimeout(() => {

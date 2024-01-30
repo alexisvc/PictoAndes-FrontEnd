@@ -20,7 +20,7 @@ function PopUp({
 
   const handleImageClick = () => {
     if (!speaking) {
-      speak("Texto descriptivo");
+      speak(message);
     }
   };
 
@@ -32,23 +32,34 @@ function PopUp({
             <FaTimes />
   </button>*/}
         </div>
-        <p>{message}</p>
+        {/*<p>{message}</p>*/}
         <div className="popup-img-btn">
-          <img
-            src="/public/messages/2.png"
-            alt="Mensaje"
-            onClick={handleImageClick}
-          />
+          {lose ? (
+            <img
+              src="/public/instructions/lose-message.png"
+              alt="Perdiste"
+              onClick={handleImageClick}
+            />
+          ) : 
+          (
+            <img
+              src="/public/instructions/win-message.png"
+              alt="Ganaste"
+              onClick={handleImageClick}
+            />
+          )
+          }
           <div className="popup-btns">
             {!lose ? (
               <>
                 <button onClick={handleContinue}> <FaRedo/> Seguir jugando</button>
-                <button onClick={handleFinish}> <FaSignOutAlt/> Salir al menú</button>
+                
                 {difficulty !== "Difícil" && lose !== true ? (
                   <button onClick={handleUpgradeDifficulty}>
                     <FaArrowUp/>  Subir Dificultad
                   </button>
                 ) : null}
+                <button onClick={handleFinish}> <FaSignOutAlt/> Salir al menú</button>
               </>
             ) : (
               <>
@@ -61,6 +72,7 @@ function PopUp({
         <div className="footer-button">
           <button onClick={handleImageClick}>
             <FiVolume2 />
+            <span>Audio</span>
           </button>
         </div>
       </div>

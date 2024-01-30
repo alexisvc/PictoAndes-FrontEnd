@@ -42,10 +42,10 @@ const RegistrationForm = () => {
     }*/}
 
     // Validar las contraseñas
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-/:;&@.?!%*]).{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-/:;&@.?!%*#]).{8,}$/;
     if (!passwordRegex.test(password)) {
       toast.error(
-        "La contraseña debe tener al menos 8 caracteres y contener una letra mayúscula, una minúscula, un número y un símbolo - / :; & @.?!%*",
+        "La contraseña debe tener al menos 8 caracteres y contener una letra mayúscula, una minúscula, un número y un símbolo (-/:;&@.?!%*#)",
         {
           position: "top-right",
           autoClose: 3000,
@@ -95,14 +95,6 @@ const RegistrationForm = () => {
     setTermsAccepted(!termsAccepted);
   }, [termsAccepted]);
 
-  const handleImageClick = () => {
-    if (!speaking) {
-      speak(
-        "Hola bienvenido al mundo de los pictogramas, selecciona una opción para continuar"
-      );
-    }
-  };
-
   return (
     <div className="registration-content">
       {isPopUpOpen && (
@@ -115,8 +107,8 @@ const RegistrationForm = () => {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Regístrate ingresando tus nombres, correo y contraseña."}
+          url={"public/instructions/register-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -160,7 +152,7 @@ const RegistrationForm = () => {
       <div className="registration">
         <div className="img-form">
           <img
-            src="src\assets\characters\condor.png"
+            src="public/characters/andino.png"
             alt="imagen de la aventura"
           />
         </div>
@@ -210,6 +202,11 @@ const RegistrationForm = () => {
                 >
                   {showPassword ? "👁️" : "🔒"}
                 </button>
+              </div>
+              <div className="password">
+                <span>
+                La contraseña debe tener al menos 8 caracteres y contener una letra mayúscula, una minúscula, un número y un símbolo (-/:;&@.?!%*#)
+                </span>
               </div>
             </div>
             <div className="form-input">

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import "./GameOptions.css";
-import { FaArrowCircleLeft, FaBookOpen, FaCircle, FaHome, FaQuestion, FaYoutube } from "react-icons/fa";
+import {
+  FaArrowCircleLeft,
+  FaBookOpen,
+  FaCircle,
+  FaHome,
+  FaQuestion,
+  FaStar,
+  FaYoutube,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
 import { FiVolume2 } from "react-icons/fi";
@@ -16,9 +24,7 @@ function GameOptions() {
 
   const handleImageClick = () => {
     if (!speaking) {
-      speak(
-        "Texto descriptivo"
-      );
+      speak("Elige la dificultad que prefieras.");
     }
   };
 
@@ -28,16 +34,18 @@ function GameOptions() {
 
   return (
     <div className="game-config">
-      {isPopUpOpen && 
-        <PopUpHelp 
-          onClose={() => {setIsPopUpOpen(false)}}
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
           url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
         />
-      }
+      )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Elige la dificultad que prefieras."}
+          url={"public/instructions/difficultyt-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -79,20 +87,29 @@ function GameOptions() {
         </button>
       </div>
       <div className="config-content">
-          <img
-            src="public\messages\2.png"
-            alt="Imagen de la Aventura"
-          />
-          <div className="difficulty-buttons">
-            <button onClick={() => handleDifficultyClick("Fácil")}>
-              Fácil
-            </button>
-            <button onClick={() => handleDifficultyClick("Normal")}>
-              Normal
-            </button>
-            <button onClick={() => handleDifficultyClick("Difícil")}>
-              Difícil
-            </button>
+        <img src="public\instructions\difficultyt-message.png" alt="Imagen de la Aventura" />
+        <div className="difficulty-buttons">
+          <button onClick={() => handleDifficultyClick("Fácil")}>
+            <span>
+              <FaStar />
+            </span>
+            <span className="btn-txt">Fácil</span>
+          </button>
+          <button onClick={() => handleDifficultyClick("Normal")}>
+            <span>
+              <FaStar />
+              <FaStar />
+            </span>
+            <span className="btn-txt">Normal</span>
+          </button>
+          <button onClick={() => handleDifficultyClick("Difícil")}>
+            <span>
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </span>
+            <span className="btn-txt">Difícil</span>
+          </button>
         </div>
       </div>
 

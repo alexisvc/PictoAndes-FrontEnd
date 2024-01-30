@@ -12,7 +12,7 @@ import {
   FaFilm,
   FaHome,
   FaQuestion,
-  FaYoutube
+  FaYoutube,
 } from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../../hooks/useSpeechSynthesis";
@@ -39,20 +39,35 @@ function RecognitionGame({ pictograms }) {
     handleUpgradeDifficulty,
     lose,
     setLose,
-    pointsDifficulty
+    pointsDifficulty,
   } = useRecognitionGame(pictograms, difficulty);
   const { speak, speaking } = useSpeechSynthesis();
   const navigate = useNavigate();
 
   const handleImageClick = () => {
     if (!speaking) {
-      // Utiliza el hook para hablar
-      speak("Texto descriptivo");
+      speak("Reproduce el sonido del pictograma y selecciona el que corresponda.");
     }
   };
 
   return (
     <div className="recognition-game">
+      {showPopUp && (
+        <PopUp
+          message={message}
+          onClose={() => {
+            setShowPopUp(false);
+            setLose(false);
+          }}
+          handleContinue={handleContinue}
+          handleFinish={() => {
+            navigate("/game-config");
+          }}
+          handleUpgradeDifficulty={handleUpgradeDifficulty}
+          difficulty={difficulty}
+          lose={lose}
+        />
+      )}
       {isPopUpOpen && (
         <PopUpHelp
           onClose={() => {
@@ -63,8 +78,8 @@ function RecognitionGame({ pictograms }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Reproduce el sonido del pictograma y selecciona el que corresponda."}
+          url={"/public/instructions/game-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -107,42 +122,42 @@ function RecognitionGame({ pictograms }) {
       </div>
       <div className="game-canva">
         <div className="game-header">
-          <div>
-          <img className="statment" src="/public/messages/3.png" alt="imagen" />
+          <div className="game-img-btn">
+            <img
+              className="statment"
+              src="/public/instructions/game2-message.png"
+              alt="imagen"
+            />
+            <button className="btn-speech"
+          onClick={() => {
+            handleImageClick();
+          }}
+        >
+          <FiVolume2 />
+          <span>Audio</span>
+        </button>
           </div>
           <div>
-          <GameHeader lives={lives} points={points} badges={badges} pointsDifficulty={pointsDifficulty} />
+            <GameHeader
+              lives={lives}
+              points={points}
+              badges={badges}
+              pointsDifficulty={pointsDifficulty}
+            />
           </div>
         </div>
 
         <div className="game">
-            <PictogramQuestion
-              currentPictogram={currentPictogram}
-              handleMouseOver={handleMouseOver}
-            />
-            <PictogramOptions
-              currentPictograms={currentPictograms}
-              handleMouseOver={handleMouseOver}
-              checkAnswer={checkAnswer}
-            />
-        </div>
-
-        {showPopUp && (
-          <PopUp
-            message={message}
-            onClose={() => {
-              setShowPopUp(false);
-              setLose(false);
-            }}
-            handleContinue={handleContinue}
-            handleFinish={() => {
-              navigate("/game-config");
-            }}
-            handleUpgradeDifficulty={handleUpgradeDifficulty}
-            difficulty={difficulty}
-            lose={lose}
+          <PictogramQuestion
+            currentPictogram={currentPictogram}
+            handleMouseOver={handleMouseOver}
           />
-        )}
+          <PictogramOptions
+            currentPictograms={currentPictograms}
+            handleMouseOver={handleMouseOver}
+            checkAnswer={checkAnswer}
+          />
+        </div>
       </div>
       <div className="footer-button">
         <button

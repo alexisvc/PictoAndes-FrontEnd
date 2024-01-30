@@ -51,6 +51,23 @@
   margin: 3vh;
 }
 
+.buttons-exit button{
+  font-size: 3vh;
+  padding: 10px 20px;
+  background-color: #FF637D;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: auto;
+  font-family: 'Satisfy', cursive;
+}
+
+.buttons-exit button:hover {
+  background-color: #66D7D1;
+  scale: 1.1;
+}
+
 .popup-content img{
   height: 60vh;
   width: fit-content;

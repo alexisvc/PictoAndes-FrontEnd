@@ -81,8 +81,8 @@ export default function PictogramForm({ createPictogram, pictograms }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Da vida a tus ideas creando nuevos pictogramas aquí."}
+          url={"public/instructions/create-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -183,7 +183,7 @@ export default function PictogramForm({ createPictogram, pictograms }) {
         </div>
         <div className="img-form">
           <img
-            src="src/assets/characters/condor.png"
+            src="public\characters\andino.png"
             alt="Imagen de la Aventura"
           />
         </div>

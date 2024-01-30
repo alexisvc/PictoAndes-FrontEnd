@@ -14,10 +14,13 @@ import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import PopUpHelp from "../extras/PopUpHelp";
 import PopUpInstructions from "../extras/PopUpInstructions";
+import PopUpDelete from "../extras/PopUpDelete";
 
 function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
   const [isPopUpOpenInstructions, setIsPopUpOpenInstructions] = useState(false);
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false); // Nuevo estado
+  const [selectedPictogramToDelete, setSelectedPictogramToDelete] = useState(null); // Nuevo estado
 
   const navigate = useNavigate();
   const [showEditForm, setShowEditForm] = useState(false);
@@ -31,7 +34,6 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   const personalizadosIndex = uniqueCategories.indexOf("Personalizados");
 
   if (personalizadosIndex !== -1) {
-    // "Personalizados" existe, muévelo al principio
     uniqueCategories.unshift(
       ...uniqueCategories.splice(personalizadosIndex, 1)
     );
@@ -50,12 +52,8 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
   };
 
   const handleDeleteClick = (pictogram) => {
-    deletePictogram(pictogram.id);
-    // Notificación de éxito
-    toast.success("Pictograma eliminado exitosamente", {
-      position: "top-right",
-      autoClose: 3000,
-    });
+    setSelectedPictogramToDelete(pictogram);
+    setIsDeletePopupOpen(true);
   };
 
   return (
@@ -70,11 +68,27 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Elimina o edita tus pictogramas en esta sección."}
+          url={"public/instructions/list-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
+        />
+      )}
+      {isDeletePopupOpen && selectedPictogramToDelete && ( // Nuevo bloque
+        <PopUpDelete
+          onClose={() => {
+            setIsDeletePopupOpen(false);
+            setSelectedPictogramToDelete(null);
+          }}
+          onDelete={(pictogram) => {
+            deletePictogram(pictogram.id);
+            toast.success("Pictograma eliminado exitosamente", {
+              position: "top-right",
+              autoClose: 3000,
+            });
+          }}
+          pictogram={selectedPictogramToDelete}
         />
       )}
       {!showEditForm && (
@@ -199,5 +213,3 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
 }
 
 export default PictogramList;
-
-/* ... Código CSS existente ... */

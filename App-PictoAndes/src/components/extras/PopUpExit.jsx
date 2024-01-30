@@ -12,8 +12,8 @@ function PopUpExit({ onClose, logout }) {
       <div className="popup-content">
         <span>¿Está seguro que desea salir?</span>
         <div className="buttons-exit">
-          <button onClick={handleLogout}>Sí</button>
-          <button onClick={onClose}>No</button>
+          <button className="btns-delete" onClick={handleLogout}>Sí</button>
+          <button className="btns-delete" onClick={onClose}>No</button>
         </div>
       </div>
     </div>

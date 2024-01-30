@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {
+  FaArrowRight,
   FaGamepad,
+  FaHashtag,
   FaInfoCircle,
+  FaLessThan,
   FaSignInAlt,
   FaSignOutAlt,
-  FaUserAlt,
   FaUserPlus,
 } from "react-icons/fa";
 
@@ -21,7 +23,7 @@ function Home({ user, logout, login }) {
   const handleImageClick = () => {
     if (!speaking) {
       speak(
-        "Texto descriptivo"
+        "¡Hola! Bienvenido a PictoAndes, soy Andino, tu guía en esta aventura."
       );
     }
   };
@@ -53,41 +55,44 @@ function Home({ user, logout, login }) {
             className="app-navigation"
             style={{ display: "flex", justifyContent: "flex-end" }}
           >
-            <button>
-              <Link to="/about-us" className="link-button">
+            <Link to="/about-us" className="link-button">
+              <button>
                 <FaInfoCircle />
-                <span>Acerca de </span>
-              </Link>
-            </button>
+                <span>Créditos </span>
+              </button>
+            </Link>
           </div>
-          <h2>Bienvenido a</h2>
-          <h1>PictoAndes</h1>
-
-          <div className="welcome-img">
+          {/*<h2>Bienvenido a PictoAndes</h2>
             <img
-              src="src\assets\characters\condor.png"
+              src="public/characters/andino.png"
               alt="imagen de la aventura"
-            />
-          </div>
-          <div>
-            <button>
-              <Link to="/login" className="link-button">
+            />*/}
+          <img
+            className="img-home"
+            src="public\credits\home.png"
+            alt="imagen de la aventura"
+          />
+          <div className="buttons-welcome">
+            <Link to="/login" className="link-button">
+              <button>
                 <FaSignInAlt />
                 <span> Iniciar Sesión</span>
-              </Link>
-            </button>
-            <button onClick={handleGuestLogin}>
-              <Link to="/" className="link-button">
+              </button>
+            </Link>
+
+            <Link to="/" className="link-button">
+              <button onClick={handleGuestLogin}>
                 <FaGamepad />
                 <span> Jugar como invitado</span>
-              </Link>
-            </button>
-            <button>
-              <Link to="/register" className="link-button">
+              </button>
+            </Link>
+
+            <Link to="/register" className="link-button">
+              <button>
                 <FaUserPlus />
                 <span> Registrarse</span>
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
           <div className="footer">
             <div>
@@ -122,15 +127,19 @@ function Home({ user, logout, login }) {
               <span>Salir</span>
             </button>
           </div>
-          <h2>Bienvenido a PictoAndes</h2>
+          {/*<img className="img-title" src="public\credits\title.png" alt="imagen de la aventura" />*/}
           <div className="home-content">
-            <img src="public\messages\2.png" alt="imagen de la aventura" />
+            <img
+              src="public\instructions\welcome-message.png"
+              alt="imagen de la aventura"
+            />
             <div>
-              <button>
-                <Link to="/main-menu" className="link-button">
+              <Link to="/main-menu" className="link-button">
+                <button>
+                  <FaArrowRight />
                   <span>Continuar</span>
-                </Link>
-              </button>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="footer-button">

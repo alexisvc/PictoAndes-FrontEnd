@@ -2,7 +2,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./GameMenu.css";
-import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion, FaYoutube } from "react-icons/fa";
+import {
+  FaArrowCircleLeft,
+  FaArrowRight,
+  FaBookOpen,
+  FaHome,
+  FaQuestion,
+  FaYoutube,
+} from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import PopUpHelp from "../extras/PopUpHelp";
@@ -18,21 +25,23 @@ function GameMenu() {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Texto descriptivo");
+      speak("Accede al juego haciendo clic en Ingresar.");
     }
   };
   return (
     <div className="game-menu">
-      {isPopUpOpen && 
-        <PopUpHelp 
-          onClose={() => {setIsPopUpOpen(false)}}
+      {isPopUpOpen && (
+        <PopUpHelp
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
           url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
         />
-      }
+      )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Accede al juego haciendo clic en Ingresar."}
+          url={"public/instructions/menu-game-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -55,7 +64,8 @@ function GameMenu() {
           <FaHome />
           <span>Inicio</span>
         </button>
-        <h1>Juego de reconocimiento</h1>
+        {/*<h1>Juego de reconocimiento</h1>*/}
+        <h1>Planeta de los Símbolos</h1>
         <button
           onClick={() => {
             setIsPopUpOpenInstructions(true);
@@ -70,20 +80,19 @@ function GameMenu() {
           }}
         >
           <FaYoutube />
-          <span>Ayuda</span>  
+          <span>Ayuda</span>
         </button>
       </div>
       <div>
         <div className="game-content">
-          <img
-            src="public\messages\2.png"
-            alt="Imagen de la Aventura"
-          />
-          <button>
-            <Link to="/game-config" className="link-button">
-              Continuar
-            </Link>
-          </button> 
+          <img src="public/instructions/menu-game-message.png" alt="Imagen de la Aventura" />
+
+          <Link to="/game-config" className="link-button">
+            <button>
+              <FaArrowRight />
+              <span className="btn-txt">Ingresar</span>
+            </button>
+          </Link>
         </div>
       </div>
       <div className="footer-button">

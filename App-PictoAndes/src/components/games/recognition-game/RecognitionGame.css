@@ -41,3 +41,37 @@
     border: 1px solid black;
     border-radius: 5px;
   }
+
+  .game-img-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .btn-speech {
+    font-family: 'Satisfy', cursive;
+    margin: 1vh;
+    padding: 1vh 2vh;
+    color: #EAF2E3;
+    background-color: #FF637D;
+    border: none;
+    border-radius: 5px;
+    font-size: 3vh;
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+  }
+  
+  .btn-speech span {
+    margin-top: 0.1vh;
+    font-size: 1.5vh;
+    font-weight: bold;
+  }
+  
+  .btn-speech:hover {
+    background-color: #66D7D1;
+    scale: 1.1;
+  }

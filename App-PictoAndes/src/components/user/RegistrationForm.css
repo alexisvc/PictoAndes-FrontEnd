@@ -105,3 +105,13 @@
 .register-link:hover {
     color: #66D7D1;
 }
+
+.password {
+    font-size: 1.3vh; /* Tamaño de fuente */
+    color: #666; /* Color del texto */
+    margin-top: 5px; /* Espaciado superior */
+}
+
+.password span {
+    display: block; /* Hace que el span sea un bloque para ocupar el ancho completo */
+}

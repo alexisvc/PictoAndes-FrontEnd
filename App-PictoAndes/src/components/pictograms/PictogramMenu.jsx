@@ -5,6 +5,9 @@ import {
   FaArrowCircleLeft,
   FaBookOpen,
   FaHome,
+  FaList,
+  FaPen,
+  FaPlus,
   FaQuestion,
   FaYoutube,
 } from "react-icons/fa";
@@ -22,9 +25,7 @@ function PictogramMenu() {
 
   const handleImageClick = () => {
     if (!speaking) {
-      speak(
-        "Texto descriptivo"
-      );
+      speak("Personaliza y organiza tus pictogramas aquí.");
     }
   };
 
@@ -40,8 +41,8 @@ function PictogramMenu() {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Personaliza y organiza tus pictogramas aquí."}
+          url={"public/instructions/bosque-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}
@@ -64,7 +65,8 @@ function PictogramMenu() {
           <FaHome />
           <span>Inicio</span>
         </button>
-        <h1>Menú de Pictogramas</h1>
+        {/*<h1>Menú de Pictogramas</h1>*/}
+        <h1>Bosque de los símbolos</h1>
         <button
           onClick={() => {
             setIsPopUpOpenInstructions(true);
@@ -83,18 +85,21 @@ function PictogramMenu() {
         </button>
       </div>
       <div className="pictogram-content">
-        <img src="public\messages\2.png" alt="Imagen de la Aventura" />
+        <img src="public\instructions\bosque-message.png" alt="Imagen de la Aventura" />
         <div className="buttons">
-          <button>
-            <Link to="/pictogram-list" className="link-button">
-              Listar Pictogramas
-            </Link>
-          </button>
-          <button>
-            <Link to="/pictogram-form" className="link-button">
-              Crear un nuevo Pictograma
-            </Link>
-          </button>
+          <Link to="/pictogram-list" className="link-button">
+            <button>
+              <FaList />
+              <span className="btn-txt">Listar Pictogramas</span>
+            </button>
+          </Link>
+
+          <Link to="/pictogram-form" className="link-button">
+            <button>
+              <FaPlus />
+              <span className="btn-txt">Crear un nuevo Pictograma</span>
+            </button>
+          </Link>
         </div>
       </div>
       <div className="footer-button">

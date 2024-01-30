@@ -8,11 +8,11 @@ function PictogramOptions({ currentPictograms, handleMouseOver, checkAnswer }) {
       {currentPictograms.map((pictogram) => (
         <div key={pictogram.id}>
           <img src={pictogram.url} alt={pictogram.name} onClick={() => checkAnswer(pictogram.name)}/>
-          <div className="options-btn">
+          {/*<div className="options-btn">
             <button onClick={() => handleMouseOver(pictogram.name)}>
               <FiVolume2 size={25}/>
             </button>  
-          </div>
+      </div>*/ }
         </div>
       ))}
     </div>

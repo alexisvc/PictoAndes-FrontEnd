@@ -19,7 +19,8 @@ function AboutUs() {
         </button>
       </div>
       <div className="about-content">
-        <div className="about-column">
+        <img className="img-credits" src="public\credits\credits.png" alt="Créditos " />
+        {/*<div className="about-column">
           <img
             src="src\assets\logos\epn2.png"
             alt="Descripción de la imagen 1"
@@ -83,8 +84,8 @@ function AboutUs() {
             por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem
             Ipsum.
           </p>
-        </div>
-      </div>
+        </div>*/}
+            </div>
       <div className="footer"></div>
     </div>
   );

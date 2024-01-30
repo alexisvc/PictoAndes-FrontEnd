@@ -110,8 +110,8 @@ export function PictogramDisplay({ images }) {
       )}
       {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
+          instructions={"Selecciona los pictogramas que necesitas para expresar tus ideas."}
+          url={"public/instructions/acc-message.png"}
           onClose={() => {
             setIsPopUpOpenInstructions(false);
           }}

@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaArrowCircleLeft, FaBookOpen, FaHome, FaQuestion, FaYoutube } from "react-icons/fa";
+import {
+  FaArrowAltCircleRight,
+  FaArrowCircleLeft,
+  FaArrowRight,
+  FaBookOpen,
+  FaHome,
+  FaQuestion,
+  FaYoutube,
+} from "react-icons/fa";
 import { FiVolume2 } from "react-icons/fi";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { useNavigate } from "react-router-dom";
-import "./PictogramAccMenu.css"
+import "./PictogramAccMenu.css";
 import PopUpHelp from "../extras/PopUpHelp";
 import PopUpInstructions from "../extras/PopUpInstructions";
 
@@ -18,24 +26,29 @@ function PictogramAccMenu() {
   const handleImageClick = () => {
     if (!speaking) {
       // Utiliza el hook para hablar
-      speak("Texto descriptivo");
+      speak("Accede al tablero de comunicación haciendo clic en Ingresar.");
     }
   };
 
   return (
     <div className="acc-menu">
-      {isPopUpOpen && 
+      {isPopUpOpen && (
         <PopUpHelp
-          onClose={() => {setIsPopUpOpen(false)}}
+          onClose={() => {
+            setIsPopUpOpen(false);
+          }}
           url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
         />
-      }
-      {isPopUpOpenInstructions &&
+      )}
+      {isPopUpOpenInstructions && (
         <PopUpInstructions
-          instructions={"Indicaciones"}
-          url={"/public/instructions/indicaciones.png"}
-          onClose={() => {setIsPopUpOpenInstructions(false)}} />
-      }
+          instructions={"Accede al tablero de comunicación haciendo clic en Ingresar."}
+          url={"public/instructions/menu-acc-message.png"}
+          onClose={() => {
+            setIsPopUpOpenInstructions(false);
+          }}
+        />
+      )}
       <div className="app-navigation">
         <button
           onClick={() => {
@@ -53,7 +66,8 @@ function PictogramAccMenu() {
           <FaHome />
           <span>Inicio</span>
         </button>
-        <h1>Menú Tablero de Comunicación</h1>
+        {/*<h1>Menú Tablero de Comunicación</h1>*/}
+        <h1>Valle de los Pictogramas</h1>
         <button
           onClick={() => {
             setIsPopUpOpenInstructions(true);
@@ -73,18 +87,24 @@ function PictogramAccMenu() {
       </div>
       <div className="acc-content">
         <img
-          src="public\messages\2.png"
+          src="public/instructions/menu-acc-message.png"
           alt="Imagen de la Aventura"
         />
-        <button>
-          <Link to="/saac" className="link-button">
-            Ingresar al tablero
+
+        <Link to="/saac" className="link-button">
+          <button>
+            <FaArrowRight />
+            <span className="btn-txt">Ingresar</span>
+          </button>
         </Link>
-        </button>
       </div>
       <div className="footer-button">
-        <button onClick={()=>{handleImageClick()}}>
-          <FiVolume2/>
+        <button
+          onClick={() => {
+            handleImageClick();
+          }}
+        >
+          <FiVolume2 />
           <span>Audio</span>
         </button>
       </div>

@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import {
-  FaBars,
   FaGamepad,
   FaList,
-  FaSignInAlt,
+  FaMountain,
   FaSignOutAlt,
   FaTable,
+  FaTree,
   FaUserAlt,
-  FaUserPlus,
 } from "react-icons/fa";
 import PopUpExit from "./extras/PopUpExit";
 
@@ -46,38 +45,44 @@ function Welcome({ user, logout, isGuestUser }) {
             </button>
           </>
         )}
-        
       </div>
-      <h2>Bienvenido a PictoAndes</h2>
-      <div className="welcome-img">
-        <img
-          src="src\assets\characters\condor.png"
-          alt="imagen de la aventura"
-        />
-      </div>
+      <img
+        className="img-home"
+        src="public\credits\home.png"
+        alt="imagen de la aventura"
+      />
 
       {isLoggedIn && (
-        <div>
+        <div className="buttons-welcome">
           {!isGuestUser && (
-            <button>
             <Link to="/pictogram-menu" className="link-button">
-              <FaList />
-              <span>Pictogramas</span>
+              <button>
+                <span>🌳</span>
+                <span>Bosque de los Símbolos</span>
+
+                {/*
+              <span>Pictogramas</span>*/}
+              </button>
             </Link>
-          </button>
           )}
-          <button>
-            <Link to="/acc-menu" className="link-button">
-            <FaTable />
-              <span>Tablero de Comunicación</span>
-            </Link>
-          </button>
-          <button>
-            <Link to="/game-menu" className="link-button">
-              <FaGamepad />
-              <span>Juego de Reconocimiento</span>
-            </Link>
-          </button>
+
+          <Link to="/acc-menu" className="link-button">
+            <button>
+              <span>🏔️</span>
+              <span>Valle de los Pictogramas</span>
+              {/*<FaTable />
+              <span>Tablero de Comunicación</span>*/}
+            </button>
+          </Link>
+
+          <Link to="/game-menu" className="link-button">
+            <button>
+              <span>🌎</span>
+              <span>Planeta de los Símbolos</span>
+              {/*<FaGamepad />
+              <span>Juego de Reconocimiento</span>*/}
+            </button>
+          </Link>
         </div>
       )}
       <div className="footer">
