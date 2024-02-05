@@ -39,7 +39,7 @@ function GameOptions() {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=w38IyLM-yo4"}
         />
       )}
       {isPopUpOpenInstructions && (

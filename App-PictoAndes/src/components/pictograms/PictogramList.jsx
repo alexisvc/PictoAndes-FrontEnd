@@ -63,7 +63,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=u1L_vYqAZ9w"}
         />
       )}
       {isPopUpOpenInstructions && (

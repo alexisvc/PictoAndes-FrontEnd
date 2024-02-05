@@ -85,7 +85,7 @@ function EditPictogram({
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=zAwT2WaHxOk"}
         />
       )}
       {isPopUpOpenInstructions && (

@@ -58,7 +58,7 @@ export const LoginForm = ({ login }) => {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=vPZLE8mEOFw"}
         />
       )}
       {isPopUpOpenInstructions && (

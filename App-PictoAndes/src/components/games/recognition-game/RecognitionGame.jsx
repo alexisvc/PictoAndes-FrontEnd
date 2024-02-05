@@ -73,7 +73,7 @@ function RecognitionGame({ pictograms }) {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=hlFj0h9O0oc"}
         />
       )}
       {isPopUpOpenInstructions && (

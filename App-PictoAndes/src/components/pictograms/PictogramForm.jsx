@@ -76,7 +76,7 @@ export default function PictogramForm({ createPictogram, pictograms }) {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=DDQAYmTw2fM"}
         />
       )}
       {isPopUpOpenInstructions && (

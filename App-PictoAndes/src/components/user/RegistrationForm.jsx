@@ -102,7 +102,7 @@ const RegistrationForm = () => {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=8tJmZkf5o88"}
         />
       )}
       {isPopUpOpenInstructions && (

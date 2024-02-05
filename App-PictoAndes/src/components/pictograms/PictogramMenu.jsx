@@ -36,7 +36,7 @@ function PictogramMenu() {
           onClose={() => {
             setIsPopUpOpen(false);
           }}
-          url={"https://www.youtube.com/watch?v=lJiEc1dBbRQ"}
+          url={"https://www.youtube.com/watch?v=ANG0-z1qLgw"}
         />
       )}
       {isPopUpOpenInstructions && (
