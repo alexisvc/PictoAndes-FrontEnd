@@ -32,7 +32,7 @@ function Home({ user, logout, login }) {
   const handleGuestLogin = async () => {
     await login({
       username: "invitado@correo.com",
-      password: "invitado123@",
+      password: "Invitado123@",
     });
   };
 
