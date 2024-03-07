@@ -137,8 +137,11 @@ function EditPictogram({
           <h3>Editar Pictograma</h3>
           <form onSubmit={handleUpdate}>
             <div className="form-input">
+              <label htmlFor="name">
               <p>Nombre:</p>
+              </label>
               <input
+                id="name"
                 type="text"
                 placeholder="Ingresa un Nombre"
                 value={newName}
@@ -148,8 +151,11 @@ function EditPictogram({
               />
             </div>
             <div className="form-input">
+              <label htmlFor="category">
               <p>Categoría:</p>
+              </label>
               <select
+                id="category"
                 value={newCategory}
                 onChange={(e) => setNewCategory(e.target.value)}
                 required
@@ -168,9 +174,12 @@ function EditPictogram({
                 ))}
               </select>
             </div>
-            <div className="form-input">
+            <div className="form-input">  
+              <label htmlFor="image">
               <p>Imagen:</p>
+              </label>
               <input
+                id="image"
                 type="file"
                 onChange={(e) => setNewImage(e.target.files[0])}
                 className="input-field"

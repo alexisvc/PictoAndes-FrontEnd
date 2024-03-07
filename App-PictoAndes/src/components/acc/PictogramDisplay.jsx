@@ -191,7 +191,7 @@ export function PictogramDisplay({ images }) {
               className="card"
               onClick={() => handleImageClick(image.name, image.url)}
             >
-              <img className="pronouns-img" src={image.url} alt={image.name} />
+              <img className="pronouns-img" src={image.url} alt={image.id} />
               <p>{image.name}</p>
             </div>
           ))}
@@ -204,7 +204,7 @@ export function PictogramDisplay({ images }) {
               className="card"
               onClick={() => handleImageClick(image.name, image.url)}
             >
-              <img className="actions-img" src={image.url} alt={image.name} />
+              <img className="actions-img" src={image.url} alt={image.id} />
               <p>{image.name}</p>
             </div>
           ))}
@@ -232,7 +232,7 @@ export function PictogramDisplay({ images }) {
                   <img
                     className="default-img"
                     src={image.url}
-                    alt={image.name}
+                    alt={image.id}
                   />
                   <p>{image.name}</p>
                 </div>
@@ -251,7 +251,7 @@ export function PictogramDisplay({ images }) {
                   <img
                     className="category-icon"
                     src={`http://localhost:3001/icons/${category}.png`}
-                    alt={category}
+                    alt={index}
                   />
                 </span>
                 <span>{category}</span>

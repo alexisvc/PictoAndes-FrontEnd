@@ -70,7 +70,7 @@ function Home({ user, logout, login }) {
           <img
             className="img-home"
             src="public\credits\home.png"
-            alt="imagen de la aventura"
+            alt="creditos"
           />
           <div className="buttons-welcome">
             <Link to="/login" className="link-button">
@@ -98,7 +98,7 @@ function Home({ user, logout, login }) {
             <div>
               <img
                 src="src\assets\logos\epn2.png"
-                alt="imagen de la aventura"
+                alt="epn"
               />
             </div>
             <div></div>
@@ -106,7 +106,7 @@ function Home({ user, logout, login }) {
               <img
                 className="logo"
                 src="src\assets\logos\ludologo.png"
-                alt="imagen de la aventura"
+                alt="ludolago"
               />
             </div>
           </div>

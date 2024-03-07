@@ -133,8 +133,12 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
         <>
           <div className="heading">
             <div className="filter">
+              <label htmlFor="filter">
               <span>Filtrar: </span>
+              </label>
               <select
+                id="filter"
+                name="filter"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
               >
@@ -162,7 +166,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                   <th>Categoría</th>
                   <th>Nombre</th>
                   <th>Pictograma</th>
-                  <th></th>
+                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -174,7 +178,7 @@ function PictogramList({ pictograms, updatePictogram, deletePictogram }) {
                       <img
                         className="img-list"
                         src={pictogram.url}
-                        alt={pictogram.name}
+                        alt={pictogram.id}
                         width="100"
                       />
                     </td>

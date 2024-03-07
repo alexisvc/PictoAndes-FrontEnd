@@ -27,6 +27,7 @@ function PopUpHelp({ url, onClose }) {
   
   <button className="close-button-help" onClick={onClose}>
     <FaTimes />
+    <span>Cerrar</span>
   </button>
 </div>
 

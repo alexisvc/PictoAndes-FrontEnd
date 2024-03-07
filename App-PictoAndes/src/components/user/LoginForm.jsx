@@ -110,8 +110,11 @@ export const LoginForm = ({ login }) => {
           <h2 className="login-heading">Iniciar Sesión</h2>
           <form onSubmit={handleLogin}>
             <div className="form-input">
+              <label htmlFor="username">
               <p>Correo Electrónico:</p>
+              </label>
               <input
+              id="username"
                 type="email"
                 placeholder="Ingresa tu correo electrónico. Ej: alexis@correo.com"
                 value={username}
@@ -122,9 +125,12 @@ export const LoginForm = ({ login }) => {
               />
             </div>
             <div className="form-input">
+              <label htmlFor="password">
               <p>Contraseña:</p>
+              </label>
               <div className="password-field">
                 <input
+                  id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Ingresa tu contraseña"
                   value={password}
@@ -159,7 +165,7 @@ export const LoginForm = ({ login }) => {
         <div className="img-form">
           <img
             src="public\characters\andino.png"
-            alt="imagen de la aventura"
+            alt="Andino"
           />
         </div>
       </div>

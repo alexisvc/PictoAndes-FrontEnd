@@ -15,8 +15,9 @@ function PictogramQuestion({ currentPictogram, handleMouseOver }) {
           alt={currentPictogram.name}
         />
         <div className="question-btn">
-          <button onClick={() => handleMouseOver(currentPictogram.name)}>
+          <button className="btn-speech" onClick={() => handleMouseOver(currentPictogram.name)}>
             <FiVolume2 size={35} />
+            <span>Sonido</span>
           </button>
         </div>
       </div>

@@ -160,8 +160,11 @@ const RegistrationForm = () => {
           <h3>Registrarse</h3>
           <form onSubmit={handleRegister}>
             <div className="form-input">
+              <label htmlFor="nombre">
               <p>Nombres:</p>
+              </label>
               <input
+                id="nombre"
                 type="text"
                 placeholder="Ingresa tu nombre. Ej: Alexis Vizuete"
                 name="name"
@@ -172,8 +175,11 @@ const RegistrationForm = () => {
               />
             </div>
             <div className="form-input">
+              <label htmlFor="correo">
               <p>Correo electrónico:</p>
+              </label>
               <input
+                id="correo"
                 type="email"
                 placeholder="Ingresa tu corrreo electrónico. Ej: alexis@correo.com"
                 name="username"
@@ -184,9 +190,12 @@ const RegistrationForm = () => {
               />
             </div>
             <div className="form-input">
+            <label htmlFor="password">
               <p>Contraseña:</p>
+              </label>  
               <div className="password-field">
                 <input
+                id="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Ingresa tu contraseña"
                   name="password"
@@ -210,9 +219,12 @@ const RegistrationForm = () => {
               </div>
             </div>
             <div className="form-input">
-              <p>Confirmar contraseña:</p>
+              <label htmlFor="password2">
+                <p>Confirmar contraseña:</p>
+              </label>
               <div className="password-field">
                 <input
+                  id="password2"
                   type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirma tu contraseña"
                   name="confirmPassword"

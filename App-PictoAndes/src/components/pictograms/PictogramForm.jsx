@@ -128,8 +128,11 @@ export default function PictogramForm({ createPictogram, pictograms }) {
           <h3>Crear un nuevo Pictograma</h3>
           <form onSubmit={handleSubmit}>
             <div className="form-input">
+              <label htmlFor="name">
               <p>Nombre:</p>
+              </label>
               <input
+                id="name"
                 type="text"
                 placeholder="Ingresa un Nombre"
                 value={nameValue}
@@ -139,8 +142,11 @@ export default function PictogramForm({ createPictogram, pictograms }) {
               />
             </div>
             <div className="form-input">
+              <label htmlFor="category">
               <p>Categoría:</p>
+              </label>
               <select
+                id="category"
                 value={categoryValue}
                 onChange={(e) => setCategoryValue(e.target.value)}
                 required
@@ -160,8 +166,11 @@ export default function PictogramForm({ createPictogram, pictograms }) {
               </select>
             </div>
             <div className="form-input">
+              <label htmlFor="image">
               <p>Imagen:</p>
+              </label>
               <input
+                id="image"
                 type="file"
                 accept="image/*"
                 onChange={(e) => setImage(e.target.files[0])}

@@ -23,6 +23,7 @@ function PopUpInstructions({ instructions, url, onClose }) {
           </div>
           <button className="close-button-instructions" onClick={onClose}>
             <FaTimes />
+            <span>Cerrar</span>
           </button>
         </div>
 
